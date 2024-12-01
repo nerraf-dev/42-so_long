@@ -1,0 +1,7 @@
+*.pdf
+
+/.DS_Store
+/_stuff
+
+/lib/mlx-ogl
+
