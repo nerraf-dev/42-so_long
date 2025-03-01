@@ -4,3 +4,6 @@
 [submodule "lib/42-get_next_line"]
 	path = lib/get_next_line
 	url = https://github.com/nerraf-dev/42-get_next_line.git
+[submodule "lib/gnl"]
+	path = lib/gnl
+	url = https://github.com/nerraf-dev/42-get_next_line.git
