@@ -6,20 +6,21 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/03/01 15:20:07 by sfarren          ###   ########.fr        #
+#    Updated: 2025/03/01 15:34:18 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = lib/libft
-GNL_DIR = lib/get_next_line
+GNL_DIR = lib/gnl
 
 LIBFT = $(LIBFT_DIR)/libft.a
 GNL = $(GNL_DIR)/get_next_line.a
 
 LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
 GNL_FLAGS = -L$(GNL_DIR) -lgnl
+MLX_FLAGS = -L/usr/local/lib -lmlx -lX11 -lXext -lm -lz
 
 SRC_DIR = src
 INC_DIR = inc
@@ -35,7 +36,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(GNL)
 	@mkdir -p $(BIN_DIR)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_FLAGS) $(GNL_FLAGS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_FLAGS) $(GNL_FLAGS) $(MLX_FLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
