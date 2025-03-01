@@ -2,7 +2,7 @@ I have a map file , `test.ber`.
 I have to:
 Verify the file exists - exit if not.
 If file exists:
-Parse the file checking the follwoing rules:
+Parse the file checking the following rules:
 - The map must contain **1 exit**, at least **1 collectible**, and **1 starting position** to
 be valid.
 
@@ -35,25 +35,35 @@ My initial plan:
 	* End - boolean flag to indicate if the end character is present.
 	* Collectable - boolean flag to indicate if the collectable character is present.
 
+* Initialise an array of strings to store the map. Double pointer variable?
+
 * Open the file.
 * Read the file line by line using gnl.
-	* Count the lines.
-	* Check the line length.
-		* If the line length is not the same as the first line, exit with line length error.
-	* Copy the line to an array of strings.
+	* Check the line length of first line.
+		* Set the line length value.
+		* increment the line count.
+	* Repeat for each line until end of file
+		* Check the line length.
+			* If the line length is not equal to the first line length, exit with rectangle error.
+* Close the file.
+
+* initialise a variable to store the map based on number of lines and line length.
+* Open the file.
+* Read the file line by line using gnl copying each line to the map array.
+* Close the file.
+* In the array:
 	* Check the first and last lines.
 		* If the first and last lines are not all walls, exit with wall error.
-	For each remaining line:
+	*	For each remaining line:
 		* Check the first and last characters of the line.
 			* If the first and last characters are not walls (not 1), exit with wall error.
-		* Check the characters in between.
+		* Check the characters inbetween (1 - n-1).
 			* If the characters are not valid, exit with character error.
 			* If the characters are valid:
 				* If 'C', set the collectable flag.
 				* If 'E', set the end flag.
 				* If 'P', set the start flag.
 			* If a flag is already true when trying to set, exit with duplicate + character error.
-* Close the file.
 * Check the flags.
 	* If any flag is false, exit with missing flag error.
 * Check the map for a valid path.

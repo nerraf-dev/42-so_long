@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:17:13 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/01 15:49:26 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/01 16:41:14 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	int		fd;
 	char	*line;
 
-	fd = open_file("maps/test.ber", O_RDONLY);
+	fd = open_file("maps/test.berr", O_RDONLY);
 	ft_printf("fd: %d\n", fd);
 	line = get_next_line(fd);
 	while (line != NULL)
