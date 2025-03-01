@@ -6,14 +6,14 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/01 11:47:09 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/01 15:25:02 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../lib/minilibx-linux/mlx.h"
+# include "mlx.h"
 # include "../lib/libft/src/libft.h"
 # include "../lib/get_next_line/src/get_next_line.h"
 # include <stdio.h>
