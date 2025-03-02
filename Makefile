@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/03/01 17:03:04 by sfarren          ###   ########.fr        #
+#    Updated: 2025/03/02 15:04:05 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,11 @@ INC_DIR = inc
 OBJ_DIR = obj
 BIN_DIR = bin
 
-SRC_FILES = so_long.c files.c map_parsing.c
+SRC_FILES = so_long.c \
+			so_long_utils.c \
+			files.c \
+			map_parsing.c \
+			map_validation.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
