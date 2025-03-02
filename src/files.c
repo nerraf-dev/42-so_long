@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 18:18:27 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/01 17:36:11 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/02 13:14:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	open_file(const char *file, int flags)
 	fd = open(file, flags, 0644);
 	if (fd == -1)
 	{
-		// ft_printf("Error\nFailed to open file %s\n", file);
-		perror("Error opening file");
+		ft_printf_fd(2, "Error: Failed to open file '%s'\n", file);
 		exit(1);
 	}
 	return (fd);
