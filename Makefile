@@ -6,26 +6,24 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/03/02 15:04:05 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/02 14:37:12 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = lib/libft
-# GNL_DIR = lib/gnl
+MLX_DIR = lib/mlx
 
 LIBFT = $(LIBFT_DIR)/libft.a
-# GNL = $(GNL_DIR)/get_next_line.a
 
 LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
-# GNL_FLAGS = -L$(GNL_DIR) -lgnl
-MLX_FLAGS = -L/usr/local/lib -lmlx -lX11 -lXext -lm -lz
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_INC = -I$(MLX_DIR)
 
 SRC_DIR = src
 INC_DIR = inc
 OBJ_DIR = obj
-BIN_DIR = bin
 
 SRC_FILES = so_long.c \
 			so_long_utils.c \
@@ -35,7 +33,7 @@ SRC_FILES = so_long.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-NAME = $(BIN_DIR)/so_long
+NAME = so_long
 
 all: $(NAME)
 
@@ -45,13 +43,10 @@ $(NAME): $(OBJS) $(LIBFT) $(GNL)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I$(INC_DIR) -o $@ -c $<
+	$(CC) $(CFLAGS) -I$(INC_DIR) -o $@ -c $< $(MLX_INC)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
-
-# $(GNL):
-# 	$(MAKE) -C $(GNL_DIR)
 
 clean:
 	rm -rf $(OBJ_DIR)
