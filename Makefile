@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/02 14:37:12 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/02 15:04:16 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ NAME = so_long
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(GNL)
-	@mkdir -p $(BIN_DIR)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_FLAGS) $(MLX_FLAGS) # $(GNL_FLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c

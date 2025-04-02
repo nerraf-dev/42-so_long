@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/02 14:54:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/02 14:56:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../lib/mlx/mlx.h"
 # include "../lib/libft/src/libft.h"
-// # include "../lib/gnl/src/get_next_line.h"
 # include <stdio.h>
 # include <fcntl.h>
 
