@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/02 14:56:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/04 11:39:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ int		open_file(const char *file, int flags);
 void	parse_map(const char *file);
 void	map_dimensions(const char *file, t_map_flags *flags);
 void	validate_map(char **map, t_map_flags *flags);
+
+void	load_window(void);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/04 10:20:02 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/04 11:33:53 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,11 @@ OBJ_DIR = obj
 # Subdirectories for organized source files
 PARSING_DIR = $(SRC_DIR)/parsing
 UTILS_DIR = $(SRC_DIR)/utils
+GUI_DIR = $(SRC_DIR)/gui
 
 
 # Source files in each category
+GUI_FILES = load_window.c
 PARSING_FILES = map_parsing.c map_validation.c
 UTILS_FILES = so_long_utils.c files.c
 MAIN_FILES = so_long.c
@@ -38,6 +40,7 @@ MAIN_FILES = so_long.c
 # Combine all source files
 SRC_FILES = $(addprefix $(PARSING_DIR)/, $(PARSING_FILES)) \
 			$(addprefix $(UTILS_DIR)/, $(UTILS_FILES)) \
+			$(addprefix $(GUI_DIR)/, $(GUI_FILES)) \
 			$(addprefix $(SRC_DIR)/, $(MAIN_FILES))
 
 SRCS = $(SRC_FILES)
@@ -50,7 +53,7 @@ $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_FLAGS) $(MLX_FLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/parsing $(OBJ_DIR)/utils $(OBJ_DIR)/main
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I$(INC_DIR) -o $@ -c $< $(MLX_INC)
 
 $(LIBFT):
