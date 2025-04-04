@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/02 15:04:16 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/04 10:20:02 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,23 +25,32 @@ SRC_DIR = src
 INC_DIR = inc
 OBJ_DIR = obj
 
-SRC_FILES = so_long.c \
-			so_long_utils.c \
-			files.c \
-			map_parsing.c \
-			map_validation.c \
+# Subdirectories for organized source files
+PARSING_DIR = $(SRC_DIR)/parsing
+UTILS_DIR = $(SRC_DIR)/utils
 
-SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+
+# Source files in each category
+PARSING_FILES = map_parsing.c map_validation.c
+UTILS_FILES = so_long_utils.c files.c
+MAIN_FILES = so_long.c
+
+# Combine all source files
+SRC_FILES = $(addprefix $(PARSING_DIR)/, $(PARSING_FILES)) \
+			$(addprefix $(UTILS_DIR)/, $(UTILS_FILES)) \
+			$(addprefix $(SRC_DIR)/, $(MAIN_FILES))
+
+SRCS = $(SRC_FILES)
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 NAME = so_long
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(GNL)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_FLAGS) $(MLX_FLAGS) # $(GNL_FLAGS)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_FLAGS) $(MLX_FLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/parsing $(OBJ_DIR)/utils $(OBJ_DIR)/main
 	$(CC) $(CFLAGS) -I$(INC_DIR) -o $@ -c $< $(MLX_INC)
 
 $(LIBFT):
@@ -50,12 +59,10 @@ $(LIBFT):
 clean:
 	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(LIBFT_DIR) clean
-	# $(MAKE) -C $(GNL_DIR) clean
 
 fclean: clean
 	rm -rf $(NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
-	# $(MAKE) -C $(GNL_DIR) fclean
 
 re: fclean all
 
