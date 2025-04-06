@@ -6,12 +6,20 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/02 15:02:47 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/05 18:10:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
+/**
+ * @brief Initializes the map flags structure.
+ *
+ * Sets all counters (line count, line length, player count, exit count,
+ * and collectible count) to zero.
+ *
+ * @param flags Pointer to the map flags structure to initialize.
+ */
 static void	init_flags(t_map_flags *flags)
 {
 	flags->line_count = 0;
@@ -21,6 +29,16 @@ static void	init_flags(t_map_flags *flags)
 	flags->collectible_count = 0;
 }
 
+/**
+ * @brief Copies the map data from the file into a 2D array.
+ *
+ * Reads the map file line by line, removes trailing newlines, and duplicates
+ * each line into the provided map array. Exits with an error if memory
+ * allocation fails.
+ *
+ * @param file The path to the map file.
+ * @param map The 2D array to store the map data.
+ */
 static void	copy_map_data(const char *file, char **map)
 {
 	int		fd;
@@ -46,6 +64,15 @@ static void	copy_map_data(const char *file, char **map)
 	close(fd);
 }
 
+/**
+ * @brief Parses the map file and validates its structure and content.
+ *
+ * Initializes map flags, determines map dimensions, allocates memory for the
+ * map, copies the map data, validates the map, and prints it. Frees all
+ * allocated memory after use. Exits with an error if any step fails.
+ *
+ * @param file The path to the map file.
+ */
 void	parse_map(const char *file)
 {
 	char		**map;

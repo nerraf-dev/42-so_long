@@ -6,12 +6,20 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/02 15:04:33 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/06 17:06:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
+/**
+ * @brief Checks if the length of the given line matches the expected length.
+ *
+ * Exits with an error if the map is not rectangular.
+ *
+ * @param line The line to check.
+ * @param expected_length The expected length of the line.
+ */
 static void	check_line_length(const char *line, int expected_length)
 {
 	if (ft_strlen(line) != (size_t)expected_length)
@@ -20,6 +28,13 @@ static void	check_line_length(const char *line, int expected_length)
 	}
 }
 
+/**
+ * @brief Verifies that the given line is composed entirely of wall characters.
+ *
+ * Exits with an error if the map is not surrounded by walls.
+ *
+ * @param line The line to check.
+ */
 static void	check_walls(const char *line)
 {
 	while (*line)
@@ -32,8 +47,23 @@ static void	check_walls(const char *line)
 	}
 }
 
-static void	check_valid_chars(const char *line, int *player_count,
-	int *exit_count, int *collectible_count)
+/**
+ * @brief Validates the characters in the given line of the map.
+ *
+ * This function checks each character in the provided line to ensure it is
+ * part of the valid character set defined by `VALID_CHARS`. It also ensures
+ * that there is exactly one player start position (`START`) and one exit
+ * position (`EXIT`) in the map. Additionally, it counts the number of
+ * collectibles (`COLLECTIBLE`) present. If an invalid character is found,
+ * or if there are duplicate start or exit positions, the program exits with
+ * an error message.
+ *
+ * @param line The line of the map to validate.
+ * @param flags A pointer to a `t_map_flags` structure that tracks the counts
+ *              of players, exits, and collectibles in the map.
+ * @note program will terminate if invalid characters/duplicates are found.
+ */
+static void	check_valid_chars(const char *line, t_map_flags *flags)
 {
 	while (*line)
 	{
@@ -41,22 +71,31 @@ static void	check_valid_chars(const char *line, int *player_count,
 			exit_with_error("Invalid character in map.\n");
 		if (*line == START)
 		{
-			if (*player_count)
+			if (flags->player_count)
 				exit_with_error("Duplicate start position.\n");
-			(*player_count)++;
+			flags->player_count++;
 		}
 		else if (*line == EXIT)
 		{
-			if (*exit_count)
+			if (flags->exit_count)
 				exit_with_error("Duplicate exit position.\n");
-			(*exit_count)++;
+			flags->exit_count++;
 		}
 		else if (*line == COLLECTIBLE)
-			(*collectible_count)++;
+			flags->collectible_count++;
 		line++;
 	}
 }
 
+/**
+ * @brief Reads the map file to determine its dimensions.
+ *
+ * Ensures the map is rectangular and that the first line is surrounded by
+ * walls. Exits with an error if the map is too small or invalid.
+ *
+ * @param file The path to the map file.
+ * @param flags Pointer to the map flags structure.
+ */
 void	map_dimensions(const char *file, t_map_flags *flags)
 {
 	int		fd;
@@ -86,6 +125,16 @@ void	map_dimensions(const char *file, t_map_flags *flags)
 		exit_with_error("Map is too small.\n");
 }
 
+/**
+ * @brief Validates the map structure and content.
+ *
+ * Ensures the map is surrounded by walls, contains valid characters, and meets
+ * the required conditions (one player, one exit, and at least one collectible).
+ * Exits with an error if any condition is not met.
+ *
+ * @param map The 2D array representing the map.
+ * @param flags Pointer to the map flags structure.
+ */
 void	validate_map(char **map, t_map_flags *flags)
 {
 	int	i;
@@ -99,8 +148,7 @@ void	validate_map(char **map, t_map_flags *flags)
 		{
 			if (map[i][0] != WALL || map[i][flags->line_length - 1] != WALL)
 				exit_with_error("Map is not surrounded by walls.\n");
-			check_valid_chars(map[i], &flags->player_count, &flags->exit_count,
-				&flags->collectible_count);
+			check_valid_chars(map[i], flags);
 		}
 		i++;
 	}

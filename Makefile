@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/04 11:33:53 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/05 20:05:02 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ INC_DIR = inc
 OBJ_DIR = obj
 
 # Subdirectories for organized source files
-PARSING_DIR = $(SRC_DIR)/parsing
+PARSING_DIR = $(SRC_DIR)/map_validation
 UTILS_DIR = $(SRC_DIR)/utils
 GUI_DIR = $(SRC_DIR)/gui
 
