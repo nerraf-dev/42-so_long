@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:57:51 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/05 13:43:26 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/07 09:43:01 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,29 +43,22 @@ void	load_window(void)
 	void	*mlx_win;
 	void	*params[2];
 
-	// Initialize MiniLibX
 	mlx = mlx_init();
 	if (mlx == NULL)
 		exit(1);
-
-	// Create a new window
 	mlx_win = mlx_new_window(mlx, 640, 480, "Hello world!");
 	if (mlx_win == NULL)
 	{
 		free(mlx);
 		exit(1);
 	}
-
 	// Pass both mlx and mlx_win to the event handlers
 	params[0] = mlx_win;
 	params[1] = mlx;
-
 	// Hook the close event (DestroyNotify) to the close_window function
 	mlx_hook(mlx_win, 17, 0, (int (*)(void *))close_window, params);
-
 	// Hook key press events to the handle_keypress function
 	mlx_hook(mlx_win, 2, 1L << 0, (int (*)(int, void *))handle_keypress, params);
-
 	// Start the MiniLibX event loop
 	mlx_loop(mlx);
 }
