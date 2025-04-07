@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/05 18:10:24 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/07 11:28:48 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,31 +73,30 @@ static void	copy_map_data(const char *file, char **map)
  *
  * @param file The path to the map file.
  */
-void	parse_map(const char *file)
+void	parse_map(const char *file, t_game *game)
 {
-	char		**map;
-	t_map_flags	flags;
 	int			i;
 
-	init_flags(&flags);
-	map = NULL;
-	map_dimensions(file, &flags);
-	map = ft_calloc(flags.line_count + 1, sizeof(char *));
-	if (!map)
+	init_flags(&game->map_flags);
+	map_dimensions(file, &game->map_flags);
+	game->map = ft_calloc(game->map_flags.line_count + 1, sizeof(char *));
+	if (!game->map)
 		exit_with_error("Memory allocation failed.\n");
-	copy_map_data(file, map);
-	validate_map(map, &flags);
+	copy_map_data(file, game->map);
+	validate_map(game->map, &game->map_flags);
 	i = 0;
-	while (map[i])
+	while (game->map[i])
 	{
-		ft_printf("%s\n", map[i]);
+		ft_printf("%s\n", game->map[i]);
 		i++;
 	}
 	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
+
+	// while (game->map[i])
+	// {
+	// 	free(game->map[i]);
+	// 	i++;
+	// }
+	// free(game->map);
+
 }
