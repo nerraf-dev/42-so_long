@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 10:24:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/07 11:46:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/07 12:10:40 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ int	handle_keypress(int keysym, t_game	*game)
 
 void	load_window(t_game *game)
 {
-	// void	*params[2];
-
 	// Initialize MiniLibX
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
@@ -51,11 +49,9 @@ void	load_window(t_game *game)
 		free(game->mlx);
 		exit(1);
 	}
-
 	// Hook the close event (DestroyNotify) to the close_window function
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, game);
 	// Hook key press events to the handle_keypress function
-	mlx_hook(game->mlx_win, 2, 1L << 0, (int (*)(int, void *))handle_keypress, game);
-	// Start the MiniLibX event loop
-	mlx_loop(game->mlx);
+	mlx_hook(game->mlx_win, 2, 1L << 0,
+		(int (*)(int, void *))handle_keypress, game);
 }
