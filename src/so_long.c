@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/05 19:08:51 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/07 11:29:38 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,24 @@ static void	validate_args(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	// char		**map;
-	// t_map_flags	flags;
-	// t_game		game;
-	// // Initialize the game structure
-	// game.mlx = NULL;
-	// game.mlx_win = NULL;
-	// // Initialize the map flags
-	// flags.line_count = 0;
-	// flags.line_length = 0;
-	// flags.player_count = 0;
-	// flags.exit_count = 0;
-	// flags.collectible_count = 0;
-	// // Initialize the map
-	// map = NULL;
-
+	t_game	game;
+	int		i;
 
 	// Validate command line arguments
 	validate_args(argc, argv);
 	// Validate the map file
-	parse_map(argv[1]);
+	parse_map(argv[1], &game);
 
-	load_window();
+	load_window(&game);
+
+	// Free the map memory
+	i = 0;
+	while (game.map[i])
+	{
+		free(game.map[i]);
+		i++;
+	}
+	free(game.map);
 
 	return (0);
 }

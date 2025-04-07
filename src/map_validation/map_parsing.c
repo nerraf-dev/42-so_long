@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/07 11:28:48 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/07 11:43:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,11 @@ void	parse_map(const char *file, t_game *game)
 	}
 	i = 0;
 
-	// while (game->map[i])
-	// {
-	// 	free(game->map[i]);
-	// 	i++;
-	// }
-	// free(game->map);
+	while (game->map[i])
+	{
+		free(game->map[i]);
+		i++;
+	}
+	free(game->map);
 
 }
