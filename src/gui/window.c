@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 10:24:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/07 12:10:40 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:11:06 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,21 @@
 // Function to handle the close event
 int	close_window(t_game *game)
 {
-	// Destroy the window and clean up MiniLibX resources
+	int	i;
 	if (game->mlx_win)
 		mlx_destroy_window(game->mlx, game->mlx_win);
 	if (game->mlx)
 		mlx_destroy_display(game->mlx);
-	free(game->mlx); // Free the MiniLibX instance
-	exit(0);         // Exit the program
+	free(game->mlx);
+	i = 0;
+	while (game->map[i])
+	{
+		free(game->map[i]);
+		i++;
+	}
+	free(game->map);
+	exit(0);
+	return (0);
 }
 
 // Function to handle key presses

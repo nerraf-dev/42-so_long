@@ -6,11 +6,23 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/07 12:09:26 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:19:56 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+void	init_game(t_game *game)
+{
+	game->mlx = NULL;
+	game->mlx_win = NULL;
+	game->map = NULL;
+	game->map_flags.line_count = 0;
+	game->map_flags.line_length = 0;
+	game->map_flags.player_count = 0;
+	game->map_flags.exit_count = 0;
+	game->map_flags.collectible_count = 0;
+}
 
 static void	validate_args(int argc, char **argv)
 {
@@ -29,8 +41,8 @@ static void	validate_args(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	t_game	game;
-	int		i;
-
+	// int		i;
+	init_game(&game);
 	// Validate command line arguments
 	validate_args(argc, argv);
 	// Parse & Validate the map file
@@ -41,15 +53,13 @@ int	main(int argc, char **argv)
 	mlx_loop(game.mlx);
 
 
-	// Exit and Cleanup:
-	// Free the map memory
-	i = 0;
-	while (game.map[i])
+	// Free resources
+	if (game.map)
 	{
-		free(game.map[i]);
-		i++;
+		int i = 0;
+		while (game.map[i])
+			free(game.map[i++]);
+		free(game.map);
 	}
-	free(game.map);
-
 	return (0);
 }

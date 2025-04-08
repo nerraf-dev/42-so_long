@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/08 12:47:12 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:16:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
  *
  * @param flags Pointer to the map flags structure to initialize.
  */
-static void	init_flags(t_map_flags *flags)
-{
-	flags->line_count = 0;
-	flags->line_length = 0;
-	flags->player_count = 0;
-	flags->exit_count = 0;
-	flags->collectible_count = 0;
-}
+// static void	init_flags(t_map_flags *flags)
+// {
+// 	flags->line_count = 0;
+// 	flags->line_length = 0;
+// 	flags->player_count = 0;
+// 	flags->exit_count = 0;
+// 	flags->collectible_count = 0;
+// }
 
 /**
  * @brief Copies the map data from the file into a 2D array.
@@ -77,7 +77,7 @@ void	parse_map(const char *file, t_game *game)
 {
 	int			i;
 
-	init_flags(&game->map_flags);
+	// init_flags(&game->map_flags);
 	map_dimensions(file, &game->map_flags);
 	game->map = ft_calloc(game->map_flags.line_count + 1, sizeof(char *));
 	if (!game->map)
@@ -93,11 +93,11 @@ void	parse_map(const char *file, t_game *game)
 	}
 	i = 0;
 
-	while (game->map[i])
-	{
-		free(game->map[i]);
-		i++;
-	}
-	free(game->map);
+	// while (game->map[i])
+	// {
+	// 	free(game->map[i]);
+	// 	i++;
+	// }
+	// free(game->map);
 
 }

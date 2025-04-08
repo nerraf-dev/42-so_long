@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/08 12:51:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:19:02 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,22 +80,35 @@ void init_visited(t_game *data, int **visited)
 }
 
 void print_visited(int **visited, int height, int width)
-	{
-		int y, x;
+{
+	int y, x;
 
-		y = 0;
-		while (y < height)
+	y = 0;
+	while (y < height)
+	{
+		x = 0;
+		while (x < width)
 		{
-			x = 0;
-			while (x < width)
-			{
-				printf("%d ", visited[y][x]);
-				x++;
-			}
-			printf("\n");
-			y++;
+			printf("%d ", visited[y][x]);
+			x++;
 		}
+		printf("\n");
+		y++;
 	}
+}
+
+void	free_visited(int **visited, int rows)
+{
+	int	i;
+
+	i = 0;
+	while (i < rows)
+	{
+		free(visited[i]);
+		i++;
+	}
+	free(visited);
+}
 
 void validate_path(t_game *game_data)
 {
@@ -111,4 +124,6 @@ void validate_path(t_game *game_data)
 	ft_printf("\nVisited array:\n");
 	ft_printf("*****""*****\n");
 	print_visited(visited, game_data->map_flags.line_count, game_data->map_flags.line_length);
+	free_visited(visited, game_data->map_flags.line_count);
+
 }
