@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 16:46:23 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/07 12:24:36 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/08 10:29:09 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include "../lib/libft/src/libft.h"
 
+// Node structure for the queue
+// The x and y coordinates represent the position in the map
+// The next pointer points to the next node in the queue
+// The queue is used to implement the flood-fill algorithm
 typedef struct s_queue_node
 {
 	int					x;
@@ -23,10 +27,13 @@ typedef struct s_queue_node
 	struct s_queue_node	*next;
 }	t_queue_node;
 
+// Queue structure
+// The front pointer points to the first node in the queue
+// The rear pointer points to the last node in the queue
 typedef struct s_queue
 {
-	int		front;
-	int		back;
+	t_queue_node	*front;
+	t_queue_node	*rear;
 }	t_queue;
 
 #endif
