@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/07 11:19:59 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/08 12:47:04 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ void	map_dimensions(const char *file, t_map_flags *flags);
 void	validate_map(char **map, t_map_flags *flags);
 void	run_game(void);
 void	load_window(t_game *game);
+void	free_map(t_game *game);
+void 	validate_path(t_game *game_data);
 
 #endif

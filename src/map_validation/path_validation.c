@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/08 12:41:45 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/08 12:51:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@
 // 7. Check if the exit is reachable from all collectibles.
 // 8. If all checks pass, return success.
 // 9. If any check fails, return failure.
-int	**create_visited(int height, int width)
+int **create_visited(int height, int width)
 {
-	int	**visited;
-	int	i;
+	int **visited;
+	int i;
 
 	visited = ft_calloc(height, sizeof(int *));
 	if (!visited)
@@ -58,10 +58,10 @@ int	**create_visited(int height, int width)
 	return (visited);
 }
 
-void	init_visited(t_game *data, char **visited)
+void init_visited(t_game *data, int **visited)
 {
-	int	x;
-	int	y;
+	int x;
+	int y;
 
 	y = 0;
 	while (y < data->map_flags.line_count)
@@ -79,14 +79,36 @@ void	init_visited(t_game *data, char **visited)
 	}
 }
 
-void	validate_path(t_game *game_data)
+void print_visited(int **visited, int height, int width)
+	{
+		int y, x;
+
+		y = 0;
+		while (y < height)
+		{
+			x = 0;
+			while (x < width)
+			{
+				printf("%d ", visited[y][x]);
+				x++;
+			}
+			printf("\n");
+			y++;
+		}
+	}
+
+void validate_path(t_game *game_data)
 {
-	int		**visited;
-	t_queue	*queue;
+	int **visited;
+	// t_queue *queue;
 
 	visited = create_visited(game_data->map_flags.line_count,
-			game_data->map_flags.line_length);
+							 game_data->map_flags.line_length);
 	if (!visited)
 		exit_with_error("Error: Failed to allocate memory for visited array.");
 	init_visited(game_data, visited);
+
+	ft_printf("\nVisited array:\n");
+	ft_printf("*****""*****\n");
+	print_visited(visited, game_data->map_flags.line_count, game_data->map_flags.line_length);
 }
