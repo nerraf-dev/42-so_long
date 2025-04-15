@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 10:24:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/08 19:11:06 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/15 11:21:47 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	handle_keypress(int keysym, t_game	*game)
 void	load_window(t_game *game)
 {
 	// Initialize MiniLibX
+	game->mlx = NULL;
+	game->mlx_win = NULL;
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
 		exit(1);

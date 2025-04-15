@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/08 19:19:02 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/15 12:16:54 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@
 // 7. Check if the exit is reachable from all collectibles.
 // 8. If all checks pass, return success.
 // 9. If any check fails, return failure.
-int **create_visited(int height, int width)
+int	**create_visited(int height, int width)
 {
-	int **visited;
-	int i;
+	int	**visited;
+	int	i;
 
 	visited = ft_calloc(height, sizeof(int *));
 	if (!visited)
@@ -58,30 +58,49 @@ int **create_visited(int height, int width)
 	return (visited);
 }
 
-void init_visited(t_game *data, int **visited)
+void	set_pos(int **visited, int row, int col, t_game *data)
 {
-	int x;
-	int y;
-
-	y = 0;
-	while (y < data->map_flags.line_count)
+	if (data->map[row][col] == START)
 	{
-		x = 0;
-		while (x < data->map_flags.line_length)
-		{
-			if (data->map[y][x] == WALL)
-				visited[y][x] = 1;
-			else
-				visited[y][x] = 0;
-			x++;
-		}
-		y++;
+		visited[row][col] = START;
+		data->flags.start_pos[0] = col;
+		data->flags.start_pos[1] = row;
+	}
+	else if (data->map[row][col] == EXIT)
+	{
+		visited[row][col] = EXIT;
+		data->flags.exit_pos[0] = col;
+		data->flags.exit_pos[1] = row;
 	}
 }
 
-void print_visited(int **visited, int height, int width)
+void	init_visited(t_game *data, int **visited)
 {
-	int y, x;
+	int	row;
+	int	col;
+
+	row = 0;
+	while (row < data->flags.line_count)
+	{
+		col = 0;
+		while (col < data->flags.line_length)
+		{
+			if (data->map[row][col] == WALL)
+				visited[row][col] = 1;
+			else if (data->map[row][col] == START || data->map[row][col] == EXIT)
+				set_pos(visited, row, col, data);
+			else
+				visited[row][col] = 0;
+			col++;
+		}
+		row++;
+	}
+}
+
+void	print_visited(int **visited, int height, int width)
+{
+	int	y;
+	int	x;
 
 	y = 0;
 	while (y < height)
@@ -89,10 +108,10 @@ void print_visited(int **visited, int height, int width)
 		x = 0;
 		while (x < width)
 		{
-			printf("%d ", visited[y][x]);
+			ft_printf("%d ", visited[y][x]);
 			x++;
 		}
-		printf("\n");
+		ft_printf("\n");
 		y++;
 	}
 }
@@ -110,20 +129,23 @@ void	free_visited(int **visited, int rows)
 	free(visited);
 }
 
-void validate_path(t_game *game_data)
+void	validate_path(t_game *game_data)
 {
-	int **visited;
-	// t_queue *queue;
+	int	**visited;
 
-	visited = create_visited(game_data->map_flags.line_count,
-							 game_data->map_flags.line_length);
+	visited = create_visited(game_data->flags.line_count,
+			game_data->flags.line_length);
 	if (!visited)
 		exit_with_error("Error: Failed to allocate memory for visited array.");
 	init_visited(game_data, visited);
-
 	ft_printf("\nVisited array:\n");
 	ft_printf("*****""*****\n");
-	print_visited(visited, game_data->map_flags.line_count, game_data->map_flags.line_length);
-	free_visited(visited, game_data->map_flags.line_count);
-
+	print_visited(visited, game_data->flags.line_count, game_data->flags.line_length);
+	ft_printf("Start position: [%d, %d]\n",
+		game_data->flags.start_pos[0], game_data->flags.start_pos[1]);
+	ft_printf("Exit position: [%d, %d]\n",
+		game_data->flags.exit_pos[0], game_data->flags.exit_pos[1]);
+	// Implement the flood-fill algorithm here
+	// get start position
+	free_visited(visited, game_data->flags.line_count);
 }

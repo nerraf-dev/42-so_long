@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/08 19:19:56 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/15 11:52:32 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@ void	init_game(t_game *game)
 	game->mlx = NULL;
 	game->mlx_win = NULL;
 	game->map = NULL;
-	game->map_flags.line_count = 0;
-	game->map_flags.line_length = 0;
-	game->map_flags.player_count = 0;
-	game->map_flags.exit_count = 0;
-	game->map_flags.collectible_count = 0;
+	game->flags.line_count = 0;
+	game->flags.line_length = 0;
+	game->flags.player_count = 0;
+	game->flags.exit_count = 0;
+	game->flags.collectible_count = 0;
+	game->flags.start_pos[0] = -1;
+	game->flags.start_pos[1] = -1;
+	game->flags.exit_pos[0] = -1;
+	game->flags.exit_pos[1] = -1;
 }
 
 static void	validate_args(int argc, char **argv)
@@ -49,8 +53,8 @@ int	main(int argc, char **argv)
 	parse_map(argv[1], &game);
 
 	// Initialize the game structure
-	load_window(&game);
-	mlx_loop(game.mlx);
+	// load_window(&game);
+	// mlx_loop(game.mlx);
 
 
 	// Free resources
