@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/15 12:03:24 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/15 15:18:21 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_map_flags
 	int		player_count;
 	int		exit_count;
 	int		collectible_count;
-	int		start_pos[2];
-	int		exit_pos[2];
+	int		start[2];
+	int		exit[2];
 }			t_map_flags;
 
 typedef struct s_game

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/15 11:52:32 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/15 15:07:40 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	init_game(t_game *game)
 	game->flags.player_count = 0;
 	game->flags.exit_count = 0;
 	game->flags.collectible_count = 0;
-	game->flags.start_pos[0] = -1;
-	game->flags.start_pos[1] = -1;
-	game->flags.exit_pos[0] = -1;
-	game->flags.exit_pos[1] = -1;
+	game->flags.start[0] = -1;
+	game->flags.start[1] = -1;
+	game->flags.exit[0] = -1;
+	game->flags.exit[1] = -1;
 }
 
 static void	validate_args(int argc, char **argv)
