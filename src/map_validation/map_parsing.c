@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/17 13:19:20 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:46:35 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	copy_map_data(const char *file, char **map)
  *
  * @param file The path to the map file.
  */
-void	parse_map(const char *file, t_game *game)
+int	parse_map(const char *file, t_game *game)
 {
 	int			i;
 
@@ -86,6 +86,8 @@ void	parse_map(const char *file, t_game *game)
 	ft_printf("Map data copied successfully.\n");
 	validate_map(game->map, &game->flags);
 	ft_printf("Map validated successfully.\n");
+	ft_printf("START: [%d, %d]\n", game->flags.start[0], game->flags.start[1]);
+	ft_printf("EXIT: [%d, %d]\n", game->flags.exit[0], game->flags.exit[1]);
 	validate_path(game);
 
 	i = 0;
@@ -104,5 +106,5 @@ void	parse_map(const char *file, t_game *game)
 	// 	i++;
 	// }
 	// free(game->map);
-
+	return (0);
 }

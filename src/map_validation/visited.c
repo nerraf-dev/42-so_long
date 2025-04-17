@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:19:48 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/17 13:14:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:36:23 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,21 @@ int	create_visited(t_game *data)
 	return (0);
 }
 
-void	set_pos(int row, int col, t_game *data)
-{
-	if (data->map[row][col] == START)
-	{
-		data->flags.start[0] = col;
-		data->flags.start[1] = row;
-	}
-	else if (data->map[row][col] == EXIT)
-	{
-		data->flags.exit[0] = col;
-		data->flags.exit[1] = row;
-	}
-}
+// void	set_pos(int row, int col, t_game *data)
+// {
+// 	if (data->map[row][col] == START)
+// 	{
+// 		data->flags.start[0] = col;
+// 		data->flags.start[1] = row;
+// 	}
+// 	else if (data->map[row][col] == EXIT)
+// 	{
+// 		data->flags.exit[0] = col;
+// 		data->flags.exit[1] = row;
+// 	}
+// }
 
-void	init_visited(t_game *data, int **visited)
+void	init_visited(t_game *data)
 {
 	int	row;
 	int	col;
@@ -65,15 +65,15 @@ void	init_visited(t_game *data, int **visited)
 		while (col < data->flags.line_length)
 		{
 			if (data->map[row][col] == WALL)
-				visited[row][col] = 1;
-			else if (data->map[row][col] == START ||
-				data->map[row][col] == EXIT)
-			{
-				visited[row][col] = 1;
-				set_pos(row, col, data);
-			}
+				data->visited[row][col] = 1;
+			// else if (data->map[row][col] == START ||
+			// 	data->map[row][col] == EXIT)
+			// {
+			// 	visited[row][col] = 1;
+			// 	// set_pos(row, col, data);
+			// }
 			else
-				visited[row][col] = 0;
+				data->visited[row][col] = 0;
 			col++;
 		}
 		row++;

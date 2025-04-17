@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/06 17:06:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:45:07 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,27 +63,34 @@ static void	check_walls(const char *line)
  *              of players, exits, and collectibles in the map.
  * @note program will terminate if invalid characters/duplicates are found.
  */
-static void	check_valid_chars(const char *line, t_map_flags *flags)
+static void	check_valid_chars(const char *line, t_map_flags *flags, int line_num)
 {
-	while (*line)
+	int		i;
+
+	i = 0;
+	while (line[i])
 	{
-		if (!ft_strchr(VALID_CHARS, *line))
+		if (!ft_strchr(VALID_CHARS, line[i]))
 			exit_with_error("Invalid character in map.\n");
-		if (*line == START)
+		if (line[i] == START)
 		{
 			if (flags->player_count)
 				exit_with_error("Duplicate start position.\n");
 			flags->player_count++;
+			flags->start[0] = i;
+			flags->start[1] = line_num;
 		}
-		else if (*line == EXIT)
+		else if (line[i] == EXIT)
 		{
 			if (flags->exit_count)
 				exit_with_error("Duplicate exit position.\n");
 			flags->exit_count++;
+			flags->exit[0] = i;
+			flags->exit[1] = line_num;
 		}
-		else if (*line == COLLECTIBLE)
+		else if (line[i] == COLLECTIBLE)
 			flags->collectible_count++;
-		line++;
+		i++;
 	}
 }
 
@@ -148,7 +155,7 @@ void	validate_map(char **map, t_map_flags *flags)
 		{
 			if (map[i][0] != WALL || map[i][flags->line_length - 1] != WALL)
 				exit_with_error("Map is not surrounded by walls.\n");
-			check_valid_chars(map[i], flags);
+			check_valid_chars(map[i], flags, i);
 		}
 		i++;
 	}

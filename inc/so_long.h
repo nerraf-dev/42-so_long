@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/17 13:09:04 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:30:48 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ typedef struct s_game
 	void		*mlx_win;
 	char		**map;
 	int			**visited;
+	int			collectibles;
+	int			exit;
 	t_map_flags	flags;
 }				t_game;
 
 void	exit_with_error(const char *message);
 int		open_file(const char *file, int flags);
-void	parse_map(const char *file, t_game *game);
+int		parse_map(const char *file, t_game *game);
 void	map_dimensions(const char *file, t_map_flags *flags);
 void	validate_map(char **map, t_map_flags *flags);
 void	run_game(void);

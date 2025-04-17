@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/17 13:16:53 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:32:52 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	init_game(t_game *game)
 	game->mlx = NULL;
 	game->mlx_win = NULL;
 	game->map = NULL;
+	game->collectibles = 0;
+	game->exit = 0;
 	game->visited = NULL;
 	game->flags.line_count = 0;
 	game->flags.line_length = 0;
