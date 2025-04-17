@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/16 13:48:58 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/17 12:16:05 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ t_queue	*init_queue(void)
  * This function ensures that the given position is within the boundaries of the
  * game map and does not correspond to a wall tile.
  */
-int	check_cell(t_game *data, int x, int y)
+int	get_cell_type(t_game *data, int x, int y)
 {
 	if (x < 0 || x >= data->flags.line_length || y < 0
 		|| y >= data->flags.line_count)
@@ -131,28 +131,23 @@ int	flood_fill(t_game *data, int **visited)
 	enqueue(queue, data->flags.start[0], data->flags.start[1]);
 	ft_printf("Enqueue start position [%d, %d]\n",
 		data->flags.start[1], data->flags.start[0]);
-	// Mark the starting position as visited
 	visited[data->flags.start[1]][data->flags.start[0]] = 1;
 	while (queue->front)
 	{
 		node = dequeue(queue);
-		// if node is null, the queue is empty
 		if (!node)
-		{
-			ft_printf("Queue is empty.\n");
-			// clean up memory  (need to make function)
-			// return (0);
-		}
+			continue ;
 		// Check if the cell is valid and get type
-		cell_type = check_cell(data, node->x, node->y);
+		cell_type = get_cell_type(data, node->x, node->y);
 		ft_printf("Checking cell [%d, %d] - Type: %d\n",
 			node->y, node->x, cell_type);
 		if (cell_type == EXIT)
 		{
 			ft_printf("Exit found at [%d, %d]\n", node->y, node->x);
-			// Clean up queue memory and remaining nodes
 			free(node);
-			break ;
+			// break ;
+			data->flags.exit_count++;
+			//TODO:
 		}
 		// If it is a collectible update the counter
 		else if (cell_type == COLLECTIBLE)
@@ -164,15 +159,55 @@ int	flood_fill(t_game *data, int **visited)
 		// Check surounding cells on visited array
 		//   if not visited and not a wall (i.e. not '1')
 		//   enqueue the cell and mark it as visited
-		if (cell_type == -1)
-		{
-			ft_printf("Invalid cell [%d, %d]\n", node->y, node->x);
-			free(node);
-			continue;
-		}
-
+		// if the type is not a wall, not marked vistied, and not -1 (error)
+		//    enqueue the cell and mark it as visited.
+		// UP:
+		cell_type = get_cell_type(data, node->x, node->y - 1);
+		if (cell_type != WALL && cell_type != -1
+			&& visited[node->y - 1][node->x] == 0)
+			{
+				enqueue(queue, node->x, node->y - 1);
+				visited[node->y - 1][node->x] = 1;
+				ft_printf("Enqueue [%d, %d]\n", node->y - 1, node->x);
+			}
+		// DOWN:
+		cell_type = get_cell_type(data, node->x, node->y + 1);
+		if (cell_type != WALL && cell_type != -1
+			&& visited[node->y + 1][node->x] == 0)
+			{
+				enqueue(queue, node->x, node->y + 1);
+				visited[node->y + 1][node->x] = 1;
+				ft_printf("Enqueue [%d, %d]\n", node->y + 1, node->x);
+			}
+		// LEFT:
+		cell_type = get_cell_type(data, node->x - 1, node->y);
+		if (cell_type != WALL && cell_type != -1
+			&& visited[node->y][node->x - 1] == 0)
+			{
+				enqueue(queue, node->x - 1, node->y);
+				visited[node->y][node->x - 1] = 1;
+				ft_printf("Enqueue [%d, %d]\n", node->y - 1, node->x - 1);
+			}
+		// RIGHT:
+		cell_type = get_cell_type(data, node->x + 1, node->y);
+		if (cell_type != WALL && cell_type != -1
+			&& visited[node->y][node->x + 1] == 0)
+			{
+				enqueue(queue, node->x + 1, node->y);
+				visited[node->y][node->x + 1] = 1;
+				ft_printf("Enqueue [%d, %d]\n", node->y - 1, node->x + 1);
+			}
+		// if (cell_type == -1)
+		// {
+		// 	ft_printf("Invalid cell [%d, %d]\n", node->y, node->x);
+		// 	free(node);
+		// 	continue;
+		// }
+		// free the node
+		free(node);
 	}
 	// Free the queue and all its nodes
+	ft_printf("Nodes in queue: %d\n", queue->front);
 	while (queue->front)
 	{
 		node = dequeue(queue);
@@ -180,7 +215,10 @@ int	flood_fill(t_game *data, int **visited)
 	}
 	free(queue);
 	if (node)
+	{
 		free(node);
+		node = NULL;
+	}
 	ft_printf("Queue cleaned up.\n");
 	return (0);
 }
@@ -204,8 +242,16 @@ void	validate_path(t_game *data)
 		data->flags.start[0], data->flags.start[1]);
 	ft_printf("Exit position: [%d, %d]\n",
 		data->flags.exit[0], data->flags.exit[1]);
+	ft_printf("Collectible count: %d\n", data->flags.collectible_count);
+	ft_printf("Exit count: %d\n", data->flags.exit_count);
 
 
+	// Clean up memory
+	// free the visited array
+	// free the queue and all its nodes
+	// free the queue
+	// free the node
 
 	free_visited(visited, data->flags.line_count);
+
 }

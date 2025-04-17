@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/15 11:52:32 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/16 20:58:44 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	parse_map(const char *file, t_game *game)
 	validate_map(game->map, &game->flags);
 	validate_path(game);
 	i = 0;
+	// Print the map for debugging purposes
+	ft_printf("Map:\n");
 	while (game->map[i])
 	{
 		ft_printf("%s\n", game->map[i]);
