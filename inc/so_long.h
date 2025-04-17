@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/15 15:18:21 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/17 13:09:04 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*mlx_win;
 	char		**map;
+	int			**visited;
 	t_map_flags	flags;
 }				t_game;
 

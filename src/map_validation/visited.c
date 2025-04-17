@@ -6,38 +6,37 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:19:48 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/15 15:07:40 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/17 13:14:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 #include "../../inc/validate_path.h"
 
-int	**create_visited(int height, int width)
+int	create_visited(t_game *data)
 {
-	int	**visited;
 	int	i;
 
-	visited = ft_calloc(height, sizeof(int *));
-	if (!visited)
-		return (NULL);
+	data->visited = ft_calloc(data->flags.line_count, sizeof(int *));
+	if (!data->visited)
+		return (1);
 	i = 0;
-	while (i < height)
+	while (i < data->flags.line_count)
 	{
-		visited[i] = ft_calloc(width, sizeof(int));
-		if (!visited[i])
+		data->visited[i] = ft_calloc(data->flags.line_length, sizeof(int));
+		if (!data->visited[i])
 		{
 			while (i > 0)
 			{
 				i--;
-				free(visited[i]);
+				free(data->visited[i]);
 			}
-			free(visited);
-			return (NULL);
+			free(data->visited);
+			return (1);
 		}
 		i++;
 	}
-	return (visited);
+	return (0);
 }
 
 void	set_pos(int row, int col, t_game *data)

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/15 15:07:40 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/17 13:16:53 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ void	init_game(t_game *game)
 	game->mlx = NULL;
 	game->mlx_win = NULL;
 	game->map = NULL;
+	game->visited = NULL;
 	game->flags.line_count = 0;
 	game->flags.line_length = 0;
 	game->flags.player_count = 0;
 	game->flags.exit_count = 0;
 	game->flags.collectible_count = 0;
-	game->flags.start[0] = -1;
-	game->flags.start[1] = -1;
-	game->flags.exit[0] = -1;
-	game->flags.exit[1] = -1;
+	game->flags.start[0] = 0;
+	game->flags.start[1] = 0;
+	game->flags.exit[0] = 0;
+	game->flags.exit[1] = 0;
 }
 
 static void	validate_args(int argc, char **argv)
@@ -65,5 +66,7 @@ int	main(int argc, char **argv)
 			free(game.map[i++]);
 		free(game.map);
 	}
+	ft_printf("Memory freed.\n");
+	ft_printf("Game initialized.\n");
 	return (0);
 }

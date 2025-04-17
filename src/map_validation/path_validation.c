@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/17 12:16:05 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/17 13:10:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,13 +197,6 @@ int	flood_fill(t_game *data, int **visited)
 				visited[node->y][node->x + 1] = 1;
 				ft_printf("Enqueue [%d, %d]\n", node->y - 1, node->x + 1);
 			}
-		// if (cell_type == -1)
-		// {
-		// 	ft_printf("Invalid cell [%d, %d]\n", node->y, node->x);
-		// 	free(node);
-		// 	continue;
-		// }
-		// free the node
 		free(node);
 	}
 	// Free the queue and all its nodes
@@ -214,30 +207,24 @@ int	flood_fill(t_game *data, int **visited)
 		free(node);
 	}
 	free(queue);
-	if (node)
-	{
-		free(node);
-		node = NULL;
-	}
 	ft_printf("Queue cleaned up.\n");
 	return (0);
 }
 
 void	validate_path(t_game *data)
 {
-	int	**visited;
+	// int	**visited;
 
-	visited = create_visited(data->flags.line_count,
-			data->flags.line_length);
-	if (!visited)
+	create_visited(data);
+	if (!data->visited)
 		exit_with_error("Error: Failed to allocate memory for visited array.");
-	init_visited(data, visited);
+	init_visited(data, data->visited);
 	ft_printf("\nVisited array:\n");
 	ft_printf("*****""*****\n");
-	print_visited(visited, data->flags.line_count, data->flags.line_length);
-	flood_fill(data, visited);
+	print_visited(data->visited, data->flags.line_count, data->flags.line_length);
+	flood_fill(data, data->visited);
 	ft_printf("*****""*****\n");
-	print_visited(visited, data->flags.line_count, data->flags.line_length);
+	print_visited(data->visited, data->flags.line_count, data->flags.line_length);
 	ft_printf("Start position: [%d, %d]\n",
 		data->flags.start[0], data->flags.start[1]);
 	ft_printf("Exit position: [%d, %d]\n",
@@ -252,6 +239,6 @@ void	validate_path(t_game *data)
 	// free the queue
 	// free the node
 
-	free_visited(visited, data->flags.line_count);
+	free_visited(data->visited, data->flags.line_count);
 
 }
