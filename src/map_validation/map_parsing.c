@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 14:34:20 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 19:03:29 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
  * @param file The path to the map file.
  * @param map The 2D array to store the map data.
  */
-static void	copy_map_data(t_game *game)
+static int	copy_map_data(t_game *game)
 {
 	int		fd;
 	char	*line;
@@ -56,12 +56,27 @@ static void	copy_map_data(t_game *game)
 			line[len - 1] = '\0';
 		game->map[i] = ft_strdup(line);
 		if (!game->map[i])
-			exit_with_error("Memory allocation failed.\n");
+			return (1);
 		i++;
 		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
+	return (0);
+}
+
+void	free_map(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->map[i])
+	{
+		free(game->map[i]);
+		i++;
+	}
+	free(game->map);
+	game->map = NULL;
 }
 
 /**
@@ -78,15 +93,31 @@ int	parse_map(t_game *game, t_m_data *map_data)
 	int			i;
 	ft_printf("PARSE MAP\n");
 	// init_flags(&game->map_flags);
-	map_dimensions(game->file, map_data);
+	if (map_dimensions(game->file, map_data))
+	{
+		ft_printf_fd(2, "Error: Map is too small or invalid.\n");
+		return (1);
+	}
+
 	ft_printf("Map dimensions: %d x %d\n", map_data->line_count, map_data->line_length);
 	game->map = ft_calloc(map_data->line_count + 1, sizeof(char *));
 	if (!game->map)
-		exit_with_error("Memory allocation failed.\n");
-	copy_map_data(game);
+	{
+		ft_printf_fd(2, "Error: Memory allocation failed.\n");
+		return (1);
+	}
+	if (copy_map_data(game))
+	{
+		free_map(game);
+		return (1);
+	}
 	ft_printf("Map data copied successfully.\n");
 	// validate_map(game->map, &game->flags);
-	validate_map(game, map_data);
+	if (validate_map(game, map_data))
+	{
+		free_map(game);
+		return (1);
+	}
 	ft_printf("Map validated successfully.\n");
 	ft_printf("START: [%d, %d]\n", map_data->start[0], map_data->start[1]);
 	ft_printf("EXIT: [%d, %d]\n", map_data->exit[0], map_data->exit[1]);
@@ -101,12 +132,5 @@ int	parse_map(t_game *game, t_m_data *map_data)
 		i++;
 	}
 	i = 0;
-
-	// while (game->map[i])
-	// {
-	// 	free(game->map[i]);
-	// 	i++;
-	// }
-	// free(game->map);
 	return (0);
 }

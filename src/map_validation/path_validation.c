@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 14:03:35 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 19:51:17 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	enqueue(t_queue *queue, int x, int y)
 
 	node = malloc(sizeof(t_queue_node));
 	if (!node)
-		exit_with_error("Error: Failed to allocate memory for queue node.");
+		set_error("Error: Failed to allocate memory for queue node.");
 	ft_printf("NODE ALLOCATED\n");
 	node->x = x;
 	node->y = y;
@@ -79,7 +79,7 @@ t_queue	*init_queue(void)
 
 	queue = malloc(sizeof(t_queue));
 	if (!queue)
-		exit_with_error("Error: Failed to allocate memory for queue.");
+		set_error("Error: Failed to allocate memory for queue.");
 	queue->front = NULL;
 	queue->rear = NULL;
 
@@ -222,7 +222,7 @@ void	validate_path(t_game *game, t_m_data *map_data)
 {
 	create_visited(game, map_data);
 	if (!game->visited)
-		exit_with_error("Error: Failed to allocate memory for visited array.");
+		set_error("Error: Failed to allocate memory for visited array.");
 	init_visited(game, map_data);
 	ft_printf("\nVisited array:\n");
 	ft_printf("*****""*****\n");

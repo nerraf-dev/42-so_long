@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/18 14:26:48 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/18 18:57:28 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ PARSING_FILES = map_parsing.c \
 				map_dimensions.c \
 				path_validation.c \
 				visited.c \
+				cell_check.c \
 
 UTILS_FILES = so_long_utils.c files.c
 MAIN_FILES = so_long.c
