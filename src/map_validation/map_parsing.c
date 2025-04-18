@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/17 15:46:35 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 12:02:47 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ int	parse_map(const char *file, t_game *game)
 		exit_with_error("Memory allocation failed.\n");
 	copy_map_data(file, game->map);
 	ft_printf("Map data copied successfully.\n");
-	validate_map(game->map, &game->flags);
+	// validate_map(game->map, &game->flags);
+	validate_map(game);
 	ft_printf("Map validated successfully.\n");
 	ft_printf("START: [%d, %d]\n", game->flags.start[0], game->flags.start[1]);
 	ft_printf("EXIT: [%d, %d]\n", game->flags.exit[0], game->flags.exit[1]);

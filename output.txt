@@ -8,7 +8,7 @@ Visited array:
 1 1 1 1 1 1 1 1 1 1 
 1 1 0 1 1 1 1 1 1 1 
 1 1 0 0 0 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 
+1 1 0 1 1 1 1 1 1 1 
 1 0 0 0 0 0 0 0 0 1 
 1 0 0 0 0 0 0 0 0 1 
 1 0 0 0 0 0 0 0 0 1 
@@ -26,13 +26,180 @@ Enqueued DOWN [2, 2]
 Nodes in queue: 79874368
 Checking cell [2, 2] - Type: 1
 NODE ALLOCATED
+Enqueued DOWN [2, 3]
+NODE ALLOCATED
 Enqueued RIGHT [3, 2]
 Nodes in queue: 79874448
+Checking cell [2, 3] - Type: 1
+NODE ALLOCATED
+Enqueued DOWN [2, 4]
+Nodes in queue: 79874528
 Checking cell [3, 2] - Type: 1
 NODE ALLOCATED
 Enqueued RIGHT [4, 2]
-Nodes in queue: 79874528
+Nodes in queue: 79874608
+Checking cell [2, 4] - Type: 1
+NODE ALLOCATED
+Enqueued DOWN [2, 5]
+NODE ALLOCATED
+Enqueued LEFT [1, 4]
+NODE ALLOCATED
+Enqueued RIGHT [3, 4]
+Nodes in queue: 79874688
 Checking cell [4, 2] - Type: 1
+Nodes in queue: 79874768
+Checking cell [2, 5] - Type: 1
+NODE ALLOCATED
+Enqueued DOWN [2, 6]
+NODE ALLOCATED
+Enqueued LEFT [1, 5]
+NODE ALLOCATED
+Enqueued RIGHT [3, 5]
+Nodes in queue: 79874848
+Checking cell [1, 4] - Type: 1
+Nodes in queue: 79874928
+Checking cell [3, 4] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [4, 4]
+Nodes in queue: 79875008
+Checking cell [2, 6] - Type: 1
+NODE ALLOCATED
+Enqueued DOWN [2, 7]
+NODE ALLOCATED
+Enqueued LEFT [1, 6]
+NODE ALLOCATED
+Enqueued RIGHT [3, 6]
+Nodes in queue: 79875088
+Checking cell [1, 5] - Type: 1
+Nodes in queue: 79875168
+Checking cell [3, 5] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [4, 5]
+Nodes in queue: 79875248
+Checking cell [4, 4] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [5, 4]
+Nodes in queue: 79875328
+Checking cell [2, 7] - Type: 1
+NODE ALLOCATED
+Enqueued DOWN [2, 8]
+NODE ALLOCATED
+Enqueued LEFT [1, 7]
+NODE ALLOCATED
+Enqueued RIGHT [3, 7]
+Nodes in queue: 79875408
+Checking cell [1, 6] - Type: 1
+Nodes in queue: 79875488
+Checking cell [3, 6] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [4, 6]
+Nodes in queue: 79875568
+Checking cell [4, 5] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [5, 5]
+Nodes in queue: 79875648
+Checking cell [5, 4] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [6, 4]
+Nodes in queue: 79875728
+Checking cell [2, 8] - Type: 1
+NODE ALLOCATED
+Enqueued LEFT [1, 8]
+NODE ALLOCATED
+Enqueued RIGHT [3, 8]
+Nodes in queue: 79875808
+Checking cell [1, 7] - Type: 1
+Nodes in queue: 79875888
+Checking cell [3, 7] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [4, 7]
+Nodes in queue: 79875968
+Checking cell [4, 6] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [5, 6]
+Nodes in queue: 79876048
+Checking cell [5, 5] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [6, 5]
+Nodes in queue: 79876128
+Checking cell [6, 4] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [7, 4]
+Nodes in queue: 79876208
+Checking cell [1, 8] - Type: 1
+Nodes in queue: 79876288
+Checking cell [3, 8] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [4, 8]
+Nodes in queue: 79876368
+Checking cell [4, 7] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [5, 7]
+Nodes in queue: 79876448
+Checking cell [5, 6] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [6, 6]
+Nodes in queue: 79876528
+Checking cell [6, 5] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [7, 5]
+Nodes in queue: 79876608
+Checking cell [7, 4] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [8, 4]
+Nodes in queue: 79876688
+Checking cell [4, 8] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [5, 8]
+Nodes in queue: 79876768
+Checking cell [5, 7] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [6, 7]
+Nodes in queue: 79876848
+Checking cell [6, 6] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [7, 6]
+Nodes in queue: 79876928
+Checking cell [7, 5] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [8, 5]
+Nodes in queue: 79877008
+Checking cell [8, 4] - Type: 1
+Nodes in queue: 79877088
+Checking cell [5, 8] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [6, 8]
+Nodes in queue: 79877168
+Checking cell [6, 7] - Type: 69
+***Exit found at [7, 6]***
+NODE ALLOCATED
+Enqueued RIGHT [7, 7]
+Nodes in queue: 79877248
+Checking cell [7, 6] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [8, 6]
+Nodes in queue: 79877328
+Checking cell [8, 5] - Type: 1
+Nodes in queue: 79877408
+Checking cell [6, 8] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [7, 8]
+Nodes in queue: 79877488
+Checking cell [7, 7] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [8, 7]
+Nodes in queue: 79877568
+Checking cell [8, 6] - Type: 1
+Nodes in queue: 79877648
+Checking cell [7, 8] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [8, 8]
+Nodes in queue: 79877728
+Checking cell [8, 7] - Type: 1
+Nodes in queue: 79877808
+Checking cell [8, 8] - Type: 67
+---Collectible found at [8, 8]----
+Collectible count: 1
 Nodes in queue: 0
 QUEUE EMPTY
 Queue cleaned up.
@@ -41,23 +208,23 @@ Queue cleaned up.
 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 
-1 0 0 0 0 0 0 0 0 1 
-1 0 0 0 0 0 0 0 0 1 
-1 0 0 0 0 0 0 0 0 1 
-1 0 0 0 0 0 0 0 0 1 
-1 0 0 0 0 0 0 0 0 1 
+1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 
 Start position: [2, 1]
 Exit position: [6, 7]
-Collectibles found: 0
+Collectibles found: 1
 Collectible count: 1
-Exit found: 0
+Exit found: 1
 --Exit count: 1
 Map:
 1111111111
 11P1111111
 1100011111
-1111111111
+1101111111
 1000000001
 1000000001
 1000000001

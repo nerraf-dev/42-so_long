@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/17 15:32:52 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 11:49:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,15 @@ static void	validate_args(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	t_game	game;
-	// int		i;
+
 	init_game(&game);
 	// Validate command line arguments
 	validate_args(argc, argv);
 	// Parse & Validate the map file
 	parse_map(argv[1], &game);
-
 	// Initialize the game structure
 	// load_window(&game);
 	// mlx_loop(game.mlx);
-
 
 	// Free resources
 	if (game.map)

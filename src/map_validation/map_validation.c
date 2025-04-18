@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/17 15:45:07 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 12:11:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,27 +142,28 @@ void	map_dimensions(const char *file, t_map_flags *flags)
  * @param map The 2D array representing the map.
  * @param flags Pointer to the map flags structure.
  */
-void	validate_map(char **map, t_map_flags *flags)
+// void	validate_map(char **map, t_map_flags *flags)
+void	validate_map(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (game->map[i])
 	{
-		if (i == 0 || i == flags->line_count - 1)
-			check_walls(map[i]);
+		if (i == 0 || i == game->flags.line_count - 1)
+			check_walls(game->map[i]);
 		else
 		{
-			if (map[i][0] != WALL || map[i][flags->line_length - 1] != WALL)
+			if (game->map[i][0] != WALL || game->map[i][game->flags.line_length - 1] != WALL)
 				exit_with_error("Map is not surrounded by walls.\n");
-			check_valid_chars(map[i], flags, i);
+			check_valid_chars(game->map[i], &game->flags, i);
 		}
 		i++;
 	}
-	if (flags->player_count != 1)
+	if (game->flags.player_count != 1)
 		exit_with_error("Map must contain exactly one player.\n");
-	if (flags->exit_count != 1)
+	if (game->flags.exit_count != 1)
 		exit_with_error("Map must contain exactly one exit.\n");
-	if (flags->collectible_count == 0)
+	if (game->flags.collectible_count == 0)
 		exit_with_error("Map must contain at least one collectible.\n");
 }
