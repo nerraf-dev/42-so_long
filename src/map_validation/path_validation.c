@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 19:51:17 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 22:33:41 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,7 +218,7 @@ int	flood_fill(t_game *data, t_m_data *map_data)
 	return (0);
 }
 
-void	validate_path(t_game *game, t_m_data *map_data)
+int	validate_path(t_game *game, t_m_data *map_data)
 {
 	create_visited(game, map_data);
 	if (!game->visited)
@@ -240,12 +240,8 @@ void	validate_path(t_game *game, t_m_data *map_data)
 	ft_printf("--Exit count: %d\n", map_data->exit_count);
 
 
-	// Clean up memory
-	// free the visited array
-	// free the queue and all its nodes
-	// free the queue
-	// free the node
+	
 
 	free_visited(game->visited, map_data->line_count);
-
+	return (0);
 }

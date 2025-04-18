@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 22:04:01 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 22:44:26 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static int	validate_args(int argc, char **argv)
 void	cleanup(t_game *game, t_m_data *map_data)
 {
 	int	i;
+
 	if (game->file)
 		free(game->file);
 	if (game->map)
@@ -80,22 +81,28 @@ int	main(int argc, char **argv)
 	game.file = argv[1];
 	if (parse_map(&game, &map_data) == 1)
 	{
-		ft_printf("AN ERROR OCCURED\n");
+		ft_printf("Parse map error.\n");
+		// clean up memory map_data
+		
 		return (1);
 	}
 
 	// Initialize the game structure
-	// load_window(&game);
+	// if (load_window(&game))
+	// {
+	// 	ft_printf("Error: Failed to load window.\n");
+	// 	cleanup(&game, &map_data);
+	// 	return (1);
+	// }
 	// mlx_loop(game.mlx);
 
-	// Free resources
-	if (game.map)
-	{
-		int i = 0;
-		while (game.map[i])
-			free(game.map[i++]);
-		free(game.map);
-	}
+	// if (game.map)
+	// {
+	// 	int i = 0;
+	// 	while (game.map[i])
+	// 		free(game.map[i++]);
+	// 	free(game.map);
+	// }
 	ft_printf("Memory freed.\n");
 	ft_printf("Game initialized.\n");
 	return (0);

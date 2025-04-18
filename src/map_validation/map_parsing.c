@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 19:03:29 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 22:32:25 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,27 +79,26 @@ void	free_map(t_game *game)
 	game->map = NULL;
 }
 
-/**
- * @brief Parses the map file and validates its structure and content.
- *
- * Initializes map flags, determines map dimensions, allocates memory for the
- * map, copies the map data, validates the map, and prints it. Frees all
- * allocated memory after use. Exits with an error if any step fails.
- *
- * @param file The path to the map file.
- */
+void	print_map(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("Map:\n");
+	while (game->map[i])
+	{
+		ft_printf("%s\n", game->map[i]);
+		i++;
+	}
+}
+
 int	parse_map(t_game *game, t_m_data *map_data)
 {
-	int			i;
-	ft_printf("PARSE MAP\n");
-	// init_flags(&game->map_flags);
 	if (map_dimensions(game->file, map_data))
 	{
 		ft_printf_fd(2, "Error: Map is too small or invalid.\n");
 		return (1);
 	}
-
-	ft_printf("Map dimensions: %d x %d\n", map_data->line_count, map_data->line_length);
 	game->map = ft_calloc(map_data->line_count + 1, sizeof(char *));
 	if (!game->map)
 	{
@@ -107,30 +106,11 @@ int	parse_map(t_game *game, t_m_data *map_data)
 		return (1);
 	}
 	if (copy_map_data(game))
-	{
-		free_map(game);
 		return (1);
-	}
-	ft_printf("Map data copied successfully.\n");
-	// validate_map(game->map, &game->flags);
 	if (validate_map(game, map_data))
-	{
-		free_map(game);
 		return (1);
-	}
-	ft_printf("Map validated successfully.\n");
-	ft_printf("START: [%d, %d]\n", map_data->start[0], map_data->start[1]);
-	ft_printf("EXIT: [%d, %d]\n", map_data->exit[0], map_data->exit[1]);
-	validate_path(game, map_data);
-
-	i = 0;
-	// Print the map for debugging purposes
-	ft_printf("Map:\n");
-	while (game->map[i])
-	{
-		ft_printf("%s\n", game->map[i]);
-		i++;
-	}
-	i = 0;
+	if (validate_path(game, map_data))
+		return (1);
+	print_map(game);
 	return (0);
 }

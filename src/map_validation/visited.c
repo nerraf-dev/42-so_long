@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:19:48 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 14:03:22 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 22:40:20 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,6 @@ int	create_visited(t_game *data, t_m_data *map_data)
 	return (0);
 }
 
-// void	set_pos(int row, int col, t_game *data)
-// {
-// 	if (data->map[row][col] == START)
-// 	{
-// 		data->flags.start[0] = col;
-// 		data->flags.start[1] = row;
-// 	}
-// 	else if (data->map[row][col] == EXIT)
-// 	{
-// 		data->flags.exit[0] = col;
-// 		data->flags.exit[1] = row;
-// 	}
-// }
-
 void	init_visited(t_game *data, t_m_data *map_data)
 {
 	int	row;
@@ -66,12 +52,6 @@ void	init_visited(t_game *data, t_m_data *map_data)
 		{
 			if (data->map[row][col] == WALL)
 				data->visited[row][col] = 1;
-			// else if (data->map[row][col] == START ||
-			// 	data->map[row][col] == EXIT)
-			// {
-			// 	visited[row][col] = 1;
-			// 	// set_pos(row, col, data);
-			// }
 			else
 				data->visited[row][col] = 0;
 			col++;
