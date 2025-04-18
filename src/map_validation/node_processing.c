@@ -1,20 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_utils.c                                    :+:      :+:    :+:   */
+/*   node_processing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 14:54:13 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 19:51:17 by sfarren          ###   ########.fr       */
+/*   Created: 2025/04/16 21:02:30 by sfarren           #+#    #+#             */
+/*   Updated: 2025/04/16 21:02:41 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../../inc/so_long.h"
+#include "../../inc/validate_path.h"
 
-//TOD: Need to add in some clean up!!
-int	set_error(const char *message)
-{
-	ft_printf_fd(2, "Error: %s", message);
-	return (1);
-}

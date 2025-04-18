@@ -1,0 +1,183 @@
+PARSE MAP
+First line length: 9
+length: 9
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Map dimensions: 9 x 9
+Map data copied successfully.
+length: 9
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+length: 9
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Checking wall: 1
+Map validated successfully.
+START: [2, 1]
+EXIT: [1, 6]
+
+Visited array:
+**********
+1 1 1 1 1 1 1 1 1 
+1 0 0 0 0 0 0 0 1 
+1 0 0 1 1 1 1 1 1 
+1 0 0 1 1 1 1 1 1 
+1 0 0 0 0 0 1 0 1 
+1 0 0 1 1 1 1 0 1 
+1 0 0 0 0 0 1 1 1 
+1 0 0 1 1 1 1 0 1 
+1 1 1 1 1 1 1 1 1 
+Queue initialized.
+NODE ALLOCATED
+Enqueue start position [2, 1]
+---starting position [2, 1]---
+Visited start position [2, 1]
+Checking cell [2, 1] - Type: 80
+NODE ALLOCATED
+Enqueued DOWN [2, 2]
+NODE ALLOCATED
+Enqueued LEFT [1, 1]
+NODE ALLOCATED
+Enqueued RIGHT [3, 1]
+Nodes in queue: 79870320
+Checking cell [2, 2] - Type: 1
+NODE ALLOCATED
+Enqueued DOWN [2, 3]
+NODE ALLOCATED
+Enqueued LEFT [1, 2]
+Nodes in queue: 79870400
+Checking cell [1, 1] - Type: 1
+Nodes in queue: 79870480
+Checking cell [3, 1] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [4, 1]
+Nodes in queue: 79870560
+Checking cell [2, 3] - Type: 1
+NODE ALLOCATED
+Enqueued DOWN [2, 4]
+NODE ALLOCATED
+Enqueued LEFT [1, 3]
+Nodes in queue: 79870640
+Checking cell [1, 2] - Type: 1
+Nodes in queue: 79870720
+Checking cell [4, 1] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [5, 1]
+Nodes in queue: 79870800
+Checking cell [2, 4] - Type: 1
+NODE ALLOCATED
+Enqueued DOWN [2, 5]
+NODE ALLOCATED
+Enqueued LEFT [1, 4]
+NODE ALLOCATED
+Enqueued RIGHT [3, 4]
+Nodes in queue: 79870880
+Checking cell [1, 3] - Type: 1
+Nodes in queue: 79870960
+Checking cell [5, 1] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [6, 1]
+Nodes in queue: 79871040
+Checking cell [2, 5] - Type: 1
+NODE ALLOCATED
+Enqueued DOWN [2, 6]
+NODE ALLOCATED
+Enqueued LEFT [1, 5]
+Nodes in queue: 79871120
+Checking cell [1, 4] - Type: 1
+Nodes in queue: 79871200
+Checking cell [3, 4] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [4, 4]
+Nodes in queue: 79871280
+Checking cell [6, 1] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [7, 1]
+Nodes in queue: 79871360
+Checking cell [2, 6] - Type: 1
+NODE ALLOCATED
+Enqueued DOWN [2, 7]
+NODE ALLOCATED
+Enqueued LEFT [1, 6]
+NODE ALLOCATED
+Enqueued RIGHT [3, 6]
+Nodes in queue: 79871440
+Checking cell [1, 5] - Type: 1
+Nodes in queue: 79871520
+Checking cell [4, 4] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [5, 4]
+Nodes in queue: 79871600
+Checking cell [7, 1] - Type: 1
+Nodes in queue: 79871680
+Checking cell [2, 7] - Type: 1
+NODE ALLOCATED
+Enqueued LEFT [1, 7]
+Nodes in queue: 79871760
+Checking cell [1, 6] - Type: 69
+***Exit found at [6, 1]***
+Nodes in queue: 79871840
+Checking cell [3, 6] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [4, 6]
+Nodes in queue: 79871920
+Checking cell [5, 4] - Type: 1
+Nodes in queue: 79872000
+Checking cell [1, 7] - Type: 1
+Nodes in queue: 79872080
+Checking cell [4, 6] - Type: 1
+NODE ALLOCATED
+Enqueued RIGHT [5, 6]
+Nodes in queue: 79872160
+Checking cell [5, 6] - Type: 1
+Nodes in queue: 0
+QUEUE EMPTY
+Queue cleaned up.
+**********
+1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 0 1 
+1 1 1 1 1 1 1 0 1 
+1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 0 1 
+1 1 1 1 1 1 1 1 1 
+Start position: [2, 1]
+Exit position: [1, 6]
+Collectibles found: 0
+Collectible count: 2
+Exit found: 1
+--Exit count: 1
+Map:
+111111111
+10P000001
+100111111
+100111111
+1000001C1
+100111101
+1E0000111
+1001111C1
+111111111
+Memory freed.
+Game initialized.

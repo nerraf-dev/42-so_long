@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_utils.c                                    :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 14:54:13 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 19:51:17 by sfarren          ###   ########.fr       */
+/*   Created: 2025/04/18 18:17:02 by sfarren           #+#    #+#             */
+/*   Updated: 2025/04/18 18:26:02 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#ifndef ERRORS_H
+# define ERRORS_H
 
-//TOD: Need to add in some clean up!!
-int	set_error(const char *message)
-{
-	ft_printf_fd(2, "Error: %s", message);
-	return (1);
-}
+// # include "../lib/libft/src/libft.h"
+
+# define MAP_SIZE_NUM	2
+# define MAP_SIZE_MSG	"Error: Invalid map file.\n"
+#endif
