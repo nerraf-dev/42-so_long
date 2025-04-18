@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 19:59:36 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 22:04:01 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static int	validate_args(int argc, char **argv)
 	}
 	return (0);
 }
+
 void	cleanup(t_game *game, t_m_data *map_data)
 {
 	int	i;
