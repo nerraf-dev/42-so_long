@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 00:10:38 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 00:12:46 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 00:16:52 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	enqueue(t_queue *queue, int x, int y)
 	queue->rear = node;
 	if (queue->front == NULL)
 		queue->front = node;
-	// ft_printf("Enqueued [%d, %d]\n", node->y, node->x);
 }
 
 t_queue_node	*dequeue(t_queue *queue)

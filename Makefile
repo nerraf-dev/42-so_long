@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/19 00:06:41 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/19 00:16:23 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ PARSING_FILES = map_parsing.c \
 				visited.c \
 				cell_check.c \
 				check_adjacent.c \
+				queue_management.c \
 
 UTILS_FILES = so_long_utils.c files.c
 MAIN_FILES = so_long.c

@@ -14,75 +14,55 @@ Visited array:
 NODE ALLOCATED
 NODE ALLOCATED
 NODE ALLOCATED
-Enqueued LEFT [1, 1]
 NODE ALLOCATED
-Enqueued RIGHT [3, 1]
 Nodes in queue: 79870320
 NODE ALLOCATED
 NODE ALLOCATED
-Enqueued LEFT [1, 2]
 Nodes in queue: 79870400
 Nodes in queue: 79870480
 NODE ALLOCATED
-Enqueued RIGHT [4, 1]
 Nodes in queue: 79870560
 NODE ALLOCATED
 NODE ALLOCATED
-Enqueued LEFT [1, 3]
 Nodes in queue: 79870640
 Nodes in queue: 79870720
 NODE ALLOCATED
-Enqueued RIGHT [5, 1]
 Nodes in queue: 79870800
 NODE ALLOCATED
 NODE ALLOCATED
-Enqueued LEFT [1, 4]
 NODE ALLOCATED
-Enqueued RIGHT [3, 4]
 Nodes in queue: 79870880
 Nodes in queue: 79870960
 NODE ALLOCATED
-Enqueued RIGHT [6, 1]
 Nodes in queue: 79871040
 NODE ALLOCATED
 NODE ALLOCATED
-Enqueued LEFT [1, 5]
 Nodes in queue: 79871120
 Nodes in queue: 79871200
 NODE ALLOCATED
-Enqueued RIGHT [4, 4]
 Nodes in queue: 79871280
 NODE ALLOCATED
-Enqueued RIGHT [7, 1]
 Nodes in queue: 79871360
 NODE ALLOCATED
 NODE ALLOCATED
-Enqueued LEFT [1, 6]
 NODE ALLOCATED
-Enqueued RIGHT [3, 6]
 Nodes in queue: 79871440
 Nodes in queue: 79871520
 NODE ALLOCATED
-Enqueued RIGHT [5, 4]
 Nodes in queue: 79871600
 Nodes in queue: 79871680
 NODE ALLOCATED
-Enqueued LEFT [1, 7]
 Nodes in queue: 79871760
 Nodes in queue: 79871840
 NODE ALLOCATED
-Enqueued RIGHT [4, 6]
 Nodes in queue: 79871920
 Nodes in queue: 79872000
 Nodes in queue: 79872080
 NODE ALLOCATED
-Enqueued RIGHT [5, 6]
 Nodes in queue: 79872160
 NODE ALLOCATED
-Enqueued RIGHT [6, 6]
 Nodes in queue: 79872240
 NODE ALLOCATED
-Enqueued RIGHT [7, 6]
 Nodes in queue: 79872320
 NODE ALLOCATED
 NODE ALLOCATED
