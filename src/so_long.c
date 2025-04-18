@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 19:54:41 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 19:59:36 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,19 @@ static int	validate_args(int argc, char **argv)
 }
 void	cleanup(t_game *game, t_m_data *map_data)
 {
+	int	i;
 	if (game->file)
 		free(game->file);
 	if (game->map)
 	{
-		int i = 0;
+		i = 0;
 		while (game->map[i])
 			free(game->map[i++]);
 		free(game->map);
 	}
 	if (game->visited)
 	{
-		int i = 0;
+		i = 0;
 		while (i < map_data->line_count)
 			free(game->visited[i++]);
 		free(game->visited);
