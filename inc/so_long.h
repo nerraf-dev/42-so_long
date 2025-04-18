@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 23:10:16 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 00:01:16 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ typedef struct s_game
 	int			exit;
 	int			error;
 }				t_game;
+
+typedef struct s_context
+{
+	t_game		*game;
+	t_m_data	*map_data;
+}				t_context;
 
 // Create a player data structure.
 

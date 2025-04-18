@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 16:46:23 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 14:02:54 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 00:14:01 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,15 @@ typedef struct s_queue
 }	t_queue;
 
 // Function prototypes
-int		create_visited(t_game *game, t_m_data *map_data);
-void	init_visited(t_game *data, t_m_data *map_data);
-void	free_visited(int **visited, int rows);
-
-void	print_visited(int **visited, int height, int width);
+int				create_visited(t_game *game, t_m_data *map_data);
+void			init_visited(t_game *data, t_m_data *map_data);
+void			free_visited(int **visited, int rows);
+void			check_and_enqueue(t_context *context, t_queue *queue, int x, int y);
+void			enqueue(t_queue *queue, int x, int y);
+t_queue_node	*dequeue(t_queue *queue);
+t_queue			*init_queue(void);
+void			clear_queue(t_queue *queue);
+int				get_cell_type(t_game *data, t_m_data *map_data, int x, int y);
+void			print_visited(int **visited, int height, int width);
 
 #endif

@@ -6,39 +6,12 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 23:37:25 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 23:38:00 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-/**
- * @brief Initializes the map flags structure.
- *
- * Sets all counters (line count, line length, player count, exit count,
- * and collectible count) to zero.
- *
- * @param flags Pointer to the map flags structure to initialize.
- */
-// static void	init_flags(t_m_data *flags)
-// {
-// 	flags->line_count = 0;
-// 	flags->line_length = 0;
-// 	flags->player_count = 0;
-// 	flags->exit_count = 0;
-// 	flags->collectible_count = 0;
-// }
-
-/**
- * @brief Copies the map data from the file into a 2D array.
- *
- * Reads the map file line by line, removes trailing newlines, and duplicates
- * each line into the provided map array. Exits with an error if memory
- * allocation fails.
- *
- * @param file The path to the map file.
- * @param map The 2D array to store the map data.
- */
 static int	copy_map_data(t_game *game)
 {
 	int		fd;

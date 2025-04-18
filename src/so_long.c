@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 23:15:22 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 23:59:45 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	main(int argc, char **argv)
 {
 	t_game		game;
 	t_m_data	map_data;
+
 	int			ret;
 
 	init_data(&game, &map_data);
@@ -96,7 +97,7 @@ int	main(int argc, char **argv)
 	}
 	// AT THIS POINT:
 	// 1. The map is valid
-	
+
 
 
 	// Initialize the game structure
