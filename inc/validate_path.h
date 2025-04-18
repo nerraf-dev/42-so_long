@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 16:46:23 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/17 15:35:09 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 14:02:54 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_queue
 }	t_queue;
 
 // Function prototypes
-int		create_visited(t_game *data);
-void	init_visited(t_game *data);
+int		create_visited(t_game *game, t_m_data *map_data);
+void	init_visited(t_game *data, t_m_data *map_data);
 void	free_visited(int **visited, int rows);
 
 void	print_visited(int **visited, int height, int width);

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/17 15:43:18 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 14:03:35 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,10 @@ t_queue	*init_queue(void)
  * This function ensures that the given position is within the boundaries of the
  * game map and does not correspond to a wall tile.
  */
-int	get_cell_type(t_game *data, int x, int y)
+int	get_cell_type(t_game *data, t_m_data *map_data, int x, int y)
 {
-	if (x < 0 || x >= data->flags.line_length || y < 0
-		|| y >= data->flags.line_count)
+	if (x < 0 || x >= map_data->line_length || y < 0
+		|| y >= map_data->line_count)
 		return (-1);
 	if (data->map[y][x] == WALL)
 		return (WALL);
@@ -116,7 +116,7 @@ int	get_cell_type(t_game *data, int x, int y)
 	return (1);
 }
 
-int	flood_fill(t_game *data)
+int	flood_fill(t_game *data, t_m_data *map_data)
 {
 	t_queue			*queue;
 	t_queue_node	*node;
@@ -126,22 +126,22 @@ int	flood_fill(t_game *data)
 	queue = init_queue();
 	ft_printf("Queue initialized.\n");
 	// Initialize the queue with the starting position
-	enqueue(queue, data->flags.start[0], data->flags.start[1]);
+	enqueue(queue, map_data->start[0], map_data->start[1]);
 	ft_printf("Enqueue start position [%d, %d]\n",
-		data->flags.start[0], data->flags.start[1]);
+		map_data->start[0], map_data->start[1]);
 	// Mark the starting position as visited
 	ft_printf("---starting position [%d, %d]---\n",
-		data->flags.start[0], data->flags.start[1]);
-	data->visited[data->flags.start[1]][data->flags.start[0]] = 1;
+		map_data->start[0], map_data->start[1]);
+	data->visited[map_data->start[1]][map_data->start[0]] = 1;
 	ft_printf("Visited start position [%d, %d]\n",
-		data->flags.start[0], data->flags.start[1]);
+		map_data->start[0], map_data->start[1]);
 	while (queue->front)
 	{
 		node = dequeue(queue);
 		if (!node)
 			continue ;
 		// Check if the cell is valid and get type
-		cell_type = get_cell_type(data, node->x, node->y);
+		cell_type = get_cell_type(data, map_data, node->x, node->y);
 		ft_printf("Checking cell [%d, %d] - Type: %d\n",
 			node->x, node->y, cell_type);
 		if (cell_type == EXIT)
@@ -164,7 +164,7 @@ int	flood_fill(t_game *data)
 		// if the type is not a wall, not marked vistied, and not -1 (error)
 		//    enqueue the cell and mark it as visited.
 		// UP:
-		cell_type = get_cell_type(data, node->x, node->y - 1);
+		cell_type = get_cell_type(data, map_data, node->x, node->y - 1);
 		if (cell_type != WALL && cell_type != -1
 			&& data->visited[node->y - 1][node->x] == 0)
 			{
@@ -174,7 +174,7 @@ int	flood_fill(t_game *data)
 					node->x, node->y - 1);
 			}
 		// DOWN:
-		cell_type = get_cell_type(data, node->x, node->y + 1);
+		cell_type = get_cell_type(data, map_data, node->x, node->y + 1);
 		if (cell_type != WALL && cell_type != -1
 			&& data->visited[node->y + 1][node->x] == 0)
 			{
@@ -184,7 +184,7 @@ int	flood_fill(t_game *data)
 					node->x, node->y + 1);
 			}
 		// LEFT:
-		cell_type = get_cell_type(data, node->x - 1, node->y);
+		cell_type = get_cell_type(data, map_data, node->x - 1, node->y);
 		if (cell_type != WALL && cell_type != -1
 			&& data->visited[node->y][node->x - 1] == 0)
 			{
@@ -194,7 +194,7 @@ int	flood_fill(t_game *data)
 					node->x - 1, node->y);
 			}
 		// RIGHT:
-		cell_type = get_cell_type(data, node->x + 1, node->y);
+		cell_type = get_cell_type(data, map_data, node->x + 1, node->y);
 		if (cell_type != WALL && cell_type != -1
 			&& data->visited[node->y][node->x + 1] == 0)
 			{
@@ -218,26 +218,26 @@ int	flood_fill(t_game *data)
 	return (0);
 }
 
-void	validate_path(t_game *data)
+void	validate_path(t_game *game, t_m_data *map_data)
 {
-	create_visited(data);
-	if (!data->visited)
+	create_visited(game, map_data);
+	if (!game->visited)
 		exit_with_error("Error: Failed to allocate memory for visited array.");
-	init_visited(data);
+	init_visited(game, map_data);
 	ft_printf("\nVisited array:\n");
 	ft_printf("*****""*****\n");
-	print_visited(data->visited, data->flags.line_count, data->flags.line_length);
-	flood_fill(data);
+	print_visited(game->visited, map_data->line_count, map_data->line_length);
+	flood_fill(game, map_data);
 	ft_printf("*****""*****\n");
-	print_visited(data->visited, data->flags.line_count, data->flags.line_length);
+	print_visited(game->visited, map_data->line_count, map_data->line_length);
 	ft_printf("Start position: [%d, %d]\n",
-		data->flags.start[0], data->flags.start[1]);
+		map_data->start[0], map_data->start[1]);
 	ft_printf("Exit position: [%d, %d]\n",
-		data->flags.exit[0], data->flags.exit[1]);
-	ft_printf("Collectibles found: %d\n", data->collectibles);
-	ft_printf("Collectible count: %d\n", data->flags.collectible_count);
-	ft_printf("Exit found: %d\n", data->exit);
-	ft_printf("--Exit count: %d\n", data->flags.exit_count);
+		map_data->exit[0], map_data->exit[1]);
+	ft_printf("Collectibles found: %d\n", game->collectibles);
+	ft_printf("Collectible count: %d\n", map_data->collectible_count);
+	ft_printf("Exit found: %d\n", game->exit);
+	ft_printf("--Exit count: %d\n", map_data->exit_count);
 
 
 	// Clean up memory
@@ -246,6 +246,6 @@ void	validate_path(t_game *data)
 	// free the queue
 	// free the node
 
-	free_visited(data->visited, data->flags.line_count);
+	free_visited(game->visited, map_data->line_count);
 
 }

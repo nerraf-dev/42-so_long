@@ -6,29 +6,31 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 11:49:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 14:05:47 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	init_game(t_game *game)
+void	init_data(t_game *game, t_m_data *map_data)
 {
 	game->mlx = NULL;
 	game->mlx_win = NULL;
+	game->file = NULL;
 	game->map = NULL;
+	game->visited = NULL;
 	game->collectibles = 0;
 	game->exit = 0;
-	game->visited = NULL;
-	game->flags.line_count = 0;
-	game->flags.line_length = 0;
-	game->flags.player_count = 0;
-	game->flags.exit_count = 0;
-	game->flags.collectible_count = 0;
-	game->flags.start[0] = 0;
-	game->flags.start[1] = 0;
-	game->flags.exit[0] = 0;
-	game->flags.exit[1] = 0;
+	game->error = 0;
+	map_data->line_count = 0;
+	map_data->line_length = 0;
+	map_data->player_count = 0;
+	map_data->exit_count = 0;
+	map_data->collectible_count = 0;
+	map_data->start[0] = 0;
+	map_data->start[1] = 0;
+	map_data->exit[0] = 0;
+	map_data->exit[1] = 0;
 }
 
 static void	validate_args(int argc, char **argv)
@@ -47,13 +49,18 @@ static void	validate_args(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_game	game;
+	t_game		game;
+	t_m_data	map_data;
 
-	init_game(&game);
+	init_data(&game, &map_data);
 	// Validate command line arguments
+	// exiting here due to error is fine as no memory has been allocated
+	// and no resources have been used.
 	validate_args(argc, argv);
+	game.file = argv[1];
 	// Parse & Validate the map file
-	parse_map(argv[1], &game);
+	//    From here any erros need to be handled correctly and memory freed.
+	parse_map(&game, &map_data);
 	// Initialize the game structure
 	// load_window(&game);
 	// mlx_loop(game.mlx);

@@ -6,24 +6,24 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:19:48 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/17 15:36:23 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 14:03:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 #include "../../inc/validate_path.h"
 
-int	create_visited(t_game *data)
+int	create_visited(t_game *data, t_m_data *map_data)
 {
 	int	i;
 
-	data->visited = ft_calloc(data->flags.line_count, sizeof(int *));
+	data->visited = ft_calloc(map_data->line_count, sizeof(int *));
 	if (!data->visited)
 		return (1);
 	i = 0;
-	while (i < data->flags.line_count)
+	while (i < map_data->line_count)
 	{
-		data->visited[i] = ft_calloc(data->flags.line_length, sizeof(int));
+		data->visited[i] = ft_calloc(map_data->line_length, sizeof(int));
 		if (!data->visited[i])
 		{
 			while (i > 0)
@@ -53,16 +53,16 @@ int	create_visited(t_game *data)
 // 	}
 // }
 
-void	init_visited(t_game *data)
+void	init_visited(t_game *data, t_m_data *map_data)
 {
 	int	row;
 	int	col;
 
 	row = 0;
-	while (row < data->flags.line_count)
+	while (row < map_data->line_count)
 	{
 		col = 0;
-		while (col < data->flags.line_length)
+		while (col < map_data->line_length)
 		{
 			if (data->map[row][col] == WALL)
 				data->visited[row][col] = 1;

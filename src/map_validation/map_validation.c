@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 12:11:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 14:53:16 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@
  * @param line The line to check.
  * @param expected_length The expected length of the line.
  */
-static void	check_line_length(const char *line, int expected_length)
+void	check_line_length(const char *line, int expected_length)
 {
-	if (ft_strlen(line) != (size_t)expected_length)
+	size_t	len;
+
+	len = ft_strlen(line) - 1;
+	if (len != (size_t)expected_length)
 	{
 		exit_with_error("Map is not rectangular.\n");
 	}
@@ -35,15 +38,20 @@ static void	check_line_length(const char *line, int expected_length)
  *
  * @param line The line to check.
  */
-static void	check_walls(const char *line)
+void	check_walls(const char *line, int length)
 {
-	while (*line)
+	int	i;
+
+	i = 0;
+	ft_printf("length: %d\n", length);
+	while (i < length)
 	{
-		if (*line != WALL)
+		ft_printf("Checking wall: %c\n", line[i]);
+		if (line[i] != WALL && line[i] != '\n')
 		{
 			exit_with_error("Map is not surrounded by walls.\n");
 		}
-		line++;
+		i++;
 	}
 }
 
@@ -63,7 +71,7 @@ static void	check_walls(const char *line)
  *              of players, exits, and collectibles in the map.
  * @note program will terminate if invalid characters/duplicates are found.
  */
-static void	check_valid_chars(const char *line, t_map_flags *flags, int line_num)
+static void	check_valid_chars(const char *line, t_m_data *flags, int line_num)
 {
 	int		i;
 
@@ -94,43 +102,6 @@ static void	check_valid_chars(const char *line, t_map_flags *flags, int line_num
 	}
 }
 
-/**
- * @brief Reads the map file to determine its dimensions.
- *
- * Ensures the map is rectangular and that the first line is surrounded by
- * walls. Exits with an error if the map is too small or invalid.
- *
- * @param file The path to the map file.
- * @param flags Pointer to the map flags structure.
- */
-void	map_dimensions(const char *file, t_map_flags *flags)
-{
-	int		fd;
-	char	*line;
-	size_t	len;
-
-	fd = open_file(file, O_RDONLY);
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		len = ft_strlen(line);
-		if (len > 0 && line[len - 1] == '\n')
-			line[len - 1] = '\0';
-		if (flags->line_count == 0)
-		{
-			flags->line_length = ft_strlen(line);
-			check_walls(line);
-		}
-		else
-			check_line_length(line, flags->line_length);
-		flags->line_count++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-	if (flags->line_count < 3)
-		exit_with_error("Map is too small.\n");
-}
 
 /**
  * @brief Validates the map structure and content.
@@ -143,27 +114,28 @@ void	map_dimensions(const char *file, t_map_flags *flags)
  * @param flags Pointer to the map flags structure.
  */
 // void	validate_map(char **map, t_map_flags *flags)
-void	validate_map(t_game *game)
+void	validate_map(t_game *game, t_m_data *data)
 {
 	int	i;
 
 	i = 0;
 	while (game->map[i])
 	{
-		if (i == 0 || i == game->flags.line_count - 1)
-			check_walls(game->map[i]);
+		if (i == 0 || i == data->line_count - 1)
+			check_walls(game->map[i], data->line_length);
 		else
 		{
-			if (game->map[i][0] != WALL || game->map[i][game->flags.line_length - 1] != WALL)
+			if (game->map[i][0] != WALL
+				|| game->map[i][data->line_length - 1] != WALL)
 				exit_with_error("Map is not surrounded by walls.\n");
-			check_valid_chars(game->map[i], &game->flags, i);
+			check_valid_chars(game->map[i], data, i);
 		}
 		i++;
 	}
-	if (game->flags.player_count != 1)
+	if (data->player_count != 1)
 		exit_with_error("Map must contain exactly one player.\n");
-	if (game->flags.exit_count != 1)
+	if (data->exit_count != 1)
 		exit_with_error("Map must contain exactly one exit.\n");
-	if (game->flags.collectible_count == 0)
+	if (data->collectible_count == 0)
 		exit_with_error("Map must contain at least one collectible.\n");
 }
