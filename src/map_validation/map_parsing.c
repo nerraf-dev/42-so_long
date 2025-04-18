@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 22:32:25 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 23:37:25 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	print_map(t_game *game)
 	}
 }
 
-int	parse_map(t_game *game, t_m_data *map_data)
+int	parse_and_validate(t_game *game, t_m_data *map_data)
 {
 	if (map_dimensions(game->file, map_data))
 	{
@@ -108,9 +108,14 @@ int	parse_map(t_game *game, t_m_data *map_data)
 	if (copy_map_data(game))
 		return (1);
 	if (validate_map(game, map_data))
+	{
+		ft_printf("VALIDATE MAP ERROR\n");
+		ft_printf("returning 1 to main\n");
 		return (1);
+	}
 	if (validate_path(game, map_data))
 		return (1);
 	print_map(game);
+	ft_printf("Map is valid.\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 22:51:48 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 22:54:46 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ int	validate_map(t_game *game, t_m_data *data)
 		i++;
 	}
 	if (data->collectible_count == 0)
-		set_error("Map must contain at least one collectible.\n");
+		return (set_error("Map must contain at least one collectible.\n"));
 	return (0);
 }

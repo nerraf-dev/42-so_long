@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:19:48 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 22:40:20 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 23:33:48 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	print_visited(int **visited, int height, int width)
 	int	x;
 
 	y = 0;
+	ft_printf("\nVisited array:\n");
+	ft_printf("*****""*****\n");
 	while (y < height)
 	{
 		x = 0;
@@ -90,4 +92,5 @@ void	free_visited(int **visited, int rows)
 		i++;
 	}
 	free(visited);
+	visited = NULL;
 }

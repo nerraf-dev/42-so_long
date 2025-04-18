@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 22:44:26 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/18 23:15:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,28 @@ void	cleanup(t_game *game, t_m_data *map_data)
 {
 	int	i;
 
-	if (game->file)
-		free(game->file);
 	if (game->map)
 	{
 		i = 0;
 		while (game->map[i])
-			free(game->map[i++]);
+		{
+			free(game->map[i]);
+			game->map[i] = NULL;
+			i++;
+		}
 		free(game->map);
+		game->map = NULL;
 	}
 	if (game->visited)
 	{
 		i = 0;
 		while (i < map_data->line_count)
+		{
 			free(game->visited[i++]);
+			game->visited[i] = NULL;
+		}
 		free(game->visited);
+		game->visited = NULL;
 	}
 }
 
@@ -74,18 +81,23 @@ int	main(int argc, char **argv)
 {
 	t_game		game;
 	t_m_data	map_data;
+	int			ret;
 
 	init_data(&game, &map_data);
 	if (validate_args(argc, argv))
 		return (1);
 	game.file = argv[1];
-	if (parse_map(&game, &map_data) == 1)
+	ret = parse_and_validate(&game, &map_data);
+	// print value of ret and status of memory allocated (what needs freeing)
+	if (ret == 1)
 	{
-		ft_printf("Parse map error.\n");
-		// clean up memory map_data
-		
+		cleanup(&game, &map_data);
 		return (1);
 	}
+	// AT THIS POINT:
+	// 1. The map is valid
+	
+
 
 	// Initialize the game structure
 	// if (load_window(&game))
@@ -96,14 +108,17 @@ int	main(int argc, char **argv)
 	// }
 	// mlx_loop(game.mlx);
 
-	// if (game.map)
-	// {
-	// 	int i = 0;
-	// 	while (game.map[i])
-	// 		free(game.map[i++]);
-	// 	free(game.map);
-	// }
-	ft_printf("Memory freed.\n");
-	ft_printf("Game initialized.\n");
+
+	// Final Cleanup after a VALID map
+	if (game.map)
+	{
+		int i = 0;
+		while (game.map[i])
+			free(game.map[i++]);
+		free(game.map);
+	}
+	// ft_printf("Memory freed.\n");
+	// ft_printf("Game initialized.\n");
+
 	return (0);
 }
