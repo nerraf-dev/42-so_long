@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/19 00:16:23 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/19 13:15:55 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,18 +32,22 @@ GUI_DIR = $(SRC_DIR)/gui
 
 
 # Source files in each category
-GUI_FILES = window.c
-PARSING_FILES = map_parsing.c \
-				map_validation.c \
-				map_dimensions.c \
-				path_validation.c \
-				visited.c \
-				cell_check.c \
-				check_adjacent.c \
-				queue_management.c \
+GUI_FILES = window.c \
 
-UTILS_FILES = so_long_utils.c files.c
-MAIN_FILES = so_long.c
+PARSING_FILES = cell_check.c \
+				check_adjacent.c \
+				map_dimensions.c \
+				map_parsing.c \
+				map_validation.c \
+				path_validation.c \
+				queue_management.c \
+				visited.c \
+
+UTILS_FILES = so_long_utils.c \
+				files.c \
+
+MAIN_FILES = so_long.c \
+
 
 # Combine all source files
 SRC_FILES = $(addprefix $(PARSING_DIR)/, $(PARSING_FILES)) \
