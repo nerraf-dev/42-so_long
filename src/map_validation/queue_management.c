@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 00:10:38 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 00:16:52 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 12:18:56 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	enqueue(t_queue *queue, int x, int y)
 	node = malloc(sizeof(t_queue_node));
 	if (!node)
 		set_error("Error: Failed to allocate memory for queue node.");
-	ft_printf("NODE ALLOCATED\n");
 	node->x = x;
 	node->y = y;
 	node->next = NULL;

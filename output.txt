@@ -11,68 +11,6 @@ Visited array:
 1 0 0 0 0 0 0 0 1 
 1 0 0 1 1 1 1 0 1 
 1 1 1 1 1 1 1 1 1 
-NODE ALLOCATED
-NODE ALLOCATED
-NODE ALLOCATED
-NODE ALLOCATED
-Nodes in queue: 79870320
-NODE ALLOCATED
-NODE ALLOCATED
-Nodes in queue: 79870400
-Nodes in queue: 79870480
-NODE ALLOCATED
-Nodes in queue: 79870560
-NODE ALLOCATED
-NODE ALLOCATED
-Nodes in queue: 79870640
-Nodes in queue: 79870720
-NODE ALLOCATED
-Nodes in queue: 79870800
-NODE ALLOCATED
-NODE ALLOCATED
-NODE ALLOCATED
-Nodes in queue: 79870880
-Nodes in queue: 79870960
-NODE ALLOCATED
-Nodes in queue: 79871040
-NODE ALLOCATED
-NODE ALLOCATED
-Nodes in queue: 79871120
-Nodes in queue: 79871200
-NODE ALLOCATED
-Nodes in queue: 79871280
-NODE ALLOCATED
-Nodes in queue: 79871360
-NODE ALLOCATED
-NODE ALLOCATED
-NODE ALLOCATED
-Nodes in queue: 79871440
-Nodes in queue: 79871520
-NODE ALLOCATED
-Nodes in queue: 79871600
-Nodes in queue: 79871680
-NODE ALLOCATED
-Nodes in queue: 79871760
-Nodes in queue: 79871840
-NODE ALLOCATED
-Nodes in queue: 79871920
-Nodes in queue: 79872000
-Nodes in queue: 79872080
-NODE ALLOCATED
-Nodes in queue: 79872160
-NODE ALLOCATED
-Nodes in queue: 79872240
-NODE ALLOCATED
-Nodes in queue: 79872320
-NODE ALLOCATED
-NODE ALLOCATED
-Nodes in queue: 79872400
-NODE ALLOCATED
-Nodes in queue: 79872480
-Nodes in queue: 79872560
-Nodes in queue: 0
-QUEUE EMPTY
-Queue cleaned up.
 
 Visited array:
 **********
