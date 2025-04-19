@@ -6,14 +6,14 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 22:54:46 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 13:01:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
 /**
- * @brief Checks if the length of the given line matches the expected length.
+ * @brief Checks if the length of the given line matches expected length.
  *
  * Exits with an error if the map is not rectangular.
  *
@@ -30,8 +30,6 @@ void	check_line_length(const char *line, int expected_length)
 		set_error("Map is not rectangular.\n");
 	}
 }
-
-
 
 /**
  * @brief Validates the map structure and content.

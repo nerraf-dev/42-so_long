@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:52:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 22:53:02 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 12:40:35 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,27 @@ int	check_walls(const char *line, int length)
 	return (0);
 }
 
+/**
+ * check_valid_chars - Validates the characters in a map line and updates flags.
+ *
+ * @line: A string representing a single line of the map.
+ * @flags: A pointer to a t_m_data structure that tracks map properties such as
+ *         the number of players, exits, and collectibles.
+ * @line_num: The current line number in the map being validated.
+ *
+ * This function iterates through each character in the given map line and
+ * performs the following checks:
+ * - Ensures the character is part of the valid character set (VALID_CHARS).
+ * - Ensures that there is only one player (START) in the map.
+ * - Ensures that there is only one exit (EXIT) in the map.
+ * - Counts the number of collectibles (COLLECTIBLE) in the map.
+ *
+ * If an invalid character is found, or if there are multiple players or exits,
+ * the function sets an appropriate error message and returns a non-zero value.
+ * Otherwise, it returns 0 to indicate successful validation.
+ *
+ * Return: 0 if the line is valid, or a non-zero value if an error occurs.
+ */
 int	check_valid_chars(const char *line, t_m_data *flags, int line_num)
 {
 	int		i;

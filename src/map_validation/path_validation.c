@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 11:58:27 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 12:38:53 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ int	flood_fill(t_game *data, t_m_data *map_data)
 	clear_queue(queue);
 	return (0);
 }
-
-
 
 int	validate_path(t_game *game, t_m_data *map_data)
 {

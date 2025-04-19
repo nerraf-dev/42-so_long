@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 00:10:38 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 12:18:56 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 12:39:10 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ t_queue_node	*dequeue(t_queue *queue)
 	return (node);
 }
 
-// Initialise the queue with the starting position
 t_queue	*init_queue(void)
 {
 	t_queue	*queue;

@@ -6,19 +6,17 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:15:18 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 17:18:10 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 12:41:44 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
 
-static void	process_first(char *line, t_m_data *map_data)
-{
-	// map_data->line_length = ft_strlen(line);
-	ft_printf("First line length: %d\n", map_data->line_length);
-	check_walls(line, map_data->line_length);
-}
+// static void	process_first(char *line, t_m_data *map_data)
+// {
+// 	check_walls(line, map_data->line_length);
+// }
 
 
 /**
@@ -41,7 +39,7 @@ int	map_dimensions(const char *file, t_m_data *map_data)
 	while (line != NULL)
 	{
 		if (map_data->line_count == 0)
-			process_first(line, map_data);
+			check_walls(line, map_data->line_length);
 		else
 			check_line_length(line, map_data->line_length);
 		map_data->line_count++;

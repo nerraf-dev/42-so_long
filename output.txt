@@ -1,4 +1,3 @@
-First line length: 9
 
 Visited array:
 **********

@@ -6,11 +6,25 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 23:38:00 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 12:43:25 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+// TODO: Remove before 42 push!
+void	print_map(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("Map:\n");
+	while (game->map[i])
+	{
+		ft_printf("%s\n", game->map[i]);
+		i++;
+	}
+}
 
 static int	copy_map_data(t_game *game)
 {
@@ -50,19 +64,6 @@ void	free_map(t_game *game)
 	}
 	free(game->map);
 	game->map = NULL;
-}
-
-void	print_map(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	ft_printf("Map:\n");
-	while (game->map[i])
-	{
-		ft_printf("%s\n", game->map[i]);
-		i++;
-	}
 }
 
 int	parse_and_validate(t_game *game, t_m_data *map_data)

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:45:40 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/03 18:09:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 13:03:02 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
  * @note The function uses `ft_calloc` for memory allocation and `ft_memcpy`
  *       for copying data.
  */
-void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
+//TODO: ft_realloc - Is this being used anywhere?
+ void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 {
 	void	*new_ptr;
 
