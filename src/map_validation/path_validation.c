@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 12:38:53 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 13:48:47 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	check_adj(t_context *context, t_queue *queue, t_queue_node *node)
 	check_and_enqueue(context, queue, node->x - 1, node->y);
 	check_and_enqueue(context, queue, node->x + 1, node->y);
 }
-
 
 int	flood_fill(t_game *data, t_m_data *map_data)
 {

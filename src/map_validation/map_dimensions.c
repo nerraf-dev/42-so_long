@@ -6,18 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:15:18 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 12:41:44 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 13:48:58 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-
-// static void	process_first(char *line, t_m_data *map_data)
-// {
-// 	check_walls(line, map_data->line_length);
-// }
-
 
 /**
  * @brief Reads the map file to determine its dimensions.

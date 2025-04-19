@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 00:01:16 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 13:52:20 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include "../lib/mlx/mlx.h"
 # include "../lib/libft/src/libft.h"
 # include "errors.h"
+# include <X11/keysym.h>
 # include <fcntl.h>
+
 
 # define WALL '1'
 # define START 'P'

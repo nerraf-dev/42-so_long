@@ -6,10 +6,9 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 21:02:30 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/16 21:02:41 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 13:49:19 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 #include "../../inc/validate_path.h"
-

@@ -6,12 +6,13 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:57:51 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/07 10:51:03 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/19 13:52:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../inc/so_long.h"
 
-// Function to handle the close event
+
 int	close_window(void *params[2])
 {
 	void	*mlx_win = params[0];
