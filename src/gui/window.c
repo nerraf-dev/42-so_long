@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 10:24:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 22:19:47 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/20 16:08:44 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	close_window(t_game *game)
 }
 
 // Function to handle key presses
-int	handle_keypress(int keysym, t_game	*game)
+int	keypress(int keysym, t_game	*game)
 {
 	// Check if the pressed key is the ESC key
 	// if (keycode == 65307) // 65307 is the keycode for ESC
@@ -63,6 +63,6 @@ int	load_window(t_game *game)
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, game);
 	// Hook key press events to the handle_keypress function
 	mlx_hook(game->mlx_win, 2, 1L << 0,
-		(int (*)(int, void *))handle_keypress, game);
+		(int (*)(int, void *))keypress, game);
 	return (0);
 }
