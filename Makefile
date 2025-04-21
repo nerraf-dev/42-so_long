@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/19 13:15:55 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/21 12:49:58 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,14 @@ OBJ_DIR = obj
 # Subdirectories for organized source files
 PARSING_DIR = $(SRC_DIR)/map_validation
 UTILS_DIR = $(SRC_DIR)/utils
+GAME_DIR = $(SRC_DIR)/game
 GUI_DIR = $(SRC_DIR)/gui
 
 
 # Source files in each category
-GUI_FILES = window.c \
+GAME_FILES = game_init.c \
+
+# GUI_FILES = window.c \
 
 PARSING_FILES = cell_check.c \
 				check_adjacent.c \
@@ -50,10 +53,12 @@ MAIN_FILES = so_long.c \
 
 
 # Combine all source files
-SRC_FILES = $(addprefix $(PARSING_DIR)/, $(PARSING_FILES)) \
+SRC_FILES = $(addprefix $(GAME_DIR)/, $(GAME_FILES)) \
+			$(addprefix $(PARSING_DIR)/, $(PARSING_FILES)) \
 			$(addprefix $(UTILS_DIR)/, $(UTILS_FILES)) \
-			$(addprefix $(GUI_DIR)/, $(GUI_FILES)) \
 			$(addprefix $(SRC_DIR)/, $(MAIN_FILES))
+
+# $(addprefix $(GUI_DIR)/, $(GUI_FILES)) \
 
 SRCS = $(SRC_FILES)
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

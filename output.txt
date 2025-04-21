@@ -39,3 +39,4 @@ Map:
 1001111C1
 111111111
 Map is valid.
+MLX initialized.

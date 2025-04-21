@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 13:52:20 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/21 15:34:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@
 # define VALID_CHARS "01PEC"
 # define ERR_MAP_DIMS "Map is not rectangular.\n"
 
-typedef struct s_mlx
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-}			t_mlx;
-
 typedef struct s_m_data
 {
 	int		line_count;
@@ -46,10 +40,10 @@ typedef struct s_m_data
 
 typedef struct s_game
 {
+	char		**map;
 	void		*mlx;
 	void		*mlx_win;
 	char		*file;
-	char		**map;
 	int			**visited;
 	int			collectibles;
 	int			exit;
@@ -74,7 +68,7 @@ int		check_walls(const char *line, int length);
 void	check_line_length(const char *line, int expected_length);
 int		check_valid_chars(const char *line, t_m_data *flags, int line_num);
 
-void	run_game(void);
+int		run_game(t_context *context);
 int		load_window(t_game *game);
 
 #endif

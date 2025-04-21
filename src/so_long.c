@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/18 23:59:45 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/21 15:37:48 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,45 +81,32 @@ int	main(int argc, char **argv)
 {
 	t_game		game;
 	t_m_data	map_data;
-
-	int			ret;
+	t_context	context;
+	// int			ret;
 
 	init_data(&game, &map_data);
 	if (validate_args(argc, argv))
 		return (1);
 	game.file = argv[1];
-	ret = parse_and_validate(&game, &map_data);
+	// ret = parse_and_validate(&game, &map_data);
 	// print value of ret and status of memory allocated (what needs freeing)
-	if (ret == 1)
+	if (parse_and_validate(&game, &map_data))
 	{
 		cleanup(&game, &map_data);
 		return (1);
 	}
-	// AT THIS POINT:
-	// 1. The map is valid
+	context.game = &game;
+	context.map_data = &map_data;
+	run_game(&context);
 
-
-
-	// Initialize the game structure
-	// if (load_window(&game))
-	// {
-	// 	ft_printf("Error: Failed to load window.\n");
-	// 	cleanup(&game, &map_data);
-	// 	return (1);
-	// }
-	// mlx_loop(game.mlx);
-
-
+	mlx_loop(game.mlx);
 	// Final Cleanup after a VALID map
-	if (game.map)
-	{
-		int i = 0;
-		while (game.map[i])
-			free(game.map[i++]);
-		free(game.map);
-	}
-	// ft_printf("Memory freed.\n");
-	// ft_printf("Game initialized.\n");
-
+	// if (game.map)
+	// {
+	// 	int i = 0;
+	// 	while (game.map[i])
+	// 		free(game.map[i++]);
+	// 	free(game.map);
+	// }
 	return (0);
 }
