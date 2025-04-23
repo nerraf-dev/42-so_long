@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:58:35 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/23 12:14:43 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/23 16:21:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 // 	*(unsigned int *)dst = color;
 // 	return (0);
 // }
+
+int	preload_images()
+{
+	
+	return (0);
+}
 
 int	set_img_data(t_img *img, t_game *game)
 {

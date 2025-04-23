@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/23 18:26:21 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/23 18:05:04 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,16 @@ int	run_game(t_context *context)
 	set_img_data(&img, game);
 	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, i, i + img.width);
 	mlx_destroy_image(game->mlx, img.img);
-
-	// Display the background (floor)
-	// Display the walls, exit (and start)
-	// Display the collectibles
-	// Display the player
-
+	// Calc TileSize
+	// Centre the view (optional)
+	// Load images
+	// Show images
+	ft_printf("Line drawn\n");
 
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, game);
 	mlx_hook(game->mlx_win, 2, 1L << 0,
 		(int (*)(int, void *))keypress, game);
+
 
 	// mlx_loop_hook();
 	mlx_loop(game->mlx);

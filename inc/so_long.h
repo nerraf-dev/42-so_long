@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/22 16:11:05 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/23 15:59:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../lib/libft/src/libft.h"
 # include "errors.h"
 # include "structures.h"
+# include "images.h"
 # include "gui_utils.h"
 # include "game.h"
 # include <X11/keysym.h>

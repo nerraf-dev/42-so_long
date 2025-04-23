@@ -40,12 +40,18 @@ Map:
 111111111
 Map is valid.
 MLX initialized.
-Image loaded: ./assets/walls/top-left.xpm
+Image path: ./assets/walls/top_left.xpm
+Image loaded: ./assets/walls/top_left.xpm
 Image dimensions: 48 x 48
 Image data address obtained successfully.
 Image bpp: 32
 Image line bytes: 192
 Image loaded: ./assets/walls/top.xpm
+Image dimensions: 48 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/walls/mid_left.xpm
 Image dimensions: 48 x 48
 Image data address obtained successfully.
 Image bpp: 32
