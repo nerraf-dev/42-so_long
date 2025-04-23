@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/23 11:46:17 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/23 13:54:52 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,16 @@ int	run_game(t_context *context)
 		mlx_pixel_put(game->mlx, game->mlx_win, 320, i, 0x0000FF);
 		i++;
 	}
-
-	img.filename = "./assets/sprout_lands/Tilesets/Wooden_House_Walls_Tilset.xpm";
+	i = 50;
+	// img.filename = "./assets/misc/sprout_lands/Tilesets/Wooden_House_Walls_Tilset.xpm";
+	img.filename = "./assets/walls/top-left.xpm";
 	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, 50, 50);
-
+	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, i, 50);
+	mlx_destroy_image(game->mlx, img.img);
+	img.filename = "./assets/walls/top.xpm";
+	set_img_data(&img, game);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, i + img.width, 50);
+	mlx_destroy_image(game->mlx, img.img);
 	// Calc TileSize
 	// Centre the view (optional)
 	// Load images
