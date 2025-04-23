@@ -40,3 +40,9 @@ Map:
 111111111
 Map is valid.
 MLX initialized.
+Image loaded: ./assets/sprout_lands/Tilesets/Wooden_House_Walls_Tilset.xpm
+Image dimensions: 80 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 320
+Line drawn

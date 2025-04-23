@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.h                                             :+:      :+:    :+:   */
+/*   gui_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 13:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/23 11:38:13 by sfarren          ###   ########.fr       */
+/*   Created: 2025/04/22 12:59:42 by sfarren           #+#    #+#             */
+/*   Updated: 2025/04/22 13:07:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_H
-# define GAME_H
+#ifndef GUI_UTILS_H
+# define GUI_UTILS_H
 
-// typedef struct s_img
-// {
-// 	void	*img;
-// 	char	*buffer;
-// 	int		bpp;
-// 	int		line_bytes;
-// 	int		endian;
-// }			t_img;
+# include "../lib/libft/src/libft.h"
+# include "../lib/mlx/mlx.h"
 
-typedef struct s_img
-{
-	void	*img;
-	char	*filename;
-	int		width;
-	int		height;
-	char	*buffer;
-	int		bpp;
-	int		line_bytes;
-	int		endian;
-}			t_img;
+int	rgb_to_int(int r, int g, int b);
 
-// int	put_pixel(t_img *img, int x, int y, int color);
-int		set_img_data(t_img *img, t_game *game);
 #endif

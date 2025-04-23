@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/21 12:49:58 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/22 15:59:32 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ GUI_DIR = $(SRC_DIR)/gui
 
 # Source files in each category
 GAME_FILES = game_init.c \
+			image_management.c \
 
 # GUI_FILES = window.c \
 

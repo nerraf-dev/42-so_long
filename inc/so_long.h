@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/21 15:34:22 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/22 16:11:05 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include "../lib/mlx/mlx.h"
 # include "../lib/libft/src/libft.h"
 # include "errors.h"
+# include "structures.h"
+# include "gui_utils.h"
+# include "game.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
 
@@ -27,34 +30,7 @@
 # define VALID_CHARS "01PEC"
 # define ERR_MAP_DIMS "Map is not rectangular.\n"
 
-typedef struct s_m_data
-{
-	int		line_count;
-	int		line_length;
-	int		start_count;
-	int		exit_count;
-	int		collectible_count;
-	int		start[2];
-	int		exit[2];
-}			t_m_data;
 
-typedef struct s_game
-{
-	char		**map;
-	void		*mlx;
-	void		*mlx_win;
-	char		*file;
-	int			**visited;
-	int			collectibles;
-	int			exit;
-	int			error;
-}				t_game;
-
-typedef struct s_context
-{
-	t_game		*game;
-	t_m_data	*map_data;
-}				t_context;
 
 // Create a player data structure.
 

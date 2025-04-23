@@ -2,10 +2,16 @@
 
 /.DS_Store
 /_stuff
-
+/assets/misc/
 /lib/mlx-ogl
-
 so_long
 obj/
+
+
+
 _Notes/~$examples.xlsx
 output.txt
+assets/Room_Builder_Office_48x48.zip
+
+
+*.Identifier

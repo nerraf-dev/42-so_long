@@ -6,11 +6,9 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/21 15:36:11 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/23 11:46:17 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../inc/so_long.h"
 
 #include "../../inc/so_long.h"
 #include <X11/keysym.h> // For keysyms
@@ -49,20 +47,52 @@ int	keypress(int keysym, t_game	*game)
 int	run_game(t_context *context)
 {
 	t_game		*game;
+	t_img		img;
+	int			width;
+	int			height;
+	int			i;
+	// void	*img;
 
+	width = 640;
+	height = 480;
 	game = context->game;
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
 		return (1);
 	ft_printf("MLX initialized.\n");
-	game->mlx_win = mlx_new_window(game->mlx, 640, 480, "Hello world!");
+	game->mlx_win = mlx_new_window(game->mlx, width, height, "Hello world!");
 	if (game->mlx_win == NULL)
 	{
 		free(game->mlx);
 		exit(1);
 	}
+
+	i = 0;
+	while (i < width)
+	{
+		mlx_pixel_put(game->mlx, game->mlx_win, i, 240, 0x00FF00);
+		i++;
+	}
+	i = 0;
+	while (i < height)
+	{
+		mlx_pixel_put(game->mlx, game->mlx_win, 320, i, 0x0000FF);
+		i++;
+	}
+
+	img.filename = "./assets/sprout_lands/Tilesets/Wooden_House_Walls_Tilset.xpm";
+	set_img_data(&img, game);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, 50, 50);
+
+	// Calc TileSize
+	// Centre the view (optional)
+	// Load images
+	// Show images
+	ft_printf("Line drawn\n");
+
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, game);
 	mlx_hook(game->mlx_win, 2, 1L << 0,
 		(int (*)(int, void *))keypress, game);
+
 	return (0);
 }
