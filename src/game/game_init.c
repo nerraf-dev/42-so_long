@@ -6,13 +6,22 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/23 18:26:21 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:12:19 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 #include <X11/keysym.h> // For keysyms
 
+/**
+ * close_window - Closes the game window and frees allocated resources.
+ * @game: Pointer to the game structure.
+ *
+ * Destroys the window and display, frees the MLX pointer and map
+ * memory, then exits the program.
+ *
+ * Return: Does not return.
+ */
 int	close_window(t_game *game)
 {
 	int	i;
@@ -34,7 +43,15 @@ int	close_window(t_game *game)
 	return (0);
 }
 
-// Function to handle key presses
+/**
+ * keypress - Handles key press events.
+ * @keysym: The key symbol of the pressed key.
+ * @game: Pointer to the game structure.
+ *
+ * If the Escape key is pressed, the game window is closed.
+ *
+ * Return: 0.
+ */
 int	keypress(int keysym, t_game	*game)
 {
 	// Check if the pressed key is the ESC key
@@ -44,6 +61,15 @@ int	keypress(int keysym, t_game	*game)
 	return (0);
 }
 
+/**
+ * run_game - Sets up and runs the main game loop.
+ * @context: Pointer to the context structure containing game state.
+ *
+ * Initializes MLX, creates a window, renders images, hooks events,
+ * and starts the event loop.
+ *
+ * Return: 0 on success.
+ */
 int	run_game(t_context *context)
 {
 	t_game		*game;

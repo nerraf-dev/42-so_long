@@ -6,27 +6,36 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:58:35 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/23 16:21:22 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:13:25 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-// int	put_pixel(t_img *img, int x, int y, int color)
-// {
-// 	char	*dst;
-
-// 	dst = img->buffer + (y * img->line_bytes + x * (img->bpp / 8));
-// 	*(unsigned int *)dst = color;
-// 	return (0);
-// }
-
+/**
+ * preload_images - Preloads images required for the game.
+ *
+ * (Placeholder function; implement image preloading logic here.)
+ *
+ * Return: 0 on success.
+ */
 int	preload_images()
 {
-	
+
 	return (0);
 }
 
+/**
+ * set_img_data - Loads an XPM image and initializes its data.
+ * @img: Pointer to the image structure.
+ * @game: Pointer to the game structure.
+ *
+ * Loads the image from the file path stored in img->filename,
+ * obtains the image dimensions, and retrieves the data address.
+ * On failure, prints an error message and returns 1.
+ *
+ * Return: 0 on success, 1 on failure.
+ */
 int	set_img_data(t_img *img, t_game *game)
 {
 	if (img->filename == NULL)
@@ -57,6 +66,17 @@ int	set_img_data(t_img *img, t_game *game)
 	return (0);
 }
 
+/**
+ * display_image - Displays an image at the specified window position.
+ * @game: Pointer to the game structure.
+ * @img: Pointer to the image structure.
+ * @x: X-coordinate for image placement.
+ * @y: Y-coordinate for image placement.
+ *
+ * Uses MLX to put the loaded image onto the game window.
+ *
+ * Return: 0 on success, 1 if the image is not loaded.
+ */
 int	display_image(t_game *game, t_img *img, int x, int y)
 {
 	if (img->img == NULL)

@@ -6,12 +6,19 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/24 09:27:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:17:30 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
+/**
+ * init_data - Initializes game and map_data structures.
+ * @game: Pointer to the game structure.
+ * @map_data: Pointer to the map metadata structure.
+ *
+ * Sets default values for all pointers and counters.
+ */
 void	init_data(t_game *game, t_m_data *map_data)
 {
 	game->mlx = NULL;
@@ -33,6 +40,16 @@ void	init_data(t_game *game, t_m_data *map_data)
 	map_data->exit[1] = 0;
 }
 
+/**
+ * validate_args - Validates the command line arguments.
+ * @argc: Argument count.
+ * @argv: Argument vector.
+ *
+ * Ensures exactly one argument is passed and checks for the ".ber"
+ * file extension.
+ *
+ * Return: 0 if arguments are valid, otherwise 1.
+ */
 static int	validate_args(int argc, char **argv)
 {
 	if (argc != 2)
@@ -52,9 +69,9 @@ static int	validate_args(int argc, char **argv)
  * @brief Frees allocated memory for the game map and visited array, and sets
  * their pointers to NULL.
  *
- * This function is responsible for cleaning up dynamically allocated memory
- * associated with the game map and the visited array in the `t_game`
- * structure. It ensures that all memory is properly freed and pointers are
+ * Cleans up dynamically allocated memory associated with the game map
+ * and the visited array in the `t_game` structure.
+ * Ensures that all memory is properly freed and pointers are
  * set to NULL to avoid dangling pointers.
  *
  * @param game Pointer to the `t_game` structure containing the game state.
@@ -94,6 +111,16 @@ void	cleanup(t_game *game, t_m_data *map_data)
 	}
 }
 
+/**
+ * main - Entry point for the so_long game.
+ * @argc: Argument count.
+ * @argv: Argument vector.
+ *
+ * Initializes game data, validates arguments, parses the map,
+ * starts the game loop, and performs cleanup.
+ *
+ * Return: 0 on success, 1 if an error occurs.
+ */
 int	main(int argc, char **argv)
 {
 	t_game		game;

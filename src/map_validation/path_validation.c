@@ -6,12 +6,22 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/24 10:16:26 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:10:41 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
+/**
+ * get_cell_type - Returns the type of the cell at (x, y).
+ * @data: Pointer to the game structure.
+ * @map_data: Pointer to the map data structure.
+ * @x: X-coordinate.
+ * @y: Y-coordinate.
+ *
+ * Checks boundaries and returns the cell type:
+ * WALL, START, EXIT, or COLLECTIBLE. Returns -1 if out-of-bounds.
+ */
 int	get_cell_type(t_game *data, t_m_data *map_data, int x, int y)
 {
 	if (x < 0 || x >= map_data->line_length || y < 0
@@ -28,6 +38,16 @@ int	get_cell_type(t_game *data, t_m_data *map_data, int x, int y)
 	return (1);
 }
 
+/**
+ * flood_fill - Explores the map starting from the start cell.
+ * @data: Pointer to the game structure.
+ * @map_data: Pointer to the map data structure.
+ *
+ * Uses BFS to mark reachable cells, updating the exit flag and
+ * counting collectibles.
+ *
+ * Return: 0 on success.
+ */
 int	flood_fill(t_game *data, t_m_data *map_data)
 {
 	t_queue			*queue;
@@ -57,6 +77,16 @@ int	flood_fill(t_game *data, t_m_data *map_data)
 	return (0);
 }
 
+/**
+ * validate_path - Validates the map path using flood fill.
+ * @game: Pointer to the game structure.
+ * @map_data: Pointer to the map data structure.
+ *
+ * Initializes the visited array, runs flood_fill, and then checks
+ * if the exit and all collectibles are reachable.
+ *
+ * Return: 0 if valid, otherwise an error code.
+ */
 int	validate_path(t_game *game, t_m_data *map_data)
 {
 	create_visited(game, map_data);
