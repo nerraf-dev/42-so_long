@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:45:40 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 13:03:02 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/24 09:22:26 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
  *       for copying data.
  */
 //TODO: ft_realloc - Is this being used anywhere?
- void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
+void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 {
 	void	*new_ptr;
 

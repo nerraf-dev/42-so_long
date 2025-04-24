@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/23 15:59:15 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/24 10:15:01 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "structures.h"
 # include "images.h"
 # include "gui_utils.h"
+# include "validate_path.h"
 # include "game.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
@@ -31,9 +32,11 @@
 # define VALID_CHARS "01PEC"
 # define ERR_MAP_DIMS "Map is not rectangular.\n"
 
+// REMOVE DEBUGGINg RELATED STUFF
+void	debug_print(t_game *game, t_m_data *map_data);
+void	print_visited(int **visited, int height, int width);
 
-
-// Create a player data structure.
+// **************************************** //
 
 int		set_error(const char *message);
 int		open_file(const char *file, int flags);

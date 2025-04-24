@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/23 18:01:14 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/24 09:27:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,24 @@ static int	validate_args(int argc, char **argv)
 	return (0);
 }
 
+/**
+ * @brief Frees allocated memory for the game map and visited array, and sets
+ * their pointers to NULL.
+ *
+ * This function is responsible for cleaning up dynamically allocated memory
+ * associated with the game map and the visited array in the `t_game`
+ * structure. It ensures that all memory is properly freed and pointers are
+ * set to NULL to avoid dangling pointers.
+ *
+ * @param game Pointer to the `t_game` structure containing the game state.
+ * @param map_data Pointer to the `t_m_data` structure containing map metadata,
+ * specifically the number of lines in the map (`line_count`).
+ *
+ * @note This function assumes that `game->map` and `game->visited` are either
+ * NULL or valid pointers to dynamically allocated memory. Additionally, it
+ * assumes that `map_data->line_count` accurately reflects the number of lines
+ * in the map.
+ */
 void	cleanup(t_game *game, t_m_data *map_data)
 {
 	int	i;
@@ -70,7 +88,6 @@ void	cleanup(t_game *game, t_m_data *map_data)
 		while (i < map_data->line_count)
 		{
 			free(game->visited[i++]);
-			game->visited[i] = NULL;
 		}
 		free(game->visited);
 		game->visited = NULL;

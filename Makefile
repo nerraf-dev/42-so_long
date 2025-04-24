@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/22 15:59:32 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/24 10:02:34 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,12 +45,13 @@ PARSING_FILES = cell_check.c \
 				map_validation.c \
 				path_validation.c \
 				queue_management.c \
-				visited.c \
+				visited_mem.c \
 
 UTILS_FILES = so_long_utils.c \
 				files.c \
 
 MAIN_FILES = so_long.c \
+				debugging.c \
 
 
 # Combine all source files

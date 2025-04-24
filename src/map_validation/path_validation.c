@@ -6,26 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 13:48:47 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/24 10:16:26 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
-#include "../../inc/validate_path.h"
-
-// TODO: DELETE THIS
-void	debug_print(t_game *game, t_m_data *map_data)
-{
-	print_visited(game->visited, map_data->line_count, map_data->line_length);
-	ft_printf("Start position: [%d, %d]\n",
-		map_data->start[0], map_data->start[1]);
-	ft_printf("Exit position: [%d, %d]\n",
-		map_data->exit[0], map_data->exit[1]);
-	ft_printf("Collectibles found: %d\n", game->collectibles);
-	ft_printf("Collectible count: %d\n", map_data->collectible_count);
-	ft_printf("Exit found: %d\n", game->exit);
-	ft_printf("--Exit count: %d\n", map_data->exit_count);
-}
 
 int	get_cell_type(t_game *data, t_m_data *map_data, int x, int y)
 {
@@ -41,14 +26,6 @@ int	get_cell_type(t_game *data, t_m_data *map_data, int x, int y)
 	if (data->map[y][x] == COLLECTIBLE)
 		return (COLLECTIBLE);
 	return (1);
-}
-
-void	check_adj(t_context *context, t_queue *queue, t_queue_node *node)
-{
-	check_and_enqueue(context, queue, node->x, node->y - 1);
-	check_and_enqueue(context, queue, node->x, node->y + 1);
-	check_and_enqueue(context, queue, node->x - 1, node->y);
-	check_and_enqueue(context, queue, node->x + 1, node->y);
 }
 
 int	flood_fill(t_game *data, t_m_data *map_data)
@@ -90,20 +67,10 @@ int	validate_path(t_game *game, t_m_data *map_data)
 	print_visited(game->visited, map_data->line_count, map_data->line_length);
 	flood_fill(game, map_data);
 	debug_print(game, map_data);
-	if (game->exit == 0)
-	{
-		free_visited(game->visited, map_data->line_count);
-		game->visited = NULL;
-		ft_printf("Exit not found.\n");
-		return (set_error("Error: Exit not reachable from start position.\n"));
-	}
-	if (game->collectibles != map_data->collectible_count)
-	{
-		free_visited(game->visited, map_data->line_count);
-		game->visited = NULL;
-		ft_printf("Not all collectibles found.\n");
-		return (set_error("Error: Not all collectibles reachable.\n"));
-	}
+	if (check_exit(game, map_data))
+		return (1);
+	if (check_collectibles(game, map_data))
+		return (1);
 	free_visited(game->visited, map_data->line_count);
 	return (0);
 }
