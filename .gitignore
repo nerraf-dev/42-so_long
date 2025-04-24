@@ -1,4 +1,6 @@
 *.pdf
+*.old
+*.Identifier
 
 /.DS_Store
 /_stuff
@@ -8,10 +10,8 @@ so_long
 obj/
 
 
-
 _Notes/~$examples.xlsx
 output.txt
 assets/Room_Builder_Office_48x48.zip
 
 
-*.Identifier
