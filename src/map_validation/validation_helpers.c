@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:12:30 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/24 11:09:24 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:14:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 /**
  * check_exit - Validates if the exit is reachable from the start position.
  * @game: Pointer to the game structure.
- * @map_data: Pointer to the map data structure.
+ * @meta: Pointer to the map data structure.
  *
  * Frees the visited array and sets an error if the exit is not reachable.
  *
  * Return: 0 if the exit is reachable, otherwise an error code.
  */
-int	check_exit(t_game *game, t_m_data *map_data)
+int	check_exit(t_game *game, t_meta *meta)
 {
 	if (game->exit == 0)
 	{
-		free_visited(game->visited, map_data->line_count);
+		free_visited(game->visited, meta->line_count);
 		game->visited = NULL;
 		ft_printf("Exit not found.\n");
 		return (set_error("Error: Exit not reachable from start position.\n"));
@@ -36,18 +36,18 @@ int	check_exit(t_game *game, t_m_data *map_data)
 /**
  * check_collectibles - Validates if all collectibles are reachable.
  * @game: Pointer to the game structure.
- * @map_data: Pointer to the map data structure.
+ * @meta: Pointer to the map data structure.
  *
  * Frees the visited array and sets an error if not all collectibles
  * are reachable.
  *
  * Return: 0 if all collectibles are reachable, otherwise an error code.
  */
-int	check_collectibles(t_game *game, t_m_data *map_data)
+int	check_collectibles(t_game *game, t_meta *meta)
 {
-	if (game->collectibles != map_data->collectible_count)
+	if (game->collectibles != meta->collectible_count)
 	{
-		free_visited(game->visited, map_data->line_count);
+		free_visited(game->visited, meta->line_count);
 		game->visited = NULL;
 		ft_printf("Not all collectibles found.\n");
 		return (set_error("Error: Not all collectibles reachable.\n"));

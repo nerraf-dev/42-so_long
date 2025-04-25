@@ -6,34 +6,24 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/23 11:38:13 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 18:03:51 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
-// typedef struct s_img
-// {
-// 	void	*img;
-// 	char	*buffer;
-// 	int		bpp;
-// 	int		line_bytes;
-// 	int		endian;
-// }			t_img;
 
-typedef struct s_img
-{
-	void	*img;
-	char	*filename;
-	int		width;
-	int		height;
-	char	*buffer;
-	int		bpp;
-	int		line_bytes;
-	int		endian;
-}			t_img;
+
+
+
 
 // int	put_pixel(t_img *img, int x, int y, int color);
+int		load_images(t_game *game);
 int		set_img_data(t_img *img, t_game *game);
+t_img	*set_wall_texture_values(t_game *game);
+t_img	*set_floor_texture_values(t_game *game);
+t_img	*set_static_player_texture_values(t_game *game);
+t_img	*set_coll_texture_values(t_game *game);
+t_img	*set_exit_texture_values(t_game *game);
 #endif

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:15:18 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 13:48:58 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:14:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,28 @@
  * @param file The path to the map file.
  * @param flags Pointer to the map flags structure.
  */
-int	map_dimensions(const char *file, t_m_data *map_data)
+int	map_dimensions(const char *file, t_meta *meta)
 {
 	int		fd;
 	char	*line;
 
 	fd = open_file(file, O_RDONLY);
 	line = get_next_line(fd);
-	map_data->line_length = ft_strlen(line) - 1;
+	meta->line_length = ft_strlen(line) - 1;
 	while (line != NULL)
 	{
-		if (map_data->line_count == 0)
-			check_walls(line, map_data->line_length);
+		if (meta->line_count == 0)
+			check_walls(line, meta->line_length);
 		else
-			check_line_length(line, map_data->line_length);
-		map_data->line_count++;
+			check_line_length(line, meta->line_length);
+		meta->line_count++;
 		free(line);
 		line = get_next_line(fd);
 	}
 	if (line)
 		free(line);
 	close(fd);
-	if (map_data->line_count < 3)
+	if (meta->line_count < 3)
 		return (1);
 	return (0);
 }

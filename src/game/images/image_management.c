@@ -6,11 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:58:35 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/24 11:13:25 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:21:55 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/so_long.h"
+#include "../../../inc/so_long.h"
 
 /**
  * preload_images - Preloads images required for the game.
@@ -60,7 +60,6 @@ int	set_img_data(t_img *img, t_game *game)
 		mlx_destroy_image(game->mlx, img->img);
 		return (1);
 	}
-	ft_printf("Image data address obtained successfully.\n");
 	ft_printf("Image bpp: %d\n", img->bpp);
 	ft_printf("Image line bytes: %d\n", img->line_bytes);
 	return (0);

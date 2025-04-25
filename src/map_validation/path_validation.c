@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/24 11:10:41 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:28:07 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,40 @@
 /**
  * get_cell_type - Returns the type of the cell at (x, y).
  * @data: Pointer to the game structure.
- * @map_data: Pointer to the map data structure.
+ * @meta: Pointer to the map data structure.
  * @x: X-coordinate.
  * @y: Y-coordinate.
  *
  * Checks boundaries and returns the cell type:
  * WALL, START, EXIT, or COLLECTIBLE. Returns -1 if out-of-bounds.
  */
-int	get_cell_type(t_game *data, t_m_data *map_data, int x, int y)
+int	get_cell_type(t_game *data, t_meta *meta, int x, int y)
 {
-	if (x < 0 || x >= map_data->line_length || y < 0
-		|| y >= map_data->line_count)
+	if (x < 0 || x >= meta->line_length || y < 0
+		|| y >= meta->line_count)
 		return (-1);
-	if (data->map[y][x] == WALL)
-		return (WALL);
-	if (data->map[y][x] == START)
-		return (START);
-	if (data->map[y][x] == EXIT)
-		return (EXIT);
-	if (data->map[y][x] == COLLECTIBLE)
-		return (COLLECTIBLE);
+	if (data->map[y][x] == K_WALL)
+		return (K_WALL);
+	if (data->map[y][x] == K_START)
+		return (K_START);
+	if (data->map[y][x] == K_EXIT)
+		return (K_EXIT);
+	if (data->map[y][x] == K_COLLECTIBLE)
+		return (K_COLLECTIBLE);
 	return (1);
 }
 
 /**
  * flood_fill - Explores the map starting from the start cell.
  * @data: Pointer to the game structure.
- * @map_data: Pointer to the map data structure.
+ * @meta: Pointer to the map data structure.
  *
  * Uses BFS to mark reachable cells, updating the exit flag and
  * counting collectibles.
  *
  * Return: 0 on success.
  */
-int	flood_fill(t_game *data, t_m_data *map_data)
+int	flood_fill(t_game *data, t_meta *meta)
 {
 	t_queue			*queue;
 	t_queue_node	*node;
@@ -56,19 +56,19 @@ int	flood_fill(t_game *data, t_m_data *map_data)
 	int				cell_type;
 
 	context.game = data;
-	context.map_data = map_data;
+	context.meta = meta;
 	queue = init_queue();
-	enqueue(queue, map_data->start[0], map_data->start[1]);
-	data->visited[map_data->start[1]][map_data->start[0]] = 1;
+	enqueue(queue, meta->start_pos[0], meta->start_pos[1]);
+	data->visited[meta->start_pos[1]][meta->start_pos[0]] = 1;
 	while (queue->front)
 	{
 		node = dequeue(queue);
 		if (!node)
 			continue ;
-		cell_type = get_cell_type(data, map_data, node->x, node->y);
-		if (cell_type == EXIT)
+		cell_type = get_cell_type(data, meta, node->x, node->y);
+		if (cell_type == K_EXIT)
 			data->exit = 1;
-		else if (cell_type == COLLECTIBLE)
+		else if (cell_type == K_COLLECTIBLE)
 			data->collectibles++;
 		check_adj(&context, queue, node);
 		free(node);
@@ -80,27 +80,27 @@ int	flood_fill(t_game *data, t_m_data *map_data)
 /**
  * validate_path - Validates the map path using flood fill.
  * @game: Pointer to the game structure.
- * @map_data: Pointer to the map data structure.
+ * @meta: Pointer to the map data structure.
  *
  * Initializes the visited array, runs flood_fill, and then checks
  * if the exit and all collectibles are reachable.
  *
  * Return: 0 if valid, otherwise an error code.
  */
-int	validate_path(t_game *game, t_m_data *map_data)
+int	validate_path(t_game *game, t_meta *meta)
 {
-	create_visited(game, map_data);
+	create_visited(game, meta);
 	if (!game->visited)
 		return (
 			set_error("Error: Failed to allocate memory for visited array."));
-	init_visited(game, map_data);
-	print_visited(game->visited, map_data->line_count, map_data->line_length);
-	flood_fill(game, map_data);
-	debug_print(game, map_data);
-	if (check_exit(game, map_data))
+	init_visited(game, meta);
+	print_visited(game->visited, meta->line_count, meta->line_length);
+	flood_fill(game, meta);
+	debug_print(game, meta);
+	if (check_exit(game, meta))
 		return (1);
-	if (check_collectibles(game, map_data))
+	if (check_collectibles(game, meta))
 		return (1);
-	free_visited(game->visited, map_data->line_count);
+	free_visited(game->visited, meta->line_count);
 	return (0);
 }

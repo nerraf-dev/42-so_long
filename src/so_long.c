@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/24 11:17:30 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:31:59 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@
  *
  * Sets default values for all pointers and counters.
  */
-void	init_data(t_game *game, t_m_data *map_data)
+void	init_data(t_game *game, t_meta *map_data)
 {
 	game->mlx = NULL;
 	game->mlx_win = NULL;
 	game->file = NULL;
 	game->map = NULL;
 	game->visited = NULL;
+	game->images.walls = NULL;
+	game->images.floors = NULL;
+	game->images.player = NULL;
 	game->collectibles = 0;
 	game->exit = 0;
 	game->error = 0;
@@ -34,10 +37,10 @@ void	init_data(t_game *game, t_m_data *map_data)
 	map_data->start_count = 0;
 	map_data->exit_count = 0;
 	map_data->collectible_count = 0;
-	map_data->start[0] = 0;
-	map_data->start[1] = 0;
-	map_data->exit[0] = 0;
-	map_data->exit[1] = 0;
+	map_data->start_pos[0] = 0;
+	map_data->start_pos[1] = 0;
+	map_data->exit_pos[0] = 0;
+	map_data->exit_pos[1] = 0;
 }
 
 /**
@@ -83,7 +86,7 @@ static int	validate_args(int argc, char **argv)
  * assumes that `map_data->line_count` accurately reflects the number of lines
  * in the map.
  */
-void	cleanup(t_game *game, t_m_data *map_data)
+void	cleanup(t_game *game, t_meta *map_data)
 {
 	int	i;
 
@@ -124,7 +127,7 @@ void	cleanup(t_game *game, t_m_data *map_data)
 int	main(int argc, char **argv)
 {
 	t_game		game;
-	t_m_data	map_data;
+	t_meta	map_data;
 	t_context	context;
 	// int			ret;
 
@@ -140,7 +143,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	context.game = &game;
-	context.map_data = &map_data;
+	context.meta = &map_data;
 	run_game(&context);
 
 	// mlx_loop(game.mlx);

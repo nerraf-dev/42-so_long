@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 16:46:23 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/24 10:48:34 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:14:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_queue
 }	t_queue;
 
 
-int				create_visited(t_game *game, t_m_data *map_data);
-void			init_visited(t_game *data, t_m_data *map_data);
+int				create_visited(t_game *game, t_meta *meta);
+void			init_visited(t_game *data, t_meta *meta);
 void			free_visited(int **visited, int rows);
 void			check_and_enqueue(t_context *context, t_queue *queue,
 					int x, int y);
@@ -46,10 +46,10 @@ void			enqueue(t_queue *queue, int x, int y);
 t_queue_node	*dequeue(t_queue *queue);
 t_queue			*init_queue(void);
 void			clear_queue(t_queue *queue);
-int				get_cell_type(t_game *data, t_m_data *map_data, int x, int y);
+int				get_cell_type(t_game *data, t_meta *meta, int x, int y);
 // Helper utils
-int				check_exit(t_game *game, t_m_data *map_data);
-int				check_collectibles(t_game *game, t_m_data *map_data);
+int				check_exit(t_game *game, t_meta *meta);
+int				check_collectibles(t_game *game, t_meta *meta);
 void			check_adj(t_context *context, t_queue *queue,
 					t_queue_node *node);
 

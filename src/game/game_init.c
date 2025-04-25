@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 15:10:32 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 18:02:41 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include <X11/keysym.h> // For keysyms
 
 /**
- * close_window - Closes the game window and frees allocated resources.
- * @game: Pointer to the game structure.
- *
+ * @brief Closes the game window and frees allocated resources.
  * Destroys the window and display, frees the MLX pointer and map
  * memory, then exits the program.
  *
- * Return: Does not return.
+ * @param game: Pointer to the game structure.
+ *
+ * @return Does not return.
  */
 int	close_window(t_game *game)
 {
@@ -44,13 +44,14 @@ int	close_window(t_game *game)
 }
 
 /**
- * keypress - Handles key press events.
- * @keysym: The key symbol of the pressed key.
- * @game: Pointer to the game structure.
+ * @brief Handles key press events.
  *
  * If the Escape key is pressed, the game window is closed.
  *
- * Return: 0.
+ * @param keysym: The key symbol of the pressed key.
+ * @param game: Pointer to the game structure.
+ *
+ * @return 0
  */
 int	keypress(int keysym, t_game	*game)
 {
@@ -68,7 +69,7 @@ int	keypress(int keysym, t_game	*game)
  * Initializes MLX, creates a window, renders images, hooks events,
  * and starts the event loop.
  *
- * Return: 0 on success.
+ * @return: 0 on success.
  */
 int	run_game(t_context *context)
 {
@@ -93,13 +94,10 @@ int	run_game(t_context *context)
 		free(game->mlx);
 		exit(1);
 	}
+
+
 	x = 0;
 	y = 0;
-	// img.filename = WALL_TL;
-	// ft_printf("Image path: %s\n", img.filename);
-	// set_img_data(&img, game);
-	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, i, i);
-	// mlx_destroy_image(game->mlx, img.img);
 
 	// TOP ROW
 	img.filename = WALL_TL;

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:19:48 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/24 10:52:53 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:14:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * (rows) and each inner array (columns).
  *
  * @param data Pointer to the game structure containing the visited array.
- * @param map_data Pointer to the map data structure containing map
+ * @param meta Pointer to the map data structure containing map
  *                 dimensions.
  *
  * @return int Returns 0 on success, or 1 if memory allocation fails.
@@ -30,17 +30,17 @@
  * @note If memory allocation for any row fails, the function frees all
  *       previously allocated memory to prevent memory leaks.
  */
-int	create_visited(t_game *data, t_m_data *map_data)
+int	create_visited(t_game *data, t_meta *meta)
 {
 	int	i;
 
-	data->visited = ft_calloc(map_data->line_count, sizeof(int *));
+	data->visited = ft_calloc(meta->line_count, sizeof(int *));
 	if (!data->visited)
 		return (1);
 	i = 0;
-	while (i < map_data->line_count)
+	while (i < meta->line_count)
 	{
-		data->visited[i] = ft_calloc(map_data->line_length, sizeof(int));
+		data->visited[i] = ft_calloc(meta->line_length, sizeof(int));
 		if (!data->visited[i])
 		{
 			while (i > 0)
@@ -66,22 +66,22 @@ int	create_visited(t_game *data, t_m_data *map_data)
  *
  * @param data Pointer to the game structure (`t_game`) containing the map
  *             and the `visited` matrix.
- * @param map_data Pointer to the map data structure (`t_m_data`) containing
+ * @param meta Pointer to the map data structure (`t_m_data`) containing
  *                 information about the map dimensions (line count and
  *                 line length).
  */
-void	init_visited(t_game *data, t_m_data *map_data)
+void	init_visited(t_game *data, t_meta *meta)
 {
 	int	row;
 	int	col;
 
 	row = 0;
-	while (row < map_data->line_count)
+	while (row < meta->line_count)
 	{
 		col = 0;
-		while (col < map_data->line_length)
+		while (col < meta->line_length)
 		{
-			if (data->map[row][col] == WALL)
+			if (data->map[row][col] == K_WALL)
 				data->visited[row][col] = 1;
 			else
 				data->visited[row][col] = 0;

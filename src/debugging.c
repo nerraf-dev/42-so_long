@@ -6,24 +6,24 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 09:58:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 09:35:43 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:28:23 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
 // TODO: DELETE THIS
-void	debug_print(t_game *game, t_m_data *map_data)
+void	debug_print(t_game *game, t_meta *meta)
 {
-	print_visited(game->visited, map_data->line_count, map_data->line_length);
+	print_visited(game->visited, meta->line_count, meta->line_length);
 	ft_printf("Start position: [%d, %d]\n",
-		map_data->start[0], map_data->start[1]);
+		meta->start_pos[0], meta->start_pos[1]);
 	ft_printf("Exit position: [%d, %d]\n",
-		map_data->exit[0], map_data->exit[1]);
+		meta->exit_pos[0], meta->exit_pos[1]);
 	ft_printf("Collectibles found: %d\n", game->collectibles);
-	ft_printf("Collectible count: %d\n", map_data->collectible_count);
+	ft_printf("Collectible count: %d\n", meta->collectible_count);
 	ft_printf("Exit found: %d\n", game->exit);
-	ft_printf("--Exit count: %d\n", map_data->exit_count);
+	ft_printf("--Exit count: %d\n", meta->exit_count);
 }
 
 void	print_visited(int **visited, int height, int width)

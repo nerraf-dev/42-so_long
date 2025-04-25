@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/21 15:34:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:11:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	check_line_length(const char *line, int expected_length)
  * @param flags Pointer to the map flags structure.
  */
 // void	validate_map(char **map, t_map_flags *flags)
-int	validate_map(t_game *game, t_m_data *data)
+int	validate_map(t_game *game, t_meta *data)
 {
 	int	i;
 
@@ -56,8 +56,8 @@ int	validate_map(t_game *game, t_m_data *data)
 		}
 		else
 		{
-			if (game->map[i][0] != WALL
-				|| game->map[i][data->line_length - 1] != WALL)
+			if (game->map[i][0] != K_WALL
+				|| game->map[i][data->line_length - 1] != K_WALL)
 				return (1);
 			if (check_valid_chars(game->map[i], data, i))
 				return (1);
