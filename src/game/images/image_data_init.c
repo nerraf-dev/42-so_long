@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 17:22:52 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:56:57 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 19:12:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ t_img	*set_wall_texture_values(t_game *game)
 	while (i < 9)
 	{
 		if (set_img_data(&textures[i], game))
+		{
+			ft_printf("Error: Failed to load wall image %s.\n",
+				textures[i].filename);
 			return (NULL);
+		}
 		i++;
 	}
 
@@ -94,8 +98,8 @@ t_img	*set_coll_texture_values(t_game *game)
 	int				i;
 
 	i = 0;
-	textures[0].filename = MAP_COLLECTIBLE;
-	set_img_data(&textures, game);
+	textures[i].filename = MAP_COLLECTIBLE;
+	set_img_data(&textures[i], game);
 	return (textures);
 }
 
@@ -105,7 +109,7 @@ t_img	*set_exit_texture_values(t_game *game)
 	int				i;
 
 	i = 0;
-	textures[0].filename = MAP_EXIT;
-	set_img_data(&textures, game);
+	textures[i].filename = MAP_EXIT;
+	set_img_data(&textures[i], game);
 	return (textures);
 }

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:05:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 15:40:55 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 20:26:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define ASSETS_DIR "./assets/"
 // WALLS
 //  Top. Brick wall, can be 3 tiles high
+# define WALL_IMAGES 9
 # define WALL_TL "./assets/walls/left_top.xpm"
 # define WALL_TOP "./assets/walls/top.xpm"
 # define WALL_TR "./assets/walls/right_top.xpm"
@@ -31,6 +32,7 @@
 
 
 // FLOORS
+# define FLOOR_IMAGES 6
 # define FLOOR_TL "./assets/floors/gb_tl.xpm"
 # define FLOOR_TOP "./assets/floors/gb_top.xpm"
 # define FLOOR_TR "./assets/floors/gb_tr.xpm"
@@ -40,14 +42,17 @@
 # define FLOOR_RIGHT "./assets/floors/gb_right.xpm"
 // PLAYER
 // # define PLAYER "./assets/player/player.xpm"
+# define PLAYER_IMAGES 4
 # define PLAYER_UP "./assets/player/walk_up_000.xpm"
 # define PLAYER_DOWN "./assets/player/walk_down_000.xpm"
 # define PLAYER_LEFT "./assets/player/walk_left_000.xpm"
 # define PLAYER_RIGHT "./assets/player/walk_right_000.xpm"
 
 // EXIT
+# define EXIT_IMAGES 1
 # define MAP_EXIT "./assets/exit.xpm"
 // COLLECTIBLES
+# define COLLECTIBLE_IMAGES 1
 # define MAP_COLLECTIBLE "./assets/collectible.xpm"
 
 // TEXTURE index vals - Foors and walls

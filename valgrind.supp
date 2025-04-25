@@ -1,0 +1,17 @@
+{
+   <MLX_X11_errors>
+   Memcheck:Param
+   writev(vector[0])
+   obj:/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
+   obj:*so_long
+   fun:writev
+   fun:*xcb*
+   fun:_XSend
+   fun:_XReadEvents
+   fun:XWindowEvent
+   fun:mlx_int_wait_first_expose
+   fun:mlx_new_window
+   fun:run_game
+   fun:main
+}

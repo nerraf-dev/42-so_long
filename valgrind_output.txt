@@ -1,0 +1,642 @@
+Many of these errors stem from within the MLX/X11 internals rather than from your own cleanup code. In particular:
+
+• The errors in mlx_destroy_image (and the subsequent invalid reads/frees in functions like XShmDetach) have been seen by other users of the 42 MiniLibX on Linux. They usually appear under Valgrind due to how MLX (and its reliance on XShm) manages memory internally.
+
+• If your game runs correctly, these warnings can be considered harmless. They are artifacts of the MLX library’s handling of shared memory images rather than bugs in your code.
+
+A few suggestions if you’d like to try minimizing them:
+
+1. **Check your cleanup order:**
+ Ensure each image is destroyed only once and that you don’t call extra cleanup functions that the MLX library will handle internally. For example, some versions of MLX expect you to call mlx_destroy_window but not necessarily both mlx_destroy_display and free(game->mlx).
+
+2. **Version upgrade or alternative library:**
+ If possible, consider checking for an updated version of MLX (or using an MLX replacement) that fixes these internal issues.
+
+3. **Use a suppression file:**
+ If the errors are confirmed to be internal and do not affect gameplay, you can suppress them in your Valgrind output.
+
+In summary, if your program works as intended, you can safely ignore these errors or suppress them; they are not typically due to your code changes.
+
+
+==167126== Memcheck, a memory error detector
+==167126== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==167126== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==167126== Command: ./so_long maps/test.ber
+==167126== Parent PID: 154751
+==167126==
+==167126== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==167126==    at 0x4ADB864: writev (writev.c:26)
+==167126==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==167126==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==167126==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==167126==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==167126==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==167126==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==167126==    by 0x112845: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
+==167126==    by 0x112585: mlx_new_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E7E9: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4c355ec is 28 bytes inside a block of size 16,384 alloc'd
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==167126==    by 0x112336: mlx_init (in /home/simon/so_long/so_long)
+==167126==    by 0x10E79B: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Uninitialised value was created by a stack allocation
+==167126==    at 0x112750: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
+==167126==
+==167126== Invalid read of size 4
+==167126==    at 0x113FD0: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda828 is 40 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126== Invalid read of size 8
+==167126==    at 0x486CFAC: XShmDetach (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x11403B: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda838 is 56 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126== Invalid read of size 8
+==167126==    at 0x11403C: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda848 is 72 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126== Invalid read of size 8
+==167126==    at 0x114045: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda800 is 0 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126== Invalid read of size 8
+==167126==    at 0x113FE1: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda900 is 96 bytes inside a block of size 136 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48658DC: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x113FE3: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x11410B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126== Invalid free() / delete / delete[] / realloc()
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48658DC: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x113FE3: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda8a0 is 0 bytes inside a block of size 136 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48658DC: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x113FE3: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x11410B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126== Invalid read of size 8
+==167126==    at 0x113FE4: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda808 is 8 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126== Invalid read of size 8
+==167126==    at 0x113FF1: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda810 is 16 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126== Invalid free() / delete / delete[] / realloc()
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda800 is 0 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126==
+==167126== HEAP SUMMARY:
+==167126==     in use at exit: 174,506 bytes in 1,700 blocks
+==167126==   total heap usage: 3,332 allocs, 1,634 frees, 925,397 bytes allocated
+==167126==
+==167126== LEAK SUMMARY:
+==167126==    definitely lost: 0 bytes in 0 blocks
+==167126==    indirectly lost: 0 bytes in 0 blocks
+==167126==      possibly lost: 0 bytes in 0 blocks
+==167126==    still reachable: 174,506 bytes in 1,700 blocks
+==167126==         suppressed: 0 bytes in 0 blocks
+==167126== Reachable blocks (those to which a pointer was found) are not shown.
+==167126== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==167126==
+==167126== ERROR SUMMARY: 91 errors from 10 contexts (suppressed: 0 from 0)
+==167126==
+==167126== 1 errors in context 1 of 10:
+==167126== Invalid free() / delete / delete[] / realloc()
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda800 is 0 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126==
+==167126== 1 errors in context 2 of 10:
+==167126== Invalid read of size 8
+==167126==    at 0x113FF1: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda810 is 16 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126==
+==167126== 1 errors in context 3 of 10:
+==167126== Invalid read of size 8
+==167126==    at 0x113FE4: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda808 is 8 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126==
+==167126== 1 errors in context 4 of 10:
+==167126== Invalid free() / delete / delete[] / realloc()
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48658DC: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x113FE3: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda8a0 is 0 bytes inside a block of size 136 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48658DC: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x113FE3: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x11410B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126==
+==167126== 1 errors in context 5 of 10:
+==167126== Invalid read of size 8
+==167126==    at 0x113FE1: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda900 is 96 bytes inside a block of size 136 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48658DC: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x113FE3: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x11410B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126==
+==167126== 1 errors in context 6 of 10:
+==167126== Invalid read of size 8
+==167126==    at 0x114045: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda800 is 0 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126==
+==167126== 1 errors in context 7 of 10:
+==167126== Invalid read of size 8
+==167126==    at 0x11403C: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda848 is 72 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126==
+==167126== 1 errors in context 8 of 10:
+==167126== Invalid read of size 8
+==167126==    at 0x486CFAC: XShmDetach (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==167126==    by 0x11403B: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda838 is 56 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126==
+==167126== 1 errors in context 9 of 10:
+==167126== Invalid read of size 4
+==167126==    at 0x113FD0: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E691: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4cda828 is 40 bytes inside a block of size 88 free'd
+==167126==    at 0x484988F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x11400A: mlx_destroy_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E629: destroy_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E683: close_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E764: keypress (in /home/simon/so_long/so_long)
+==167126==    by 0x1126E5: mlx_loop (in /home/simon/so_long/so_long)
+==167126==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Block was alloc'd at
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x1140DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==167126==    by 0x114420: mlx_new_image (in /home/simon/so_long/so_long)
+==167126==    by 0x113179: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==167126==    by 0x113593: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==167126==    by 0x10E900: set_img_data (in /home/simon/so_long/so_long)
+==167126==    by 0x10EF5A: set_coll_texture_values (in /home/simon/so_long/so_long)
+==167126==    by 0x10EAF6: load_images (in /home/simon/so_long/so_long)
+==167126==    by 0x10E823: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==
+==167126==
+==167126== 82 errors in context 10 of 10:
+==167126== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==167126==    at 0x4ADB864: writev (writev.c:26)
+==167126==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==167126==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==167126==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==167126==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==167126==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==167126==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==167126==    by 0x112845: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
+==167126==    by 0x112585: mlx_new_window (in /home/simon/so_long/so_long)
+==167126==    by 0x10E7E9: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Address 0x4c355ec is 28 bytes inside a block of size 16,384 alloc'd
+==167126==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==167126==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==167126==    by 0x112336: mlx_init (in /home/simon/so_long/so_long)
+==167126==    by 0x10E79B: run_game (in /home/simon/so_long/so_long)
+==167126==    by 0x11041F: main (in /home/simon/so_long/so_long)
+==167126==  Uninitialised value was created by a stack allocation
+==167126==    at 0x112750: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
+==167126==
+==167126== ERROR SUMMARY: 91 errors from 10 contexts (suppressed: 0 from 0)

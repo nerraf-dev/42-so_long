@@ -6,12 +6,24 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:10:40 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:48:02 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 19:04:50 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
+
+typedef struct s_img
+{
+	void	*img;
+	char	*filename;
+	int		width;
+	int		height;
+	char	*buffer;
+	int		bpp;
+	int		line_bytes;
+	int		endian;
+}			t_img;
 
 typedef struct s_meta
 {
@@ -52,17 +64,6 @@ typedef struct s_context
 	t_meta		*meta;
 }				t_context;
 
-typedef struct s_img
-{
-	void	*img;
-	char	*filename;
-	int		width;
-	int		height;
-	char	*buffer;
-	int		bpp;
-	int		line_bytes;
-	int		endian;
-}			t_img;
 
 
 

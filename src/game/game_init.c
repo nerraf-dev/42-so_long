@@ -6,12 +6,38 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 18:02:41 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 20:35:38 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 #include <X11/keysym.h> // For keysyms
+
+void	destroy_images(t_game *game, int image_type)
+{
+	int		i;
+	t_img	*images;
+
+	if (image_type == WALL_IMAGES)
+		images = game->images.walls;
+	else if (image_type == FLOOR_IMAGES)
+		images = game->images.floors;
+	else if (image_type == PLAYER_IMAGES)
+		images = game->images.player;
+	else if (image_type == COLLECTIBLE_IMAGES)
+		images = game->images.collectibles;
+	else if (image_type == EXIT_IMAGES)
+		images = game->images.exit;
+	else
+		return ;
+	i = 0;
+	while (i < image_type)
+	{
+		if (images[i].img)
+			mlx_destroy_image(game->mlx, images[i].img);
+		i++;
+	}
+}
 
 /**
  * @brief Closes the game window and frees allocated resources.
@@ -26,6 +52,11 @@ int	close_window(t_game *game)
 {
 	int	i;
 
+	destroy_images(game, WALL_IMAGES);
+	destroy_images(game, FLOOR_IMAGES);
+	destroy_images(game, PLAYER_IMAGES);
+	destroy_images(game, COLLECTIBLE_IMAGES);
+	destroy_images(game, EXIT_IMAGES);
 	if (game->mlx_win)
 		mlx_destroy_window(game->mlx, game->mlx_win);
 	if (game->mlx)
@@ -74,11 +105,11 @@ int	keypress(int keysym, t_game	*game)
 int	run_game(t_context *context)
 {
 	t_game		*game;
-	t_img		img;
+	// t_img		img;
 	int			width;
 	int			height;
-	int			x;
-	int			y;
+	// int			x;
+	// int			y;
 	// void	*img;
 
 	width = 640;
@@ -95,88 +126,91 @@ int	run_game(t_context *context)
 		exit(1);
 	}
 
+	if (load_images(context))
+		return (1);
+	display_images(context);
 
-	x = 0;
-	y = 0;
+	// x = 0;
+	// y = 0;
 
-	// TOP ROW
-	img.filename = WALL_TL;
-	ft_printf("Image path: %s\n", img.filename);
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x, y); // 0, 0
-	mlx_destroy_image(game->mlx, img.img);
+	// // TOP ROW
+	// img.filename = WALL_TL;
+	// ft_printf("Image path: %s\n", img.filename);
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x, y); // 0, 0
+	// mlx_destroy_image(game->mlx, img.img);
 
-	img.filename = WALL_TOP;
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + img.width, y);  // 48, 0
-	mlx_destroy_image(game->mlx, img.img);
+	// img.filename = WALL_TOP;
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + img.width, y);  // 48, 0
+	// mlx_destroy_image(game->mlx, img.img);
 
-	img.filename = WALL_TOP;
-	ft_printf("Image path: %s\n", img.filename);
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 2), y); // 96, 0
-	mlx_destroy_image(game->mlx, img.img);
+	// img.filename = WALL_TOP;
+	// ft_printf("Image path: %s\n", img.filename);
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 2), y); // 96, 0
+	// mlx_destroy_image(game->mlx, img.img);
 
-	img.filename = WALL_TR;
-	ft_printf("Image path: %s\n", img.filename);
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 3), y); // 144, 0
-	mlx_destroy_image(game->mlx, img.img);
+	// img.filename = WALL_TR;
+	// ft_printf("Image path: %s\n", img.filename);
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 3), y); // 144, 0
+	// mlx_destroy_image(game->mlx, img.img);
 
-	// Middle row
-	img.filename = WALL_SIDE_L;
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x, y + img.width); // 0, 48
-	mlx_destroy_image(game->mlx, img.img);
+	// // Middle row
+	// img.filename = WALL_SIDE_L;
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x, y + img.width); // 0, 48
+	// mlx_destroy_image(game->mlx, img.img);
 
-	img.filename = FLOOR_MID;
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + img.width, y + img.width);
-	mlx_destroy_image(game->mlx, img.img);
+	// img.filename = FLOOR_MID;
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + img.width, y + img.width);
+	// mlx_destroy_image(game->mlx, img.img);
 
-	img.filename = FLOOR_MID;
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 2), y + img.width);
-	mlx_destroy_image(game->mlx, img.img);
+	// img.filename = FLOOR_MID;
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 2), y + img.width);
+	// mlx_destroy_image(game->mlx, img.img);
 
-	img.filename = WALL_SIDE_R;
-	ft_printf("Image path: %s\n", img.filename);
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 3), y + img.width);
-	mlx_destroy_image(game->mlx, img.img);
+	// img.filename = WALL_SIDE_R;
+	// ft_printf("Image path: %s\n", img.filename);
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 3), y + img.width);
+	// mlx_destroy_image(game->mlx, img.img);
 
-	// Bottom row
-	img.filename = WALL_BASE_L;
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x, y + (img.width * 2)); // 0, 48
-	mlx_destroy_image(game->mlx, img.img);
+	// // Bottom row
+	// img.filename = WALL_BASE_L;
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x, y + (img.width * 2)); // 0, 48
+	// mlx_destroy_image(game->mlx, img.img);
 
-	img.filename = WALL_BASE;
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + img.width, y + (img.width * 2));
-	mlx_destroy_image(game->mlx, img.img);
+	// img.filename = WALL_BASE;
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + img.width, y + (img.width * 2));
+	// mlx_destroy_image(game->mlx, img.img);
 
-	img.filename = WALL_BASE;
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 2), y + (img.width * 2));
-	mlx_destroy_image(game->mlx, img.img);
+	// img.filename = WALL_BASE;
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 2), y + (img.width * 2));
+	// mlx_destroy_image(game->mlx, img.img);
 
-	img.filename = WALL_BASE_R;
-	ft_printf("Image path: %s\n", img.filename);
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 3), y + (img.width * 2));
-	mlx_destroy_image(game->mlx, img.img);
+	// img.filename = WALL_BASE_R;
+	// ft_printf("Image path: %s\n", img.filename);
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 3), y + (img.width * 2));
+	// mlx_destroy_image(game->mlx, img.img);
 
-	// Plaer start at 1,1
-	img.filename = PLAYER_RIGHT;
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + 52, y  + 48);  // 48 is tile width, player width is smaller
-	mlx_destroy_image(game->mlx, img.img);
+	// // Plaer start at 1,1
+	// img.filename = PLAYER_RIGHT;
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + 52, y  + 48);  // 48 is tile width, player width is smaller
+	// mlx_destroy_image(game->mlx, img.img);
 
-	img.filename = MAP_EXIT;
-	set_img_data(&img, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 2), y + img.width);
-	mlx_destroy_image(game->mlx, img.img);
+	// img.filename = MAP_EXIT;
+	// set_img_data(&img, game);
+	// mlx_put_image_to_window(game->mlx, game->mlx_win, img.img, x + (img.width * 2), y + img.width);
+	// mlx_destroy_image(game->mlx, img.img);
 
 
 	// Display the background (floor)

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:31:59 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 20:19:56 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	cleanup(t_game *game, t_meta *map_data)
 int	main(int argc, char **argv)
 {
 	t_game		game;
-	t_meta	map_data;
+	t_meta		map_data;
 	t_context	context;
 	// int			ret;
 
