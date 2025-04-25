@@ -1,5 +1,5 @@
 /* XPM */
-static char *_w8PXIKquawxgL30cjiJYtFtF9K_output[] = {
+static char *_wDPqy4JsWAelp5n46QZU5VmtDu_output[] = {
 /* columns rows colors chars-per-pixel */
 "32 48 12 1 ",
 "  c None",
@@ -18,6 +18,8 @@ static char *_w8PXIKquawxgL30cjiJYtFtF9K_output[] = {
 "                                ",
 "                                ",
 "                                ",
+"                                ",
+"                                ",
 "        XXXXXXXXXXXXXXXX        ",
 "        XXXXXXXXXXXXXXXX        ",
 "      XX@@##########@@@@XX      ",
@@ -46,8 +48,6 @@ static char *_w8PXIKquawxgL30cjiJYtFtF9K_output[] = {
 "    ......oooooooooooo......    ",
 "  ..%%%%$$............$$%%%%OO  ",
 "  ..%%%%$$............$$%%%%OO  ",
-"  ..%%%%%%%%%%%%%%%%%%%%%%%%OO  ",
-"  ..%%%%%%%%%%%%%%%%%%%%%%%%OO  ",
 "  ..%%%%%%%%%%%%%%%%%%%%%%%%OO  ",
 "  ..%%%%%%%%%%%%%%%%%%%%%%%%OO  ",
 "..**....%%%%%%%%%%%%%%%%....**XX",

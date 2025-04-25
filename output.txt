@@ -40,8 +40,8 @@ Map:
 111111111
 Map is valid.
 MLX initialized.
-Image path: ./assets/walls/top_left.xpm
-Image loaded: ./assets/walls/top_left.xpm
+Image path: ./assets/walls/left_top.xpm
+Image loaded: ./assets/walls/left_top.xpm
 Image dimensions: 48 x 48
 Image data address obtained successfully.
 Image bpp: 32
@@ -51,9 +51,67 @@ Image dimensions: 48 x 48
 Image data address obtained successfully.
 Image bpp: 32
 Image line bytes: 192
-Image loaded: ./assets/walls/mid_left.xpm
+Image path: ./assets/walls/top.xpm
+Image loaded: ./assets/walls/top.xpm
 Image dimensions: 48 x 48
 Image data address obtained successfully.
 Image bpp: 32
 Image line bytes: 192
-Line drawn
+Image path: ./assets/walls/right_top.xpm
+Image loaded: ./assets/walls/right_top.xpm
+Image dimensions: 48 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/walls/side_left.xpm
+Image dimensions: 48 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/floors/gb_mid.xpm
+Image dimensions: 48 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/floors/gb_mid.xpm
+Image dimensions: 48 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 192
+Image path: ./assets/walls/side_right.xpm
+Image loaded: ./assets/walls/side_right.xpm
+Image dimensions: 48 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/walls/base_left.xpm
+Image dimensions: 48 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/walls/base_mid.xpm
+Image dimensions: 48 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/walls/base_mid.xpm
+Image dimensions: 48 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 192
+Image path: ./assets/walls/base_right.xpm
+Image loaded: ./assets/walls/base_right.xpm
+Image dimensions: 48 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/player/walk_right_000.xpm
+Image dimensions: 32 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 128
+Image loaded: ./assets/exit.xpm
+Image dimensions: 48 x 48
+Image data address obtained successfully.
+Image bpp: 32
+Image line bytes: 192

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:10:40 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/22 16:12:15 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 11:11:18 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,10 @@ typedef struct s_context
 	t_game		*game;
 	t_m_data	*map_data;
 }				t_context;
+
+// typedef struct s_textures
+// {
+
+// }
 
 #endif

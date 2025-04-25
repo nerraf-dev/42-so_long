@@ -6,11 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 09:58:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/24 09:59:26 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/25 09:35:43 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/so_long.h"
+#include "../../inc/so_long.h"
 
 // TODO: DELETE THIS
 void	debug_print(t_game *game, t_m_data *map_data)
