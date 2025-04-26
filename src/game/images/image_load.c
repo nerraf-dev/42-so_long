@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 11:54:15 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 13:32:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,9 @@ int	display_images(t_context *context)
 	int		row;
 	t_game	*game;
 	t_meta	*meta;
-	// int		i;
 
 	game = context->game;
 	meta = context->meta;
-	// i = 0;
-	// Display the background (floor)
 	row = 0;
 	while (row < meta->line_count)
 	{
@@ -98,57 +95,15 @@ int	display_images(t_context *context)
 		while (col < meta->line_length)
 		{
 			display_image(game, &game->images.floors[I_MID],
-				col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+				(meta->tile * col), (meta->tile * row));
 			col++;
 		}
 		row++;
 	}
-	// Display the walls
-	row = 0;
-	while (row < meta->line_count)
-	{
-		col = 0;
-		while (col < meta->line_length)
-		{
-			if (row == 0)
-			{
-				if (col == 0)
-					display_image(game, &game->images.walls[I_TL],
-						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
-				else if (col == meta->line_length - 1)
-					display_image(game, &game->images.walls[I_TR],
-						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
-				else
-					display_image(game, &game->images.walls[I_TOP],
-						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
-			}
-			else if (row == meta->line_count - 1)
-			{
-				if (col == 0)
-					display_image(game, &game->images.walls[I_BASE_L],
-						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
-				else if (col == meta->line_length - 1)
-					display_image(game, &game->images.walls[I_BASE_R],
-						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
-				else
-					display_image(game, &game->images.walls[I_BASE],
-						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
-			}
-			else if (col == 0 && row != 0)
-				display_image(game, &game->images.walls[I_SIDE_L],
-					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
-			else if (col == meta->line_length - 1)
-				display_image(game, &game->images.walls[I_SIDE_R],
-					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
-			else if (game->map[row][col] == K_WALL)
-				display_image(game, &game->images.walls[I_MID],
-					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
-			col++;
-		}
-		row++;
-	}
+	display_walls(context);
+
 	// Display the exit
-	row = 0;
+	row = 1;
 	while (row < meta->line_count)
 	{
 		col = 0;
@@ -156,13 +111,13 @@ int	display_images(t_context *context)
 		{
 			if (game->map[row][col] == K_EXIT)
 				display_image(game, &game->images.exit[0],
-					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+					(meta->tile * col), (meta->tile * row));
 			col++;
 		}
 		row++;
 	}
 	// Display the collectibles
-	row = 0;
+	row = 1;
 	while (row < meta->line_count)
 	{
 		col = 0;
@@ -170,13 +125,13 @@ int	display_images(t_context *context)
 		{
 			if (game->map[row][col] == K_COLLECTIBLE)
 				display_image(game, &game->images.collectibles[0],
-					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+					(meta->tile * col), (meta->tile * row));
 			col++;
 		}
 		row++;
 	}
 	// Display the player
-	row = 0;
+	row = 1;
 	while (row < meta->line_count)
 	{
 		col = 0;
@@ -184,7 +139,7 @@ int	display_images(t_context *context)
 		{
 			if (game->map[row][col] == K_START)
 				display_image(game, &game->images.player[1],
-					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+					(meta->tile * col), (meta->tile * row));
 			col++;
 		}
 		row++;

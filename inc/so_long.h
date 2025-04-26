@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 10:31:31 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 12:13:36 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <fcntl.h>
 
 // Key for map validation
+# define K_EMPTY '0'
 # define K_WALL '1'
 # define K_START 'P'
 # define K_EXIT 'E'

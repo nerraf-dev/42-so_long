@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 12:03:48 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 13:21:44 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ int	run_game(t_context *context)
 	game = context->game;
 	meta = context->meta;
 	game->mlx = mlx_init();
-	width = meta->tile_size * meta->line_length;
-	height = meta->tile_size * meta->line_count;
+	width = meta->tile * meta->line_length + 20;
+	height = meta->tile * meta->line_count;
 	if (game->mlx == NULL)
 		return (1);
 	ft_printf("MLX initialized.\n");
