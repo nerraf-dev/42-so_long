@@ -2,7 +2,7 @@
 Visited array:
 **********
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+1 0 1 0 1 0 0 0 0 0 0 0 1 0 0 1 
 1 0 1 0 0 1 0 0 1 1 0 0 0 0 1 1 
 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
 1 1 0 0 0 0 1 1 1 0 0 0 0 0 1 1 
@@ -44,7 +44,7 @@ Exit found: 1
 --Exit count: 1
 Map:
 1111111111111111
-100P000000001001
+101P100000001001
 1010010011000011
 1000000000100001
 1100001110000011
@@ -60,63 +60,11 @@ Map:
 1100001100100101
 1111111111111111
 Map is valid.
-Image loaded: ./assets/walls/left_top.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/top.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/right_top.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/side_left.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
 Image loaded: ./assets/walls/mid.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
-Image loaded: ./assets/walls/side_right.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/base_left.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/base_mid.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/base_right.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/floors/gb_tl.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/floors/gb_top.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/floors/gb_tr.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/floors/gb_left.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
 Image loaded: ./assets/floors/gb_mid.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/floors/gb_right.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
@@ -144,3 +92,429 @@ Image loaded: ./assets/exit.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
+Player is starting at: 3, 1Down key pressed
+old pos: 3, 1 
+updated player pos: 3, 2new pos: 3, 2 
+Down key pressed
+old pos: 3, 2 
+updated player pos: 3, 3new pos: 3, 3 
+Right key pressed
+old pos: 3, 3 
+updated player pos: 4, 3new pos: 4, 3 
+Right key pressed
+old pos: 4, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Left key pressed
+old pos: 5, 3 
+updated player pos: 4, 3new pos: 4, 3 
+Left key pressed
+old pos: 4, 3 
+updated player pos: 3, 3new pos: 3, 3 
+Left key pressed
+old pos: 3, 3 
+updated player pos: 2, 3new pos: 2, 3 
+Left key pressed
+old pos: 2, 3 
+updated player pos: 1, 3new pos: 1, 3 
+Up key pressed
+old pos: 1, 3 
+updated player pos: 1, 2new pos: 1, 2 
+Up key pressed
+old pos: 1, 2 
+updated player pos: 1, 1new pos: 1, 1 
+Down key pressed
+old pos: 1, 1 
+updated player pos: 1, 2new pos: 1, 2 
+Down key pressed
+old pos: 1, 2 
+updated player pos: 1, 3new pos: 1, 3 
+Down key pressed
+old pos: 1, 3 
+new pos: 1, 3 
+Right key pressed
+old pos: 1, 3 
+updated player pos: 2, 3new pos: 2, 3 
+Right key pressed
+old pos: 2, 3 
+updated player pos: 3, 3new pos: 3, 3 
+Right key pressed
+old pos: 3, 3 
+updated player pos: 4, 3new pos: 4, 3 
+Right key pressed
+old pos: 4, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Right key pressed
+old pos: 5, 3 
+updated player pos: 6, 3new pos: 6, 3 
+Right key pressed
+old pos: 6, 3 
+updated player pos: 7, 3new pos: 7, 3 
+Right key pressed
+old pos: 7, 3 
+updated player pos: 8, 3new pos: 8, 3 
+Right key pressed
+old pos: 8, 3 
+updated player pos: 9, 3new pos: 9, 3 
+Left key pressed
+old pos: 9, 3 
+updated player pos: 8, 3new pos: 8, 3 
+Left key pressed
+old pos: 8, 3 
+updated player pos: 7, 3new pos: 7, 3 
+Left key pressed
+old pos: 7, 3 
+updated player pos: 6, 3new pos: 6, 3 
+Left key pressed
+old pos: 6, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Left key pressed
+old pos: 5, 3 
+updated player pos: 4, 3new pos: 4, 3 
+Right key pressed
+old pos: 4, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Right key pressed
+old pos: 5, 3 
+updated player pos: 6, 3new pos: 6, 3 
+Right key pressed
+old pos: 6, 3 
+updated player pos: 7, 3new pos: 7, 3 
+Right key pressed
+old pos: 7, 3 
+updated player pos: 8, 3new pos: 8, 3 
+Left key pressed
+old pos: 8, 3 
+updated player pos: 7, 3new pos: 7, 3 
+Down key pressed
+old pos: 7, 3 
+new pos: 7, 3 
+Right key pressed
+old pos: 7, 3 
+updated player pos: 8, 3new pos: 8, 3 
+Left key pressed
+old pos: 8, 3 
+updated player pos: 7, 3new pos: 7, 3 
+Down key pressed
+old pos: 7, 3 
+new pos: 7, 3 
+Left key pressed
+old pos: 7, 3 
+updated player pos: 6, 3new pos: 6, 3 
+Down key pressed
+old pos: 6, 3 
+new pos: 6, 3 
+Left key pressed
+old pos: 6, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Left key pressed
+old pos: 5, 3 
+updated player pos: 4, 3new pos: 4, 3 
+Left key pressed
+old pos: 4, 3 
+updated player pos: 3, 3new pos: 3, 3 
+Left key pressed
+old pos: 3, 3 
+updated player pos: 2, 3new pos: 2, 3 
+Right key pressed
+old pos: 2, 3 
+updated player pos: 3, 3new pos: 3, 3 
+Right key pressed
+old pos: 3, 3 
+updated player pos: 4, 3new pos: 4, 3 
+Right key pressed
+old pos: 4, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Right key pressed
+old pos: 5, 3 
+updated player pos: 6, 3new pos: 6, 3 
+Left key pressed
+old pos: 6, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Right key pressed
+old pos: 5, 3 
+updated player pos: 6, 3new pos: 6, 3 
+Left key pressed
+old pos: 6, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Right key pressed
+old pos: 5, 3 
+updated player pos: 6, 3new pos: 6, 3 
+Left key pressed
+old pos: 6, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Right key pressed
+old pos: 5, 3 
+updated player pos: 6, 3new pos: 6, 3 
+Left key pressed
+old pos: 6, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Right key pressed
+old pos: 5, 3 
+updated player pos: 6, 3new pos: 6, 3 
+Left key pressed
+old pos: 6, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Right key pressed
+old pos: 5, 3 
+updated player pos: 6, 3new pos: 6, 3 
+Left key pressed
+old pos: 6, 3 
+updated player pos: 5, 3new pos: 5, 3 
+Right key pressed
+old pos: 5, 3 
+updated player pos: 6, 3new pos: 6, 3 
+Right key pressed
+old pos: 6, 3 
+updated player pos: 7, 3new pos: 7, 3 
+Right key pressed
+old pos: 7, 3 
+updated player pos: 8, 3new pos: 8, 3 
+Right key pressed
+old pos: 8, 3 
+updated player pos: 9, 3new pos: 9, 3 
+Right key pressed
+old pos: 9, 3 
+new pos: 9, 3 
+Right key pressed
+old pos: 9, 3 
+new pos: 9, 3 
+Right key pressed
+old pos: 9, 3 
+new pos: 9, 3 
+Right key pressed
+old pos: 9, 3 
+new pos: 9, 3 
+Right key pressed
+old pos: 9, 3 
+new pos: 9, 3 
+Right key pressed
+old pos: 9, 3 
+new pos: 9, 3 
+Right key pressed
+old pos: 9, 3 
+new pos: 9, 3 
+Right key pressed
+old pos: 9, 3 
+new pos: 9, 3 
+Down key pressed
+old pos: 9, 3 
+updated player pos: 9, 4new pos: 9, 4 
+Down key pressed
+old pos: 9, 4 
+new pos: 9, 4 
+Down key pressed
+old pos: 9, 4 
+new pos: 9, 4 
+Right key pressed
+old pos: 9, 4 
+updated player pos: 10, 4new pos: 10, 4 
+Right key pressed
+old pos: 10, 4 
+updated player pos: 11, 4new pos: 11, 4 
+Right key pressed
+old pos: 11, 4 
+updated player pos: 12, 4new pos: 12, 4 
+Right key pressed
+old pos: 12, 4 
+updated player pos: 13, 4new pos: 13, 4 
+Right key pressed
+old pos: 13, 4 
+new pos: 13, 4 
+Down key pressed
+old pos: 13, 4 
+updated player pos: 13, 5new pos: 13, 5 
+Down key pressed
+old pos: 13, 5 
+updated player pos: 13, 6new pos: 13, 6 
+Down key pressed
+old pos: 13, 6 
+new pos: 13, 6 
+Down key pressed
+old pos: 13, 6 
+new pos: 13, 6 
+Down key pressed
+old pos: 13, 6 
+new pos: 13, 6 
+Down key pressed
+old pos: 13, 6 
+new pos: 13, 6 
+Down key pressed
+old pos: 13, 6 
+new pos: 13, 6 
+Down key pressed
+old pos: 13, 6 
+new pos: 13, 6 
+Down key pressed
+old pos: 13, 6 
+new pos: 13, 6 
+Down key pressed
+old pos: 13, 6 
+new pos: 13, 6 
+Down key pressed
+old pos: 13, 6 
+new pos: 13, 6 
+Down key pressed
+old pos: 13, 6 
+new pos: 13, 6 
+Right key pressed
+old pos: 13, 6 
+updated player pos: 14, 6new pos: 14, 6 
+Right key pressed
+old pos: 14, 6 
+new pos: 14, 6 
+Right key pressed
+old pos: 14, 6 
+new pos: 14, 6 
+Right key pressed
+old pos: 14, 6 
+new pos: 14, 6 
+Right key pressed
+old pos: 14, 6 
+new pos: 14, 6 
+Right key pressed
+old pos: 14, 6 
+new pos: 14, 6 
+Down key pressed
+old pos: 14, 6 
+updated player pos: 14, 7new pos: 14, 7 
+Down key pressed
+old pos: 14, 7 
+updated player pos: 14, 8new pos: 14, 8 
+Down key pressed
+old pos: 14, 8 
+updated player pos: 14, 9new pos: 14, 9 
+Down key pressed
+old pos: 14, 9 
+updated player pos: 14, 10new pos: 14, 10 
+Down key pressed
+old pos: 14, 10 
+updated player pos: 14, 11new pos: 14, 11 
+Down key pressed
+old pos: 14, 11 
+updated player pos: 14, 12new pos: 14, 12 
+Down key pressed
+old pos: 14, 12 
+new pos: 14, 12 
+Down key pressed
+old pos: 14, 12 
+new pos: 14, 12 
+Down key pressed
+old pos: 14, 12 
+new pos: 14, 12 
+Down key pressed
+old pos: 14, 12 
+new pos: 14, 12 
+Down key pressed
+old pos: 14, 12 
+new pos: 14, 12 
+Left key pressed
+old pos: 14, 12 
+updated player pos: 13, 12new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Left key pressed
+old pos: 13, 12 
+new pos: 13, 12 
+Down key pressed
+old pos: 13, 12 
+updated player pos: 13, 13new pos: 13, 13 
+Down key pressed
+old pos: 13, 13 
+new pos: 13, 13 
+Down key pressed
+old pos: 13, 13 
+new pos: 13, 13 
+Down key pressed
+old pos: 13, 13 
+new pos: 13, 13 
+Left key pressed
+old pos: 13, 13 
+updated player pos: 12, 13new pos: 12, 13 
+Left key pressed
+old pos: 12, 13 
+updated player pos: 11, 13new pos: 11, 13 
+Left key pressed
+old pos: 11, 13 
+new pos: 11, 13 
+Left key pressed
+old pos: 11, 13 
+new pos: 11, 13 
+Left key pressed
+old pos: 11, 13 
+new pos: 11, 13 
+Left key pressed
+old pos: 11, 13 
+new pos: 11, 13 
+Right key pressed
+old pos: 11, 13 
+updated player pos: 12, 13new pos: 12, 13 
+Right key pressed
+old pos: 12, 13 
+updated player pos: 13, 13new pos: 13, 13 
+Right key pressed
+old pos: 13, 13 
+new pos: 13, 13 
+Up key pressed
+old pos: 13, 13 
+updated player pos: 13, 12new pos: 13, 12 
+Up key pressed
+old pos: 13, 12 
+updated player pos: 13, 11new pos: 13, 11 
+Up key pressed
+old pos: 13, 11 
+updated player pos: 13, 10new pos: 13, 10 
+Up key pressed
+old pos: 13, 10 
+updated player pos: 13, 9new pos: 13, 9 
+Up key pressed
+old pos: 13, 9 
+updated player pos: 13, 8new pos: 13, 8 
+Up key pressed
+old pos: 13, 8 
+new pos: 13, 8 
+Left key pressed
+old pos: 13, 8 
+updated player pos: 12, 8new pos: 12, 8 
+Left key pressed
+old pos: 12, 8 
+updated player pos: 11, 8new pos: 11, 8 
+Left key pressed
+old pos: 11, 8 
+updated player pos: 10, 8new pos: 10, 8 

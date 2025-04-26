@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 11:21:35 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 16:53:34 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	flood_fill(t_game *data, t_meta *meta)
 	context.game = data;
 	context.meta = meta;
 	queue = init_queue();
-	enqueue(queue, meta->start_pos[0], meta->start_pos[1]);
-	data->visited[meta->start_pos[1]][meta->start_pos[0]] = 1;
+	enqueue(queue, meta->player_pos[0], meta->player_pos[1]);
+	data->visited[meta->player_pos[1]][meta->player_pos[0]] = 1;
 	while (queue->front)
 	{
 		node = dequeue(queue);

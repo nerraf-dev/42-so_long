@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 15:39:17 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 17:00:17 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ int		display_floor(t_context *context);
 int		display_exit(t_context *context);
 int		display_collectibles(t_context *context);
 int		display_player(t_context *context);
+int		move_player(t_context *context, int new_x, int new_y);
 #endif

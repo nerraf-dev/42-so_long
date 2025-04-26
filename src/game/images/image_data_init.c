@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 17:22:52 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 16:03:07 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 16:27:14 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,21 @@
  */
 t_img	*set_wall_texture_values(t_game *game)
 {
-	static t_img	textures[9];
+	static t_img	textures[1];
 	int				i;
 
 	i = 0;
-	textures[0].filename = WALL_TL;
-	textures[1].filename = WALL_TOP;
-	textures[2].filename = WALL_TR;
-	textures[3].filename = WALL_SIDE_L;
-	textures[4].filename = WALL_MID;
-	textures[5].filename = WALL_SIDE_R;
-	textures[6].filename = WALL_BASE_L;
-	textures[7].filename = WALL_BASE;
-	textures[8].filename = WALL_BASE_R;
-	while (i < 9)
+	textures[0].filename = WALL_MID;
+	// textures[0].filename = WALL_TL;
+	// textures[1].filename = WALL_TOP;
+	// textures[2].filename = WALL_TR;
+	// textures[3].filename = WALL_SIDE_L;
+	// textures[4].filename = WALL_MID;
+	// textures[5].filename = WALL_SIDE_R;
+	// textures[6].filename = WALL_BASE_L;
+	// textures[7].filename = WALL_BASE;
+	// textures[8].filename = WALL_BASE_R;
+	while (i < WALL_IMAGES)
 	{
 		if (set_img_data(&textures[i], game))
 		{
@@ -54,17 +55,18 @@ t_img	*set_wall_texture_values(t_game *game)
 
 t_img	*set_floor_texture_values(t_game *game)
 {
-	static t_img	textures[6];
+	static t_img	textures[1];
 	int				i;
 
 	i = 0;
-	textures[0].filename = FLOOR_TL;
-	textures[1].filename = FLOOR_TOP;
-	textures[2].filename = FLOOR_TR;
-	textures[3].filename = FLOOR_LEFT;
-	textures[4].filename = FLOOR_MID;
-	textures[5].filename = FLOOR_RIGHT;
-	while (i < 6)
+	textures[0].filename = FLOOR_MID;
+	// textures[0].filename = FLOOR_TL;
+	// textures[1].filename = FLOOR_TOP;
+	// textures[2].filename = FLOOR_TR;
+	// textures[3].filename = FLOOR_LEFT;
+	// textures[4].filename = FLOOR_MID;
+	// textures[5].filename = FLOOR_RIGHT;
+	while (i < FLOOR_IMAGES)
 	{
 		set_img_data(&textures[i], game);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 15:33:41 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 17:13:09 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,28 @@ int	close_window(t_context *context)
  */
 int	keypress(int keysym, t_context *context)
 {
-	// Check if the pressed key is the ESC key
-	// if (keycode == 65307) // 65307 is the keycode for ESC
 	if (keysym == XK_Escape)
 		close_window(context);
+	if (keysym == XK_Up)
+	{
+		ft_printf("Up key pressed\n");
+		move_player(context, context->meta->player_pos[0], context->meta->player_pos[1] - 1);
+	}
+	else if (keysym == XK_Down)
+	{
+		ft_printf("Down key pressed\n");
+		move_player(context, context->meta->player_pos[0], context->meta->player_pos[1] + 1);
+	}
+	else if (keysym == XK_Left)
+	{
+		ft_printf("Left key pressed\n");
+		move_player(context, context->meta->player_pos[0] - 1, context->meta->player_pos[1]);
+	}
+	else if (keysym == XK_Right)
+	{
+		ft_printf("Right key pressed\n");
+		move_player(context, context->meta->player_pos[0] + 1, context->meta->player_pos[1]);
+	}
 	return (0);
 }
 
@@ -112,9 +130,9 @@ int	run_game(t_context *context)
 	if (load_images(context))
 		return (1);
 	display_images(context);
+	ft_printf("Player is starting at: %d, %d", meta->player_pos[0], meta->player_pos[1]);
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, context);
-	mlx_hook(game->mlx_win, 2, 1L << 0,
-		(int (*)(int, void *))keypress, context);
+	mlx_key_hook(game->mlx_win, keypress, context);
 	// mlx_loop_hook();
 	mlx_loop(game->mlx);
 	return (0);

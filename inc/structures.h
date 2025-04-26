@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:10:40 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 13:21:44 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 16:53:34 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_meta
 	int		start_count;
 	int		exit_count;
 	int		collectible_count;
-	int		start_pos[2];
+	int		player_pos[2];
 	int		exit_pos[2];
 	int		tile;
 }			t_meta;

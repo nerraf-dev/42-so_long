@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:52:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:28:23 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 16:53:34 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	set_start(t_meta *flags, int x, int y)
 {
 	flags->start_count++;
-	flags->start_pos[0] = x;
-	flags->start_pos[1] = y;
+	flags->player_pos[0] = x;
+	flags->player_pos[1] = y;
 }
 
 static void	set_exit(t_meta *flags, int x, int y)
