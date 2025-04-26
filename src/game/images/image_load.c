@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 15:40:46 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 16:02:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,35 +22,19 @@ int	load_images(t_context *context)
 	game = context->game;
 	game->images.walls = set_wall_texture_values(game);
 	if (game->images.walls == NULL)
-	{
-		ft_printf("Error: Failed to load wall images.\n");
-		return (1);
-	}
+		return (set_error("Failed to load wall images."));
 	game->images.floors = set_floor_texture_values(game);
 	if (game->images.floors == NULL)
-	{
-		ft_printf("Error: Failed to load floor images.\n");
-		return (1);
-	}
+		return (set_error("Error: Failed to load floor images."));
 	game->images.player = set_static_player_texture_values(game);
 	if (game->images.player == NULL)
-	{
-		ft_printf("Error: Failed to load player images.\n");
-		return (1);
-	}
+		return (set_error("Error: Failed to load player images."));
 	game->images.collectibles = set_coll_texture_values(game);
 	if (game->images.collectibles == NULL)
-	{
-		ft_printf("Error: Failed to load collectible images.\n");
-		return (1);
-	}
+		return (set_error("Error: Failed to load collectible images."));
 	game->images.exit = set_exit_texture_values(game);
 	if (game->images.exit == NULL)
-	{
-		ft_printf("Error: Failed to load exit images.\n");
-		return (1);
-	}
-	ft_printf("Images loaded successfully.\n");
+		return (set_error("Error: Failed to load exit images."));
 	return (0);
 }
 

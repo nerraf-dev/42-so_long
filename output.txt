@@ -144,4 +144,3 @@ Image loaded: ./assets/exit.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
-Images loaded successfully.

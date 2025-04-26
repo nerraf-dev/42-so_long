@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 17:22:52 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 19:12:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 16:03:07 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ t_img	*set_wall_texture_values(t_game *game)
 		}
 		i++;
 	}
-
 	return (textures);
-
 }
 
 t_img	*set_floor_texture_values(t_game *game)
