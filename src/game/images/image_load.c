@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 13:32:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 15:40:46 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,6 @@ int	load_images(t_context *context)
 		ft_printf("Error: Failed to load exit images.\n");
 		return (1);
 	}
-	// if (!game->images.walls || !game->images.floors || !game->images.player
-	// 	|| !game->images.collectibles || !game->images.exit)
-	// 	return (1);
 	ft_printf("Images loaded successfully.\n");
 	return (0);
 }
@@ -79,75 +76,15 @@ int	display_image(t_game *game, t_img *img, int x, int y)
 	return (0);
 }
 
+
+
 int	display_images(t_context *context)
 {
-	int		col;
-	int		row;
-	t_game	*game;
-	t_meta	*meta;
-
-	game = context->game;
-	meta = context->meta;
-	row = 0;
-	while (row < meta->line_count)
-	{
-		col = 0;
-		while (col < meta->line_length)
-		{
-			display_image(game, &game->images.floors[I_MID],
-				(meta->tile * col), (meta->tile * row));
-			col++;
-		}
-		row++;
-	}
+	display_floor(context);
 	display_walls(context);
-
-	// Display the exit
-	row = 1;
-	while (row < meta->line_count)
-	{
-		col = 0;
-		while (col < meta->line_length)
-		{
-			if (game->map[row][col] == K_EXIT)
-				display_image(game, &game->images.exit[0],
-					(meta->tile * col), (meta->tile * row));
-			col++;
-		}
-		row++;
-	}
-	// Display the collectibles
-	row = 1;
-	while (row < meta->line_count)
-	{
-		col = 0;
-		while (col < meta->line_length)
-		{
-			if (game->map[row][col] == K_COLLECTIBLE)
-				display_image(game, &game->images.collectibles[0],
-					(meta->tile * col), (meta->tile * row));
-			col++;
-		}
-		row++;
-	}
-	// Display the player
-	row = 1;
-	while (row < meta->line_count)
-	{
-		col = 0;
-		while (col < meta->line_length)
-		{
-			if (game->map[row][col] == K_START)
-				display_image(game, &game->images.player[1],
-					(meta->tile * col), (meta->tile * row));
-			col++;
-		}
-		row++;
-	}
-
-	// Iterate through the map and display the relevant images
-
-
+	display_exit(context);
+	display_collectibles(context);
+	display_player(context);
 	return (0);
 }
 

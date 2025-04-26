@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 13:21:44 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 15:33:41 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,12 @@ void	destroy_images(t_game *game, int image_type)
  */
 int	close_window(t_context *context)
 {
-	// int	i;
-
-	// destroy_images(context->game, WALL_IMAGES);
-	// destroy_images(context->game, FLOOR_IMAGES);
-	// destroy_images(context->game, PLAYER_IMAGES);
-	// destroy_images(context->game, COLLECTIBLE_IMAGES);
-	// destroy_images(context->game, EXIT_IMAGES);
 	if (context->game->mlx_win)
 		mlx_destroy_window(context->game->mlx, context->game->mlx_win);
 	if (context->game->mlx)
 		mlx_destroy_display(context->game->mlx);
 	if (context->game->mlx)
 		free(context->game->mlx);
-	// i = 0;
-	// while (game->map[i])
-	// {
-	// 	free(game->map[i]);
-	// 	i++;
-	// }
-	// free(game->map);
 	cleanup(context->game, context->meta);
 	exit(0);
 	return (0);
@@ -117,24 +103,19 @@ int	run_game(t_context *context)
 	height = meta->tile * meta->line_count;
 	if (game->mlx == NULL)
 		return (1);
-	ft_printf("MLX initialized.\n");
 	game->mlx_win = mlx_new_window(game->mlx, width, height, "- so_long -");
 	if (game->mlx_win == NULL)
 	{
 		free(game->mlx);
 		exit(1);
 	}
-
 	if (load_images(context))
 		return (1);
 	display_images(context);
-
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, context);
 	mlx_hook(game->mlx_win, 2, 1L << 0,
 		(int (*)(int, void *))keypress, context);
-
 	// mlx_loop_hook();
 	mlx_loop(game->mlx);
-
 	return (0);
 }

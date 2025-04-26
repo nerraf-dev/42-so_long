@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/26 12:44:12 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/26 15:43:10 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,14 @@ GAME_DIR = $(SRC_DIR)/game
 GUI_DIR = $(SRC_DIR)/gui
 
 
+
 # Source files in each category
 GAME_FILES = game_init.c \
 			images/image_management.c \
 			images/image_load.c \
 			images/image_data_init.c \
-			images/display_walls.c \
+			images/display_wall_textures.c \
+			images/display_textures.c \
 
 # GUI_FILES = window.c \
 
