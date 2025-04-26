@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 20:19:56 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 10:47:04 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,9 @@ void	cleanup(t_game *game, t_meta *map_data)
 		i = 0;
 		while (i < map_data->line_count)
 		{
-			free(game->visited[i++]);
+			if (game->visited[i])
+				free(game->visited[i]);
+			i++;
 		}
 		free(game->visited);
 		game->visited = NULL;

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:28:07 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 11:21:35 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,11 @@ int	validate_path(t_game *game, t_meta *meta)
 	print_visited(game->visited, meta->line_count, meta->line_length);
 	flood_fill(game, meta);
 	debug_print(game, meta);
+	free_visited(game->visited, meta->line_count);
+	game->visited = NULL;
 	if (check_exit(game, meta))
 		return (1);
 	if (check_collectibles(game, meta))
 		return (1);
-	free_visited(game->visited, meta->line_count);
 	return (0);
 }

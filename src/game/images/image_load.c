@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 19:53:51 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 11:38:41 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,57 @@ int	display_images(t_context *context)
 		col = 0;
 		while (col < meta->line_length)
 		{
-			display_image(game, &game->images.floors[I_MID], col + (TILE_SIZE * col), row + (TILE_SIZE * row));
-			// mlx_put_image_to_window(game->mlx, game->mlx_win,
-			// 	game->images.floors[i].img, x + (TILE_SIZE * x), y);
+			display_image(game, &game->images.floors[I_MID],
+				col + (TILE_SIZE * col), row + (TILE_SIZE * row));
 			col++;
 		}
 		row++;
 	}
-
-	// Display the walls, exit (and start)
+	// Display the walls
+	row = 0;
+	while (row < meta->line_count)
+	{
+		col = 0;
+		while (col < meta->line_length)
+		{
+			if (row == 0)
+			{
+				if (col == 0)
+					display_image(game, &game->images.walls[I_TL],
+						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+				else if (col == meta->line_length - 1)
+					display_image(game, &game->images.walls[I_TR],
+						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+				else
+					display_image(game, &game->images.walls[I_TOP],
+						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+			}
+			else if (row == meta->line_count - 1)
+			{
+				if (col == 0)
+					display_image(game, &game->images.walls[I_BASE_L],
+						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+				else if (col == meta->line_length - 1)
+					display_image(game, &game->images.walls[I_BASE_R],
+						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+				else
+					display_image(game, &game->images.walls[I_BASE],
+						col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+			}
+			else if (col == 0 && row != 0)
+				display_image(game, &game->images.walls[I_SIDE_L],
+					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+			else if (col == meta->line_length - 1)
+				display_image(game, &game->images.walls[I_SIDE_R],
+					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+			else if (game->map[row][col] == K_WALL)
+				display_image(game, &game->images.walls[I_MID],
+					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+			col++;
+		}
+		row++;
+	}
+	// Display the exit
 	// Display the collectibles
 	// Display the player
 

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:14:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 10:31:31 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	print_visited(int **visited, int height, int width);
 // **************************************** //
 
 int		set_error(const char *message);
+void	cleanup(t_game *game, t_meta *map_data);
 int		open_file(const char *file, int flags);
 int		parse_and_validate(t_game *game, t_meta *flags);
 int		validate_map(t_game *game, t_meta *data);

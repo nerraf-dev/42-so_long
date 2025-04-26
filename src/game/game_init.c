@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 20:35:38 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 11:40:13 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,28 +48,29 @@ void	destroy_images(t_game *game, int image_type)
  *
  * @return Does not return.
  */
-int	close_window(t_game *game)
+int	close_window(t_context *context)
 {
-	int	i;
+	// int	i;
 
-	destroy_images(game, WALL_IMAGES);
-	destroy_images(game, FLOOR_IMAGES);
-	destroy_images(game, PLAYER_IMAGES);
-	destroy_images(game, COLLECTIBLE_IMAGES);
-	destroy_images(game, EXIT_IMAGES);
-	if (game->mlx_win)
-		mlx_destroy_window(game->mlx, game->mlx_win);
-	if (game->mlx)
-		mlx_destroy_display(game->mlx);
-	if (game->mlx)
-		free(game->mlx);
-	i = 0;
-	while (game->map[i])
-	{
-		free(game->map[i]);
-		i++;
-	}
-	free(game->map);
+	// destroy_images(context->game, WALL_IMAGES);
+	// destroy_images(context->game, FLOOR_IMAGES);
+	// destroy_images(context->game, PLAYER_IMAGES);
+	// destroy_images(context->game, COLLECTIBLE_IMAGES);
+	// destroy_images(context->game, EXIT_IMAGES);
+	if (context->game->mlx_win)
+		mlx_destroy_window(context->game->mlx, context->game->mlx_win);
+	if (context->game->mlx)
+		mlx_destroy_display(context->game->mlx);
+	if (context->game->mlx)
+		free(context->game->mlx);
+	// i = 0;
+	// while (game->map[i])
+	// {
+	// 	free(game->map[i]);
+	// 	i++;
+	// }
+	// free(game->map);
+	cleanup(context->game, context->meta);
 	exit(0);
 	return (0);
 }
@@ -84,12 +85,12 @@ int	close_window(t_game *game)
  *
  * @return 0
  */
-int	keypress(int keysym, t_game	*game)
+int	keypress(int keysym, t_context *context)
 {
 	// Check if the pressed key is the ESC key
 	// if (keycode == 65307) // 65307 is the keycode for ESC
 	if (keysym == XK_Escape)
-		close_window(game);
+		close_window(context);
 	return (0);
 }
 
@@ -112,8 +113,8 @@ int	run_game(t_context *context)
 	// int			y;
 	// void	*img;
 
-	width = 640;
-	height = 480;
+	width = TILE_SIZE * context->meta->line_length;
+	height = TILE_SIZE * context->meta->line_count;
 	game = context->game;
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
@@ -219,9 +220,9 @@ int	run_game(t_context *context)
 	// Display the player
 
 
-	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, game);
+	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, context);
 	mlx_hook(game->mlx_win, 2, 1L << 0,
-		(int (*)(int, void *))keypress, game);
+		(int (*)(int, void *))keypress, context);
 
 	// mlx_loop_hook();
 	mlx_loop(game->mlx);
