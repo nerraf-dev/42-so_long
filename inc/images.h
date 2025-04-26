@@ -6,13 +6,14 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:05:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 20:26:15 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 11:56:21 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMAGES_H
 # define IMAGES_H
 
+// TILE_SIZE: size of each tile in pixels
 # define TILE_SIZE 48
 # define ASSETS_DIR "./assets/"
 // WALLS

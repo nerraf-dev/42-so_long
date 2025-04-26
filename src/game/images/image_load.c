@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 11:38:41 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 11:54:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,47 @@ int	display_images(t_context *context)
 		row++;
 	}
 	// Display the exit
+	row = 0;
+	while (row < meta->line_count)
+	{
+		col = 0;
+		while (col < meta->line_length)
+		{
+			if (game->map[row][col] == K_EXIT)
+				display_image(game, &game->images.exit[0],
+					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+			col++;
+		}
+		row++;
+	}
 	// Display the collectibles
+	row = 0;
+	while (row < meta->line_count)
+	{
+		col = 0;
+		while (col < meta->line_length)
+		{
+			if (game->map[row][col] == K_COLLECTIBLE)
+				display_image(game, &game->images.collectibles[0],
+					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+			col++;
+		}
+		row++;
+	}
 	// Display the player
+	row = 0;
+	while (row < meta->line_count)
+	{
+		col = 0;
+		while (col < meta->line_length)
+		{
+			if (game->map[row][col] == K_START)
+				display_image(game, &game->images.player[1],
+					col + (TILE_SIZE * col), row + (TILE_SIZE * row));
+			col++;
+		}
+		row++;
+	}
 
 	// Iterate through the map and display the relevant images
 

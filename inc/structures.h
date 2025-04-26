@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:10:40 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 19:04:50 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 12:00:39 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_meta
 	int		collectible_count;
 	int		start_pos[2];
 	int		exit_pos[2];
+	int		tile_size;
 }			t_meta;
 
 typedef struct s_images
