@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 15:44:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 17:21:05 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	run_game(t_context *context)
 	return (1);
 	display_images(context);
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, context);
-	mlx_hook(game->mlx_win, 2, KeyPressMask, (int (*)(void *))keypress, context);
+	mlx_hook(game->mlx_win, 2, KeyPressMask, keypress, context);
 	// mlx_key_hook(game->mlx_win, keypress, context);
 	// mlx_loop_hook();
 	mlx_loop(game->mlx);

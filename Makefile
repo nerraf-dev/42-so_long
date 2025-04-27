@@ -6,11 +6,11 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/04/26 17:00:38 by sfarren          ###   ########.fr        #
+#    Updated: 2025/04/27 17:25:06 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang
+CC := $(shell command -v clang 2>/dev/null || command -v gcc 2>/dev/null || command -v cc 2>/dev/null)
 CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = lib/libft
 MLX_DIR = lib/mlx
