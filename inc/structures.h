@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:10:40 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 15:15:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 17:50:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_game
 	void		*mlx_win;
 	char		*file;
 	int			**visited;
+	t_img		*frame_buffer;
 	t_images	images;
 	int			player_pos[2];
 	int			collectibles;
