@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 22:05:31 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 22:08:20 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	run_game(t_context *context)
 		exit(1);
 	}
 	if (load_images(context))
-	return (1);
+		return (1);
 	display_images(context);
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, context);
 	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, keypress, context);

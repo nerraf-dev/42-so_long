@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:12:30 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 22:02:11 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 22:09:33 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	check_exit(t_game *game)
 {
 	if (game->exit == 0)
 	{
-		// free_visited(game->visited, meta->line_count);
 		game->visited = NULL;
 		return (set_error("Exit not reachable from start position.\n"));
 	}
