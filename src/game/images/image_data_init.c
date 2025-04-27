@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 17:22:52 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 16:27:14 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 18:43:21 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ t_img	*set_static_player_texture_values(t_game *game)
 	{
 		set_img_data(&textures[i], game);
 		i++;
+		textures[i].transparency = 1;
 	}
 	return (textures);
 }

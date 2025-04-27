@@ -1,466 +1,92 @@
-==115253== Memcheck, a memory error detector
-==115253== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==115253== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==115253== Command: ./so_long maps/16x16.ber
-==115253== Parent PID: 1284
-==115253== 
-==115253== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==115253==    at 0x4ADB864: writev (writev.c:26)
-==115253==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==115253==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==115253==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==115253==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==115253==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==115253==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==115253==    by 0x113125: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
-==115253==    by 0x112E65: mlx_new_window (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8AF: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Address 0x4c40efc is 28 bytes inside a block of size 16,384 alloc'd
-==115253==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==115253==    by 0x112C16: mlx_init (in /home/simon/so_long/so_long)
-==115253==    by 0x10E849: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x113030: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1110D5: ft_memset (src/ft_memset.c:30)
-==115253==    by 0x10F1E7: display_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E907: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a heap allocation
-==115253==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x10EEA1: set_frame_buffer (in /home/simon/so_long/so_long)
-==115253==    by 0x10F102: load_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1119DE: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:48)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x111A06: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:53)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Use of uninitialised value of size 8
-==115253==    at 0x111A53: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:59)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1110D5: ft_memset (src/ft_memset.c:30)
-==115253==    by 0x10F1E7: display_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10EB55: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a heap allocation
-==115253==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x10EEA1: set_frame_buffer (in /home/simon/so_long/so_long)
-==115253==    by 0x10F102: load_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1110D5: ft_memset (src/ft_memset.c:30)
-==115253==    by 0x10F1E7: display_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10EB55: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E7FF: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a heap allocation
-==115253==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x10EEA1: set_frame_buffer (in /home/simon/so_long/so_long)
-==115253==    by 0x10F102: load_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1110D5: ft_memset (src/ft_memset.c:30)
-==115253==    by 0x10F1E7: display_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10EB55: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E7BF: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a heap allocation
-==115253==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x10EEA1: set_frame_buffer (in /home/simon/so_long/so_long)
-==115253==    by 0x10F102: load_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1119DE: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:48)
-==115253==    by 0x111A28: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:55)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x111A06: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:53)
-==115253==    by 0x111A28: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:55)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Use of uninitialised value of size 8
-==115253==    at 0x111A53: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:59)
-==115253==    by 0x111A28: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:55)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1119DE: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:48)
-==115253==    by 0x111A45: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:56)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x111A06: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:53)
-==115253==    by 0x111A45: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:56)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Use of uninitialised value of size 8
-==115253==    at 0x111A53: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:59)
-==115253==    by 0x111A45: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:56)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1110D5: ft_memset (src/ft_memset.c:30)
-==115253==    by 0x10F1E7: display_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10EB55: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E73F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a heap allocation
-==115253==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x10EEA1: set_frame_buffer (in /home/simon/so_long/so_long)
-==115253==    by 0x10F102: load_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== HEAP SUMMARY:
-==115253==     in use at exit: 2,064 bytes in 19 blocks
-==115253==   total heap usage: 1,370 allocs, 1,351 frees, 133,821 bytes allocated
-==115253== 
-==115253== LEAK SUMMARY:
-==115253==    definitely lost: 0 bytes in 0 blocks
-==115253==    indirectly lost: 0 bytes in 0 blocks
-==115253==      possibly lost: 0 bytes in 0 blocks
-==115253==    still reachable: 2,064 bytes in 19 blocks
-==115253==         suppressed: 0 bytes in 0 blocks
-==115253== Reachable blocks (those to which a pointer was found) are not shown.
-==115253== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==115253== 
-==115253== ERROR SUMMARY: 156 errors from 15 contexts (suppressed: 0 from 0)
-==115253== 
-==115253== 1 errors in context 1 of 15:
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1110D5: ft_memset (src/ft_memset.c:30)
-==115253==    by 0x10F1E7: display_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10EB55: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E7BF: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a heap allocation
-==115253==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x10EEA1: set_frame_buffer (in /home/simon/so_long/so_long)
-==115253==    by 0x10F102: load_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 1 errors in context 2 of 15:
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1110D5: ft_memset (src/ft_memset.c:30)
-==115253==    by 0x10F1E7: display_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E907: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a heap allocation
-==115253==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x10EEA1: set_frame_buffer (in /home/simon/so_long/so_long)
-==115253==    by 0x10F102: load_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 2 errors in context 3 of 15:
-==115253== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==115253==    at 0x4ADB864: writev (writev.c:26)
-==115253==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==115253==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==115253==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==115253==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==115253==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==115253==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==115253==    by 0x113125: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
-==115253==    by 0x112E65: mlx_new_window (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8AF: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Address 0x4c40efc is 28 bytes inside a block of size 16,384 alloc'd
-==115253==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==115253==    by 0x112C16: mlx_init (in /home/simon/so_long/so_long)
-==115253==    by 0x10E849: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x113030: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 4 errors in context 4 of 15:
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1110D5: ft_memset (src/ft_memset.c:30)
-==115253==    by 0x10F1E7: display_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10EB55: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E73F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a heap allocation
-==115253==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x10EEA1: set_frame_buffer (in /home/simon/so_long/so_long)
-==115253==    by 0x10F102: load_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 8 errors in context 5 of 15:
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1110D5: ft_memset (src/ft_memset.c:30)
-==115253==    by 0x10F1E7: display_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10EB55: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E7FF: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a heap allocation
-==115253==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x10EEA1: set_frame_buffer (in /home/simon/so_long/so_long)
-==115253==    by 0x10F102: load_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 9 errors in context 6 of 15:
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1110D5: ft_memset (src/ft_memset.c:30)
-==115253==    by 0x10F1E7: display_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10EB55: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a heap allocation
-==115253==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==115253==    by 0x10EEA1: set_frame_buffer (in /home/simon/so_long/so_long)
-==115253==    by 0x10F102: load_images (in /home/simon/so_long/so_long)
-==115253==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 9 errors in context 7 of 15:
-==115253== Use of uninitialised value of size 8
-==115253==    at 0x111A53: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:59)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 13 errors in context 8 of 15:
-==115253== Use of uninitialised value of size 8
-==115253==    at 0x111A53: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:59)
-==115253==    by 0x111A45: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:56)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 13 errors in context 9 of 15:
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x111A06: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:53)
-==115253==    by 0x111A45: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:56)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 13 errors in context 10 of 15:
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1119DE: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:48)
-==115253==    by 0x111A45: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:56)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 13 errors in context 11 of 15:
-==115253== Use of uninitialised value of size 8
-==115253==    at 0x111A53: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:59)
-==115253==    by 0x111A28: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:55)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 13 errors in context 12 of 15:
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x111A06: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:53)
-==115253==    by 0x111A28: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:55)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 13 errors in context 13 of 15:
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1119DE: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:48)
-==115253==    by 0x111A28: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:55)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 22 errors in context 14 of 15:
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x111A06: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:53)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== 
-==115253== 22 errors in context 15 of 15:
-==115253== Conditional jump or move depends on uninitialised value(s)
-==115253==    at 0x1119DE: ft_printnbr_base (src/ft_printf/ft_printnbr_base.c:48)
-==115253==    by 0x1113F2: format_handler (src/ft_printf/ft_printf.c:18)
-==115253==    by 0x11131E: ft_printf (src/ft_printf/ft_printf.c:50)
-==115253==    by 0x10EB30: move_player (in /home/simon/so_long/so_long)
-==115253==    by 0x10E77F: keypress (in /home/simon/so_long/so_long)
-==115253==    by 0x112FC5: mlx_loop (in /home/simon/so_long/so_long)
-==115253==    by 0x10E955: run_game (in /home/simon/so_long/so_long)
-==115253==    by 0x110CAB: main (in /home/simon/so_long/so_long)
-==115253==  Uninitialised value was created by a stack allocation
-==115253==    at 0x110BF0: main (in /home/simon/so_long/so_long)
-==115253== 
-==115253== ERROR SUMMARY: 156 errors from 15 contexts (suppressed: 0 from 0)
+==134796== Memcheck, a memory error detector
+==134796== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==134796== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==134796== Command: ./so_long maps/16x16.ber
+==134796== Parent PID: 1284
+==134796== 
+==134796== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==134796==    at 0x4ADB864: writev (writev.c:26)
+==134796==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==134796==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==134796==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==134796==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==134796==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==134796==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==134796==    by 0x1132A5: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
+==134796==    by 0x112FE5: mlx_new_window (in /home/simon/so_long/so_long)
+==134796==    by 0x10E8AF: run_game (in /home/simon/so_long/so_long)
+==134796==    by 0x110E2B: main (in /home/simon/so_long/so_long)
+==134796==  Address 0x4c40efc is 28 bytes inside a block of size 16,384 alloc'd
+==134796==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==134796==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==134796==    by 0x112D96: mlx_init (in /home/simon/so_long/so_long)
+==134796==    by 0x10E849: run_game (in /home/simon/so_long/so_long)
+==134796==    by 0x110E2B: main (in /home/simon/so_long/so_long)
+==134796==  Uninitialised value was created by a stack allocation
+==134796==    at 0x1131B0: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
+==134796== 
+==134796== Conditional jump or move depends on uninitialised value(s)
+==134796==    at 0x111255: ft_memset (src/ft_memset.c:30)
+==134796==    by 0x10F117: display_images (in /home/simon/so_long/so_long)
+==134796==    by 0x10E907: run_game (in /home/simon/so_long/so_long)
+==134796==    by 0x110E2B: main (in /home/simon/so_long/so_long)
+==134796==  Uninitialised value was created by a heap allocation
+==134796==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==134796==    by 0x10EDA1: set_frame_buffer (in /home/simon/so_long/so_long)
+==134796==    by 0x10F002: load_images (in /home/simon/so_long/so_long)
+==134796==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
+==134796==    by 0x110E2B: main (in /home/simon/so_long/so_long)
+==134796== 
+==134796== 
+==134796== HEAP SUMMARY:
+==134796==     in use at exit: 2,064 bytes in 19 blocks
+==134796==   total heap usage: 1,214 allocs, 1,195 frees, 108,797 bytes allocated
+==134796== 
+==134796== LEAK SUMMARY:
+==134796==    definitely lost: 0 bytes in 0 blocks
+==134796==    indirectly lost: 0 bytes in 0 blocks
+==134796==      possibly lost: 0 bytes in 0 blocks
+==134796==    still reachable: 2,064 bytes in 19 blocks
+==134796==         suppressed: 0 bytes in 0 blocks
+==134796== Reachable blocks (those to which a pointer was found) are not shown.
+==134796== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==134796== 
+==134796== ERROR SUMMARY: 3 errors from 2 contexts (suppressed: 0 from 0)
+==134796== 
+==134796== 1 errors in context 1 of 2:
+==134796== Conditional jump or move depends on uninitialised value(s)
+==134796==    at 0x111255: ft_memset (src/ft_memset.c:30)
+==134796==    by 0x10F117: display_images (in /home/simon/so_long/so_long)
+==134796==    by 0x10E907: run_game (in /home/simon/so_long/so_long)
+==134796==    by 0x110E2B: main (in /home/simon/so_long/so_long)
+==134796==  Uninitialised value was created by a heap allocation
+==134796==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==134796==    by 0x10EDA1: set_frame_buffer (in /home/simon/so_long/so_long)
+==134796==    by 0x10F002: load_images (in /home/simon/so_long/so_long)
+==134796==    by 0x10E8E9: run_game (in /home/simon/so_long/so_long)
+==134796==    by 0x110E2B: main (in /home/simon/so_long/so_long)
+==134796== 
+==134796== 
+==134796== 2 errors in context 2 of 2:
+==134796== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==134796==    at 0x4ADB864: writev (writev.c:26)
+==134796==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==134796==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==134796==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==134796==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==134796==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==134796==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==134796==    by 0x1132A5: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
+==134796==    by 0x112FE5: mlx_new_window (in /home/simon/so_long/so_long)
+==134796==    by 0x10E8AF: run_game (in /home/simon/so_long/so_long)
+==134796==    by 0x110E2B: main (in /home/simon/so_long/so_long)
+==134796==  Address 0x4c40efc is 28 bytes inside a block of size 16,384 alloc'd
+==134796==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==134796==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==134796==    by 0x112D96: mlx_init (in /home/simon/so_long/so_long)
+==134796==    by 0x10E849: run_game (in /home/simon/so_long/so_long)
+==134796==    by 0x110E2B: main (in /home/simon/so_long/so_long)
+==134796==  Uninitialised value was created by a stack allocation
+==134796==    at 0x1131B0: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
+==134796== 
+==134796== ERROR SUMMARY: 3 errors from 2 contexts (suppressed: 0 from 0)

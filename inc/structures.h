@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:10:40 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 17:50:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 18:40:09 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_img
 	int		bpp;
 	int		line_bytes;
 	int		endian;
+	int		transparency;
 }			t_img;
 
 typedef struct s_meta
