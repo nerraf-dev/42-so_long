@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 21:39:57 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 22:05:31 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	run_game(t_context *context)
 	height = meta->tile * meta->line_count;
 	if (game->mlx == NULL)
 		return (1);
-	game->mlx_win = mlx_new_window(game->mlx, width, height, "- so_long -");
+	game->mlx_win = mlx_new_window(game->mlx, width, height, "- ./so_long -");
 	if (game->mlx_win == NULL)
 	{
 		free(game->mlx);
