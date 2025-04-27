@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:12:30 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:14:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 15:14:16 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
  */
 int	check_exit(t_game *game, t_meta *meta)
 {
+	ft_printf(" check_exit -Exit count: %d\n", game->exit);
 	if (game->exit == 0)
 	{
 		free_visited(game->visited, meta->line_count);
@@ -30,6 +31,7 @@ int	check_exit(t_game *game, t_meta *meta)
 		ft_printf("Exit not found.\n");
 		return (set_error("Error: Exit not reachable from start position.\n"));
 	}
+	game->exit = 0;
 	return (0);
 }
 
@@ -52,6 +54,7 @@ int	check_collectibles(t_game *game, t_meta *meta)
 		ft_printf("Not all collectibles found.\n");
 		return (set_error("Error: Not all collectibles reachable.\n"));
 	}
+	game->collectibles = 0;
 	return (0);
 }
 

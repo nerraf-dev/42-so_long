@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 15:24:52 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 17:18:35 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 15:21:13 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,31 +83,30 @@ int	display_collectibles(t_context *context)
 		}
 		row++;
 	}
-
 	return (0);
 }
 
 int	display_player(t_context *context)
 {
-	int		col;
-	int		row;
 	t_game	*game;
 	t_meta	*meta;
 
 	game = context->game;
 	meta = context->meta;
-	row = 0;
-	while (row < meta->line_count)
-	{
-		col = 0;
-		while (col < meta->line_length)
-		{
-			if (game->map[row][col] == K_START)
-				display_image(game, &game->images.player[1],
-					(meta->tile * col) + 8, (meta->tile * row));
-			col++;
-		}
-		row++;
-	}
+	display_image(game, &game->images.player[1],
+		(meta->tile * game->player_pos[0]) + 8,
+		(meta->tile * game->player_pos[1]));
 	return (0);
 }
+
+// int	display_level_end(t_context *context)
+// {
+// 	t_game	*game;
+// 	t_meta	*meta;
+
+// 	game = context->game;
+// 	meta = context->meta;
+// 	display_image(game, &game->images.exit[0], 100, 100);
+
+// 	return (0);
+// }

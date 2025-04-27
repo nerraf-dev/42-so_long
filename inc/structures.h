@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:10:40 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 16:53:34 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 15:15:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_meta
 	int		start_count;
 	int		exit_count;
 	int		collectible_count;
-	int		player_pos[2];
+	int		start_pos[2];
 	int		exit_pos[2];
 	int		tile;
 }			t_meta;
@@ -44,6 +44,7 @@ typedef struct s_images
 	t_img	*player;
 	t_img	*collectibles;
 	t_img	*exit;
+	t_img	*ui;
 }			t_images;
 
 typedef struct s_game
@@ -54,9 +55,11 @@ typedef struct s_game
 	char		*file;
 	int			**visited;
 	t_images	images;
+	int			player_pos[2];
 	int			collectibles;
 	int			exit;
 	int			error;
+	int			steps;
 }				t_game;
 
 typedef struct s_context
@@ -64,8 +67,6 @@ typedef struct s_context
 	t_game		*game;
 	t_meta		*meta;
 }				t_context;
-
-
 
 
 #endif

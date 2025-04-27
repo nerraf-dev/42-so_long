@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:05:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 16:27:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 14:10:40 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,7 @@
 # define I_EXIT 0
 # define I_COLLECTIBLE 1
 
-#endif
+// UI
+# define LEVEL_END "./assets/ui/level_complete.xpm"
+
+#endif 

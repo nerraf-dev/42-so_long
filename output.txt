@@ -42,6 +42,7 @@ Collectibles found: 1
 Collectible count: 1
 Exit found: 1
 --Exit count: 1
+ check_exit -Exit count: 1
 Map:
 1111111111111111
 101P100000001001
@@ -92,429 +93,197 @@ Image loaded: ./assets/exit.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
-Player is starting at: 3, 1Down key pressed
+Player is starting at: 3, 1
+Down key pressed
 old pos: 3, 1 
-updated player pos: 3, 2new pos: 3, 2 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 3, 2
+The player started at: 3, 1
+new pos: 3, 2 
 Down key pressed
 old pos: 3, 2 
-updated player pos: 3, 3new pos: 3, 3 
-Right key pressed
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 3, 3
+The player started at: 3, 1
+new pos: 3, 3 
+Down key pressed
 old pos: 3, 3 
-updated player pos: 4, 3new pos: 4, 3 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 3, 4
+The player started at: 3, 1
+new pos: 3, 4 
 Right key pressed
-old pos: 4, 3 
-updated player pos: 5, 3new pos: 5, 3 
+old pos: 3, 4 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 4, 4
+The player started at: 3, 1
+new pos: 4, 4 
+Right key pressed
+old pos: 4, 4 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 5, 4
+The player started at: 3, 1
+new pos: 5, 4 
+Down key pressed
+old pos: 5, 4 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 5, 5
+The player started at: 3, 1
+new pos: 5, 5 
+Down key pressed
+old pos: 5, 5 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 5, 6
+The player started at: 3, 1
+new pos: 5, 6 
 Left key pressed
-old pos: 5, 3 
-updated player pos: 4, 3new pos: 4, 3 
+old pos: 5, 6 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 4, 6
+The player started at: 3, 1
+new pos: 4, 6 
 Left key pressed
-old pos: 4, 3 
-updated player pos: 3, 3new pos: 3, 3 
+old pos: 4, 6 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 3, 6
+The player started at: 3, 1
+new pos: 3, 6 
 Left key pressed
-old pos: 3, 3 
-updated player pos: 2, 3new pos: 2, 3 
-Left key pressed
-old pos: 2, 3 
-updated player pos: 1, 3new pos: 1, 3 
+old pos: 3, 6 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 2, 6
+The player started at: 3, 1
+new pos: 2, 6 
+Down key pressed
+old pos: 2, 6 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 2, 7
+The player started at: 3, 1
+new pos: 2, 7 
+Right key pressed
+old pos: 2, 7 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 3, 7
+The player started at: 3, 1
+new pos: 3, 7 
+Right key pressed
+old pos: 3, 7 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 4, 7
+The player started at: 3, 1
+new pos: 4, 7 
+Down key pressed
+old pos: 4, 7 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 4, 8
+The player started at: 3, 1
+new pos: 4, 8 
+Down key pressed
+old pos: 4, 8 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 4, 9
+The player started at: 3, 1
+new pos: 4, 9 
+Right key pressed
+old pos: 4, 9 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 5, 9
+The player started at: 3, 1
+new pos: 5, 9 
+Right key pressed
+old pos: 5, 9 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 6, 9
+The player started at: 3, 1
+new pos: 6, 9 
+Right key pressed
+old pos: 6, 9 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 7, 9
+The player started at: 3, 1
+new pos: 7, 9 
 Up key pressed
-old pos: 1, 3 
-updated player pos: 1, 2new pos: 1, 2 
+old pos: 7, 9 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 7, 8
+The player started at: 3, 1
+new pos: 7, 8 
 Up key pressed
-old pos: 1, 2 
-updated player pos: 1, 1new pos: 1, 1 
-Down key pressed
-old pos: 1, 1 
-updated player pos: 1, 2new pos: 1, 2 
-Down key pressed
-old pos: 1, 2 
-updated player pos: 1, 3new pos: 1, 3 
-Down key pressed
-old pos: 1, 3 
-new pos: 1, 3 
-Right key pressed
-old pos: 1, 3 
-updated player pos: 2, 3new pos: 2, 3 
-Right key pressed
-old pos: 2, 3 
-updated player pos: 3, 3new pos: 3, 3 
-Right key pressed
-old pos: 3, 3 
-updated player pos: 4, 3new pos: 4, 3 
-Right key pressed
-old pos: 4, 3 
-updated player pos: 5, 3new pos: 5, 3 
-Right key pressed
-old pos: 5, 3 
-updated player pos: 6, 3new pos: 6, 3 
-Right key pressed
-old pos: 6, 3 
-updated player pos: 7, 3new pos: 7, 3 
-Right key pressed
-old pos: 7, 3 
-updated player pos: 8, 3new pos: 8, 3 
-Right key pressed
-old pos: 8, 3 
-updated player pos: 9, 3new pos: 9, 3 
-Left key pressed
-old pos: 9, 3 
-updated player pos: 8, 3new pos: 8, 3 
-Left key pressed
-old pos: 8, 3 
-updated player pos: 7, 3new pos: 7, 3 
-Left key pressed
-old pos: 7, 3 
-updated player pos: 6, 3new pos: 6, 3 
-Left key pressed
-old pos: 6, 3 
-updated player pos: 5, 3new pos: 5, 3 
-Left key pressed
-old pos: 5, 3 
-updated player pos: 4, 3new pos: 4, 3 
-Right key pressed
-old pos: 4, 3 
-updated player pos: 5, 3new pos: 5, 3 
-Right key pressed
-old pos: 5, 3 
-updated player pos: 6, 3new pos: 6, 3 
-Right key pressed
-old pos: 6, 3 
-updated player pos: 7, 3new pos: 7, 3 
-Right key pressed
-old pos: 7, 3 
-updated player pos: 8, 3new pos: 8, 3 
-Left key pressed
-old pos: 8, 3 
-updated player pos: 7, 3new pos: 7, 3 
-Down key pressed
-old pos: 7, 3 
-new pos: 7, 3 
-Right key pressed
-old pos: 7, 3 
-updated player pos: 8, 3new pos: 8, 3 
-Left key pressed
-old pos: 8, 3 
-updated player pos: 7, 3new pos: 7, 3 
-Down key pressed
-old pos: 7, 3 
-new pos: 7, 3 
-Left key pressed
-old pos: 7, 3 
-updated player pos: 6, 3new pos: 6, 3 
-Down key pressed
-old pos: 6, 3 
-new pos: 6, 3 
-Left key pressed
-old pos: 6, 3 
-updated player pos: 5, 3new pos: 5, 3 
-Left key pressed
-old pos: 5, 3 
-updated player pos: 4, 3new pos: 4, 3 
-Left key pressed
-old pos: 4, 3 
-updated player pos: 3, 3new pos: 3, 3 
-Left key pressed
-old pos: 3, 3 
-updated player pos: 2, 3new pos: 2, 3 
-Right key pressed
-old pos: 2, 3 
-updated player pos: 3, 3new pos: 3, 3 
-Right key pressed
-old pos: 3, 3 
-updated player pos: 4, 3new pos: 4, 3 
-Right key pressed
-old pos: 4, 3 
-updated player pos: 5, 3new pos: 5, 3 
-Right key pressed
-old pos: 5, 3 
-updated player pos: 6, 3new pos: 6, 3 
-Left key pressed
-old pos: 6, 3 
-updated player pos: 5, 3new pos: 5, 3 
-Right key pressed
-old pos: 5, 3 
-updated player pos: 6, 3new pos: 6, 3 
-Left key pressed
-old pos: 6, 3 
-updated player pos: 5, 3new pos: 5, 3 
-Right key pressed
-old pos: 5, 3 
-updated player pos: 6, 3new pos: 6, 3 
-Left key pressed
-old pos: 6, 3 
-updated player pos: 5, 3new pos: 5, 3 
-Right key pressed
-old pos: 5, 3 
-updated player pos: 6, 3new pos: 6, 3 
-Left key pressed
-old pos: 6, 3 
-updated player pos: 5, 3new pos: 5, 3 
-Right key pressed
-old pos: 5, 3 
-updated player pos: 6, 3new pos: 6, 3 
-Left key pressed
-old pos: 6, 3 
-updated player pos: 5, 3new pos: 5, 3 
-Right key pressed
-old pos: 5, 3 
-updated player pos: 6, 3new pos: 6, 3 
-Left key pressed
-old pos: 6, 3 
-updated player pos: 5, 3new pos: 5, 3 
-Right key pressed
-old pos: 5, 3 
-updated player pos: 6, 3new pos: 6, 3 
-Right key pressed
-old pos: 6, 3 
-updated player pos: 7, 3new pos: 7, 3 
-Right key pressed
-old pos: 7, 3 
-updated player pos: 8, 3new pos: 8, 3 
-Right key pressed
-old pos: 8, 3 
-updated player pos: 9, 3new pos: 9, 3 
-Right key pressed
-old pos: 9, 3 
-new pos: 9, 3 
-Right key pressed
-old pos: 9, 3 
-new pos: 9, 3 
-Right key pressed
-old pos: 9, 3 
-new pos: 9, 3 
-Right key pressed
-old pos: 9, 3 
-new pos: 9, 3 
-Right key pressed
-old pos: 9, 3 
-new pos: 9, 3 
-Right key pressed
-old pos: 9, 3 
-new pos: 9, 3 
-Right key pressed
-old pos: 9, 3 
-new pos: 9, 3 
-Right key pressed
-old pos: 9, 3 
-new pos: 9, 3 
-Down key pressed
-old pos: 9, 3 
-updated player pos: 9, 4new pos: 9, 4 
-Down key pressed
-old pos: 9, 4 
-new pos: 9, 4 
-Down key pressed
-old pos: 9, 4 
-new pos: 9, 4 
-Right key pressed
-old pos: 9, 4 
-updated player pos: 10, 4new pos: 10, 4 
-Right key pressed
-old pos: 10, 4 
-updated player pos: 11, 4new pos: 11, 4 
-Right key pressed
-old pos: 11, 4 
-updated player pos: 12, 4new pos: 12, 4 
-Right key pressed
-old pos: 12, 4 
-updated player pos: 13, 4new pos: 13, 4 
-Right key pressed
-old pos: 13, 4 
-new pos: 13, 4 
-Down key pressed
-old pos: 13, 4 
-updated player pos: 13, 5new pos: 13, 5 
-Down key pressed
-old pos: 13, 5 
-updated player pos: 13, 6new pos: 13, 6 
-Down key pressed
-old pos: 13, 6 
-new pos: 13, 6 
-Down key pressed
-old pos: 13, 6 
-new pos: 13, 6 
-Down key pressed
-old pos: 13, 6 
-new pos: 13, 6 
-Down key pressed
-old pos: 13, 6 
-new pos: 13, 6 
-Down key pressed
-old pos: 13, 6 
-new pos: 13, 6 
-Down key pressed
-old pos: 13, 6 
-new pos: 13, 6 
-Down key pressed
-old pos: 13, 6 
-new pos: 13, 6 
-Down key pressed
-old pos: 13, 6 
-new pos: 13, 6 
-Down key pressed
-old pos: 13, 6 
-new pos: 13, 6 
-Down key pressed
-old pos: 13, 6 
-new pos: 13, 6 
-Right key pressed
-old pos: 13, 6 
-updated player pos: 14, 6new pos: 14, 6 
-Right key pressed
-old pos: 14, 6 
-new pos: 14, 6 
-Right key pressed
-old pos: 14, 6 
-new pos: 14, 6 
-Right key pressed
-old pos: 14, 6 
-new pos: 14, 6 
-Right key pressed
-old pos: 14, 6 
-new pos: 14, 6 
-Right key pressed
-old pos: 14, 6 
-new pos: 14, 6 
-Down key pressed
-old pos: 14, 6 
-updated player pos: 14, 7new pos: 14, 7 
-Down key pressed
-old pos: 14, 7 
-updated player pos: 14, 8new pos: 14, 8 
-Down key pressed
-old pos: 14, 8 
-updated player pos: 14, 9new pos: 14, 9 
-Down key pressed
-old pos: 14, 9 
-updated player pos: 14, 10new pos: 14, 10 
-Down key pressed
-old pos: 14, 10 
-updated player pos: 14, 11new pos: 14, 11 
-Down key pressed
-old pos: 14, 11 
-updated player pos: 14, 12new pos: 14, 12 
-Down key pressed
-old pos: 14, 12 
-new pos: 14, 12 
-Down key pressed
-old pos: 14, 12 
-new pos: 14, 12 
-Down key pressed
-old pos: 14, 12 
-new pos: 14, 12 
-Down key pressed
-old pos: 14, 12 
-new pos: 14, 12 
-Down key pressed
-old pos: 14, 12 
-new pos: 14, 12 
-Left key pressed
-old pos: 14, 12 
-updated player pos: 13, 12new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Left key pressed
-old pos: 13, 12 
-new pos: 13, 12 
-Down key pressed
-old pos: 13, 12 
-updated player pos: 13, 13new pos: 13, 13 
-Down key pressed
-old pos: 13, 13 
-new pos: 13, 13 
-Down key pressed
-old pos: 13, 13 
-new pos: 13, 13 
-Down key pressed
-old pos: 13, 13 
-new pos: 13, 13 
-Left key pressed
-old pos: 13, 13 
-updated player pos: 12, 13new pos: 12, 13 
-Left key pressed
-old pos: 12, 13 
-updated player pos: 11, 13new pos: 11, 13 
-Left key pressed
-old pos: 11, 13 
-new pos: 11, 13 
-Left key pressed
-old pos: 11, 13 
-new pos: 11, 13 
-Left key pressed
-old pos: 11, 13 
-new pos: 11, 13 
-Left key pressed
-old pos: 11, 13 
-new pos: 11, 13 
-Right key pressed
-old pos: 11, 13 
-updated player pos: 12, 13new pos: 12, 13 
-Right key pressed
-old pos: 12, 13 
-updated player pos: 13, 13new pos: 13, 13 
-Right key pressed
-old pos: 13, 13 
-new pos: 13, 13 
+old pos: 7, 8 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 7, 7
+The player started at: 3, 1
+new pos: 7, 7 
 Up key pressed
-old pos: 13, 13 
-updated player pos: 13, 12new pos: 13, 12 
-Up key pressed
-old pos: 13, 12 
-updated player pos: 13, 11new pos: 13, 11 
-Up key pressed
-old pos: 13, 11 
-updated player pos: 13, 10new pos: 13, 10 
-Up key pressed
-old pos: 13, 10 
-updated player pos: 13, 9new pos: 13, 9 
-Up key pressed
-old pos: 13, 9 
-updated player pos: 13, 8new pos: 13, 8 
-Up key pressed
-old pos: 13, 8 
-new pos: 13, 8 
-Left key pressed
-old pos: 13, 8 
-updated player pos: 12, 8new pos: 12, 8 
-Left key pressed
-old pos: 12, 8 
-updated player pos: 11, 8new pos: 11, 8 
-Left key pressed
-old pos: 11, 8 
-updated player pos: 10, 8new pos: 10, 8 
+old pos: 7, 7 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 7, 6
+The player started at: 3, 1
+new pos: 7, 6 
+Right key pressed
+old pos: 7, 6 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 8, 6
+The player started at: 3, 1
+new pos: 8, 6 
+Right key pressed
+old pos: 8, 6 
+New Cell Content: 0
+Collectibles: 0
+Exit: 0
+updated player pos: 9, 6
+The player started at: 3, 1
+new pos: 9, 6 
+Right key pressed
+old pos: 9, 6 
+New Cell Content: E
+Collectibles: 0
+Exit: 0
+Exit found! Total: 1
+updated player pos: 10, 6
+The player started at: 3, 1
+new pos: 10, 6 

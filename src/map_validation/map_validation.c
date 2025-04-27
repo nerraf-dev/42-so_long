@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:11:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 15:15:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,31 @@ void	check_line_length(const char *line, int expected_length)
  * @param flags Pointer to the map flags structure.
  */
 // void	validate_map(char **map, t_map_flags *flags)
-int	validate_map(t_game *game, t_meta *data)
+int	validate_map(t_game *game, t_meta *meta)
 {
 	int	i;
 
 	i = 0;
 	while (game->map[i])
 	{
-		if (i == 0 || i == data->line_count - 1)
+		if (i == 0 || i == meta->line_count - 1)
 		{
-			if (check_walls(game->map[i], data->line_length))
+			if (check_walls(game->map[i], meta->line_length))
 				return (1);
 		}
 		else
 		{
 			if (game->map[i][0] != K_WALL
-				|| game->map[i][data->line_length - 1] != K_WALL)
+				|| game->map[i][meta->line_length - 1] != K_WALL)
 				return (1);
-			if (check_valid_chars(game->map[i], data, i))
+			if (check_valid_chars(game->map[i], meta, i))
 				return (1);
 		}
 		i++;
 	}
-	if (data->collectible_count == 0)
+	game->player_pos[0] = meta->start_pos[0];
+	game->player_pos[1] = meta->start_pos[1];
+	if (meta->collectible_count == 0)
 		return (set_error("Map must contain at least one collectible.\n"));
 	return (0);
 }

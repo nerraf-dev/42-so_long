@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:58:35 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 19:14:42 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 12:51:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@
 int	set_img_data(t_img *img, t_game *game)
 {
 	if (img->filename == NULL)
-	{
-		ft_putstr_fd("Error: Image path is NULL.\n", 2);
-		return (1);
-	}
+		return (set_error("Error: Image filename is NULL."));
 	img->img = mlx_xpm_file_to_image(game->mlx, img->filename,
 			&img->width, &img->height);
 	if (img->img == NULL)
@@ -51,4 +48,3 @@ int	set_img_data(t_img *img, t_game *game)
 	ft_printf("Image line bytes: %d\n", img->line_bytes);
 	return (0);
 }
-

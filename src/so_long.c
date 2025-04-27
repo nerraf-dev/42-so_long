@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 16:53:34 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 15:15:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	init_data(t_game *game, t_meta *map_data)
 	game->images.walls = NULL;
 	game->images.floors = NULL;
 	game->images.player = NULL;
+	game->player_pos[0] = 0;
+	game->player_pos[1] = 0;
 	game->collectibles = 0;
 	game->exit = 0;
 	game->error = 0;
@@ -37,8 +39,8 @@ void	init_data(t_game *game, t_meta *map_data)
 	map_data->start_count = 0;
 	map_data->exit_count = 0;
 	map_data->collectible_count = 0;
-	map_data->player_pos[0] = 0;
-	map_data->player_pos[1] = 0;
+	map_data->start_pos[0] = 0;
+	map_data->start_pos[1] = 0;
 	map_data->exit_pos[0] = 0;
 	map_data->exit_pos[1] = 0;
 	map_data->tile = TILE_SIZE ;
