@@ -6,14 +6,15 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:15:18 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:14:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 22:01:51 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-/**
- * @brief Reads the map file to determine its dimensions.
+
+
+/* @brief Reads the map file to determine its dimensions.
  *
  * Ensures the map is rectangular and that the first line is surrounded by
  * walls. Exits with an error if the map is too small or invalid.
@@ -28,7 +29,14 @@ int	map_dimensions(const char *file, t_meta *meta)
 
 	fd = open_file(file, O_RDONLY);
 	line = get_next_line(fd);
-	meta->line_length = ft_strlen(line) - 1;
+	if (!line)
+	{
+		close(fd);
+		return (set_error("Failed to read map file.\n"));
+	}
+	line = get_next_line(fd);
+	if (line)
+		meta->line_length = ft_strlen(line) - 1;
 	while (line != NULL)
 	{
 		if (meta->line_count == 0)

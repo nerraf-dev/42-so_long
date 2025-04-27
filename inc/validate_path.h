@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 16:46:23 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:14:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 21:51:11 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_queue			*init_queue(void);
 void			clear_queue(t_queue *queue);
 int				get_cell_type(t_game *data, t_meta *meta, int x, int y);
 // Helper utils
-int				check_exit(t_game *game, t_meta *meta);
+int				check_exit(t_game *game);
 int				check_collectibles(t_game *game, t_meta *meta);
 void			check_adj(t_context *context, t_queue *queue,
 					t_queue_node *node);

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 12:13:36 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 21:42:56 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "validate_path.h"
 # include "game.h"
 # include <X11/keysym.h>
+# include <X11/Xlib.h>
 # include <fcntl.h>
 
 // Key for map validation

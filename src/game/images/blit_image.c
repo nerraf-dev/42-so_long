@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:33:39 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 21:34:44 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 21:36:45 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	blit_image_transparent(t_img *dst, t_img *src, int x_off, int y_off)
 		while (x < src_width)
 		{
 			src_pixel = *(int *)(src->buffer + (y * src->line_bytes + x * (src->bpp / 8)));
-			if (x == 0 && y == 0) // or any known transparent pixel
-				ft_printf("Transparent pixel value: 0%x\n", src_pixel);
 			// Skip if pixel is exactly black (transparent in XPM)
 			if (src_pixel != 0xFF000000)
 			{
