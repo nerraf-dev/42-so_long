@@ -70,21 +70,21 @@ Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
 Image loaded: ./assets/player/walk_up_000.xpm
-Image dimensions: 32 x 48
+Image dimensions: 48 x 48
 Image bpp: 32
-Image line bytes: 128
+Image line bytes: 192
 Image loaded: ./assets/player/walk_down_000.xpm
-Image dimensions: 32 x 48
+Image dimensions: 48 x 48
 Image bpp: 32
-Image line bytes: 128
+Image line bytes: 192
 Image loaded: ./assets/player/walk_left_000.xpm
-Image dimensions: 32 x 48
+Image dimensions: 48 x 48
 Image bpp: 32
-Image line bytes: 128
+Image line bytes: 192
 Image loaded: ./assets/player/walk_right_000.xpm
-Image dimensions: 32 x 48
+Image dimensions: 48 x 48
 Image bpp: 32
-Image line bytes: 128
+Image line bytes: 192
 Image loaded: ./assets/collectible.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
@@ -93,197 +93,3 @@ Image loaded: ./assets/exit.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
-Player is starting at: 3, 1
-Down key pressed
-old pos: 3, 1 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 3, 2
-The player started at: 3, 1
-new pos: 3, 2 
-Down key pressed
-old pos: 3, 2 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 3, 3
-The player started at: 3, 1
-new pos: 3, 3 
-Down key pressed
-old pos: 3, 3 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 3, 4
-The player started at: 3, 1
-new pos: 3, 4 
-Right key pressed
-old pos: 3, 4 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 4, 4
-The player started at: 3, 1
-new pos: 4, 4 
-Right key pressed
-old pos: 4, 4 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 5, 4
-The player started at: 3, 1
-new pos: 5, 4 
-Down key pressed
-old pos: 5, 4 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 5, 5
-The player started at: 3, 1
-new pos: 5, 5 
-Down key pressed
-old pos: 5, 5 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 5, 6
-The player started at: 3, 1
-new pos: 5, 6 
-Left key pressed
-old pos: 5, 6 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 4, 6
-The player started at: 3, 1
-new pos: 4, 6 
-Left key pressed
-old pos: 4, 6 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 3, 6
-The player started at: 3, 1
-new pos: 3, 6 
-Left key pressed
-old pos: 3, 6 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 2, 6
-The player started at: 3, 1
-new pos: 2, 6 
-Down key pressed
-old pos: 2, 6 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 2, 7
-The player started at: 3, 1
-new pos: 2, 7 
-Right key pressed
-old pos: 2, 7 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 3, 7
-The player started at: 3, 1
-new pos: 3, 7 
-Right key pressed
-old pos: 3, 7 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 4, 7
-The player started at: 3, 1
-new pos: 4, 7 
-Down key pressed
-old pos: 4, 7 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 4, 8
-The player started at: 3, 1
-new pos: 4, 8 
-Down key pressed
-old pos: 4, 8 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 4, 9
-The player started at: 3, 1
-new pos: 4, 9 
-Right key pressed
-old pos: 4, 9 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 5, 9
-The player started at: 3, 1
-new pos: 5, 9 
-Right key pressed
-old pos: 5, 9 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 6, 9
-The player started at: 3, 1
-new pos: 6, 9 
-Right key pressed
-old pos: 6, 9 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 7, 9
-The player started at: 3, 1
-new pos: 7, 9 
-Up key pressed
-old pos: 7, 9 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 7, 8
-The player started at: 3, 1
-new pos: 7, 8 
-Up key pressed
-old pos: 7, 8 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 7, 7
-The player started at: 3, 1
-new pos: 7, 7 
-Up key pressed
-old pos: 7, 7 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 7, 6
-The player started at: 3, 1
-new pos: 7, 6 
-Right key pressed
-old pos: 7, 6 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 8, 6
-The player started at: 3, 1
-new pos: 8, 6 
-Right key pressed
-old pos: 8, 6 
-New Cell Content: 0
-Collectibles: 0
-Exit: 0
-updated player pos: 9, 6
-The player started at: 3, 1
-new pos: 9, 6 
-Right key pressed
-old pos: 9, 6 
-New Cell Content: E
-Collectibles: 0
-Exit: 0
-Exit found! Total: 1
-updated player pos: 10, 6
-The player started at: 3, 1
-new pos: 10, 6 

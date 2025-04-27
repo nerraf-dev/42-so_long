@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:56:26 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 15:19:14 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 15:59:29 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	move_player(t_context *context, int new_x, int new_y)
 		game->map[new_y][new_x] = K_START;
 		game->player_pos[0] = new_x;
 		game->player_pos[1] = new_y;
+		game->steps++;
+		ft_printf("Steps: %d\n", game->steps);
 		ft_printf("updated player pos: %d, %d\n", game->player_pos[0], game->player_pos[1]);
 		display_images(context);
 	}
@@ -54,5 +56,7 @@ int	move_player(t_context *context, int new_x, int new_y)
 	}
 	ft_printf("The player started at: %d, %d\n", meta->start_pos[0], meta->start_pos[1]);
 	ft_printf("new pos: %d, %d \n", game->player_pos[0], game->player_pos[1]);
+	if (meta->start_pos[0] == game->player_pos[0] && meta->start_pos[1] == game->player_pos[1])
+		ft_printf("AT START POS");
 	return (0);
 }

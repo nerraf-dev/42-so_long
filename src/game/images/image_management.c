@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:58:35 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 12:51:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 16:32:16 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
  */
 int	set_img_data(t_img *img, t_game *game)
 {
+	// int		x;
+	// int		y;
+	// int		pixel;
+
 	if (img->filename == NULL)
 		return (set_error("Error: Image filename is NULL."));
 	img->img = mlx_xpm_file_to_image(game->mlx, img->filename,
@@ -44,6 +48,22 @@ int	set_img_data(t_img *img, t_game *game)
 		mlx_destroy_image(game->mlx, img->img);
 		return (1);
 	}
+	// // Transparency formatting
+	// y = 0;
+	// while (y < img->height)
+	// {
+	// 	x = 0;
+	// 	while (x < img->width)
+	// 	{
+	// 		pixel = y * img->line_bytes + x * (img->bpp / 8);
+	// 		if (*(unsigned int *)(img->buffer + pixel) == 0xFF000000)
+	// 		{
+	// 			*(unsigned int *)(img->buffer + pixel) = 0x00000000;
+	// 		}
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
 	ft_printf("Image bpp: %d\n", img->bpp);
 	ft_printf("Image line bytes: %d\n", img->line_bytes);
 	return (0);

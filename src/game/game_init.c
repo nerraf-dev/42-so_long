@@ -6,12 +6,14 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 15:20:15 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 15:44:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 #include <X11/keysym.h> // For keysyms
+#include <X11/Xlib.h> // For X11 functions
+
 
 void	destroy_images(t_game *game, int image_type)
 {
@@ -130,11 +132,9 @@ int	run_game(t_context *context)
 	if (load_images(context))
 	return (1);
 	display_images(context);
-
-	ft_printf("Player is starting at: %d, %d\n", meta->start_pos[0], meta->start_pos[1]);
-
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, context);
-	mlx_key_hook(game->mlx_win, keypress, context);
+	mlx_hook(game->mlx_win, 2, KeyPressMask, (int (*)(void *))keypress, context);
+	// mlx_key_hook(game->mlx_win, keypress, context);
 	// mlx_loop_hook();
 	mlx_loop(game->mlx);
 	return (0);
