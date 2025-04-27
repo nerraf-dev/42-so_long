@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 17:21:05 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 20:30:03 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,26 +73,26 @@ int	close_window(t_context *context)
  *
  * @return 0
  */
-int	keypress(int keysym, t_context *context)
+int	keypress(int keycode, t_context *context)
 {
-	if (keysym == XK_Escape)
+	if (keycode == XK_Escape)
 		close_window(context);
-	if (keysym == XK_Up)
+	if (keycode == XK_Up || keycode == XK_w)
 	{
 		ft_printf("Up key pressed\n");
 		move_player(context, context->game->player_pos[0], context->game->player_pos[1] - 1);
 	}
-	else if (keysym == XK_Down)
+	else if (keycode == XK_Down || keycode == XK_s)
 	{
 		ft_printf("Down key pressed\n");
 		move_player(context, context->game->player_pos[0], context->game->player_pos[1] + 1);
 	}
-	else if (keysym == XK_Left)
+	else if (keycode == XK_Left || keycode == XK_a)
 	{
 		ft_printf("Left key pressed\n");
 		move_player(context, context->game->player_pos[0] - 1, context->game->player_pos[1]);
 	}
-	else if (keysym == XK_Right)
+	else if (keycode == XK_Right || keycode == XK_d)
 	{
 		ft_printf("Right key pressed\n");
 		move_player(context, context->game->player_pos[0] + 1, context->game->player_pos[1]);
@@ -133,7 +133,7 @@ int	run_game(t_context *context)
 	return (1);
 	display_images(context);
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, context);
-	mlx_hook(game->mlx_win, 2, KeyPressMask, keypress, context);
+	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, keypress, context);
 	// mlx_key_hook(game->mlx_win, keypress, context);
 	// mlx_loop_hook();
 	mlx_loop(game->mlx);

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 17:22:52 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 18:43:21 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 21:32:01 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,16 @@ t_img	*set_coll_texture_values(t_game *game)
 
 t_img	*set_exit_texture_values(t_game *game)
 {
-	static t_img	textures[1];
+	static t_img	textures[2];
 	int				i;
 
 	i = 0;
-	textures[i].filename = MAP_EXIT;
-	set_img_data(&textures[i], game);
+	textures[0].filename = MAP_EXIT;
+	textures[1].filename = MAP_EXIT_CLOSED;
+	while (i < EXIT_IMAGES)
+	{
+		set_img_data(&textures[i], game);
+		i++;
+	}
 	return (textures);
 }

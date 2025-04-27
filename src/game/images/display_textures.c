@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 15:24:52 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 16:22:03 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 21:34:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,20 @@ int	display_exit(t_context *context)
 
 	game = context->game;
 	meta = context->meta;
-	display_image(game, &game->images.exit[0],
-		(meta->tile * meta->exit_pos[0]), (meta->tile * meta->exit_pos[1]));
+	ft_printf("Exit image: %s\n", game->images.exit[0].filename);
+	ft_printf("Exit image: %s\n", game->images.exit[1].filename);
+
+	if (game->collectibles == meta->collectible_count)
+	{
+		ft_printf("Exit OPEN!\n");
+		display_image(game, &game->images.exit[0],
+			(meta->tile * meta->exit_pos[0]), (meta->tile * meta->exit_pos[1]));
+	}
+	else
+	{
+		display_image(game, &game->images.exit[1],
+			(meta->tile * meta->exit_pos[0]), (meta->tile * meta->exit_pos[1]));
+	}
 	return (0);
 }
 

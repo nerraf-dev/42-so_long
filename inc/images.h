@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:05:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 14:10:40 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/27 21:31:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@
 # define PLAYER_RIGHT "./assets/player/walk_right_000.xpm"
 
 // EXIT
-# define EXIT_IMAGES 1
-# define MAP_EXIT "./assets/exit.xpm"
+# define EXIT_IMAGES 2
+# define MAP_EXIT "./assets/ui/exit.xpm"
+# define MAP_EXIT_CLOSED "./assets/ui/exit_red.xpm"
+
 // COLLECTIBLES
 # define COLLECTIBLE_IMAGES 1
 # define MAP_COLLECTIBLE "./assets/collectible.xpm"
@@ -64,4 +66,4 @@
 // UI
 # define LEVEL_END "./assets/ui/level_complete.xpm"
 
-#endif 
+#endif
