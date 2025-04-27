@@ -6,17 +6,12 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 17:00:17 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/26 17:45:01 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
-
-
-
-
-
 
 // int	put_pixel(t_img *img, int x, int y, int color);
 
