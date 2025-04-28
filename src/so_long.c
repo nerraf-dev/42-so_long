@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/28 19:39:50 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/28 20:34:57 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	init_data(t_game *game, t_meta *map_data)
 	game->collectibles = 0;
 	game->exit = 0;
 	game->error = 0;
+	game->steps = 0;
 	map_data->line_count = 0;
 	map_data->line_length = 0;
 	map_data->start_count = 0;
