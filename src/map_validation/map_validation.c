@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 15:15:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/28 20:20:02 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_line_length(const char *line, int expected_length)
 	len = ft_strlen(line) - 1;
 	if (len != (size_t)expected_length)
 	{
-		set_error("Map is not rectangular.\n");
+		set_error("Map is not rectangular.");
 	}
 }
 

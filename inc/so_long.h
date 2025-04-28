@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 12:13:36 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/28 19:45:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "errors.h"
 # include "structures.h"
 # include "images.h"
-# include "gui_utils.h"
 # include "validate_path.h"
 # include "game.h"
 # include <X11/keysym.h>

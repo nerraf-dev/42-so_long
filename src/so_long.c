@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 15:15:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/28 19:39:50 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,13 +153,6 @@ int	main(int argc, char **argv)
 
 	// mlx_loop(game.mlx);
 	cleanup(&game, &map_data);
-	// Final Cleanup after a VALID map
-	// if (game.map)
-	// {
-	// 	int i = 0;
-	// 	while (game.map[i])
-	// 		free(game.map[i++]);
-	// 	free(game.map);
-	// }
+
 	return (0);
 }

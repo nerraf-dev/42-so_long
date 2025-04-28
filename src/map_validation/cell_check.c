@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:52:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 15:15:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/28 20:18:06 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ int	check_walls(const char *line, int length)
 	while (i < length)
 	{
 		if (line[i] != K_WALL && line[i] != '\n')
-		{
-			ft_printf_fd(2, "Map is not surrounded by walls.\n");
-			return (1);
-		}
+			return (set_error("Map is not surrounded by walls."));
 		i++;
 	}
 	return (0);

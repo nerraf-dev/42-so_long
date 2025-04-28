@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 19:13:21 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/28 19:28:13 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int	set_frame_buffer(t_context *context)
 	meta = context->meta;
 	win_w = meta->line_length * TILE_SIZE;
 	win_h = meta->line_count * TILE_SIZE;
-	game->frame_buffer = malloc(sizeof(t_img));
+	game->frame_buffer = ft_calloc(1, sizeof(t_img));
 	if (!game->frame_buffer)
-		return (set_error("Error: Failed to allocate memory for frame buffer."));
+		return (set_error("Memory Alloc failed for frame buffer."));
 	game->frame_buffer->img = mlx_new_image(game->mlx, win_w, win_h);
 	if (game->frame_buffer->img == NULL)
 	{
 		free(game->frame_buffer);
-		return (set_error("Error: Failed to create frame buffer image."));
+		return (set_error("Failed to create frame buffer image."));
 	}
 	game->frame_buffer->buffer = mlx_get_data_addr(game->frame_buffer->img,
 			&game->frame_buffer->bpp, &game->frame_buffer->line_bytes,
@@ -41,7 +41,7 @@ int	set_frame_buffer(t_context *context)
 	{
 		mlx_destroy_image(game->mlx, game->frame_buffer->img);
 		free(game->frame_buffer);
-		return (set_error("Error: Failed to get frame buffer data address."));
+		return (set_error("Failed to get frame buffer data address."));
 	}
 	return (0);
 }
@@ -56,18 +56,18 @@ int	load_images(t_context *context)
 		return (set_error("Failed to load wall images."));
 	game->images.floors = set_floor_texture_values(game);
 	if (game->images.floors == NULL)
-		return (set_error("Error: Failed to load floor images."));
+		return (set_error("Failed to load floor images."));
 	game->images.player = set_static_player_texture_values(game);
 	if (game->images.player == NULL)
-		return (set_error("Error: Failed to load player images."));
+		return (set_error("Failed to load player images."));
 	game->images.collectibles = set_coll_texture_values(game);
 	if (game->images.collectibles == NULL)
-		return (set_error("Error: Failed to load collectible images."));
+		return (set_error("Failed to load collectible images."));
 	game->images.exit = set_exit_texture_values(game);
 	if (game->images.exit == NULL)
-		return (set_error("Error: Failed to load exit images."));
+		return (set_error("Failed to load exit images."));
 	if (set_frame_buffer(context))
-		return (set_error("Error: Failed to set frame buffer."));
+		return (set_error("Failed to set frame buffer."));
 	return (0);
 }
 

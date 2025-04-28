@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 20:30:03 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/28 19:48:57 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,25 +78,13 @@ int	keypress(int keycode, t_context *context)
 	if (keycode == XK_Escape)
 		close_window(context);
 	if (keycode == XK_Up || keycode == XK_w)
-	{
-		ft_printf("Up key pressed\n");
 		move_player(context, context->game->player_pos[0], context->game->player_pos[1] - 1);
-	}
 	else if (keycode == XK_Down || keycode == XK_s)
-	{
-		ft_printf("Down key pressed\n");
 		move_player(context, context->game->player_pos[0], context->game->player_pos[1] + 1);
-	}
 	else if (keycode == XK_Left || keycode == XK_a)
-	{
-		ft_printf("Left key pressed\n");
 		move_player(context, context->game->player_pos[0] - 1, context->game->player_pos[1]);
-	}
 	else if (keycode == XK_Right || keycode == XK_d)
-	{
-		ft_printf("Right key pressed\n");
 		move_player(context, context->game->player_pos[0] + 1, context->game->player_pos[1]);
-	}
 	return (0);
 }
 

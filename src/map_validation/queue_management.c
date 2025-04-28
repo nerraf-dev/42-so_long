@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 00:10:38 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/19 13:49:31 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/04/28 19:27:43 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	enqueue(t_queue *queue, int x, int y)
 
 	node = malloc(sizeof(t_queue_node));
 	if (!node)
-		set_error("Error: Failed to allocate memory for queue node.");
+		set_error("Failed to allocate memory for queue node.");
 	node->x = x;
 	node->y = y;
 	node->next = NULL;
@@ -49,7 +49,7 @@ t_queue	*init_queue(void)
 
 	queue = malloc(sizeof(t_queue));
 	if (!queue)
-		set_error("Error: Failed to allocate memory for queue.");
+		set_error("Failed to allocate memory for queue.");
 	queue->front = NULL;
 	queue->rear = NULL;
 	return (queue);
