@@ -6,14 +6,13 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/28 19:48:57 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/02 13:38:47 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 #include <X11/keysym.h> // For keysyms
 #include <X11/Xlib.h> // For X11 functions
-
 
 void	destroy_images(t_game *game, int image_type)
 {
@@ -60,7 +59,6 @@ int	close_window(t_context *context)
 		free(context->game->mlx);
 	cleanup(context->game, context->meta);
 	exit(0);
-	return (0);
 }
 
 /**

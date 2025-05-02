@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/28 20:22:12 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/02 13:29:13 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,20 @@ void	free_map(t_game *game)
 	}
 	free(game->map);
 	game->map = NULL;
+}
+
+void	free_game_arr(void **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	arr = NULL;
 }
 
 int	parse_and_validate(t_game *game, t_meta *meta)

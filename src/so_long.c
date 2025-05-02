@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/28 20:34:57 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/02 13:42:25 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,31 +92,18 @@ static int	validate_args(int argc, char **argv)
  */
 void	cleanup(t_game *game, t_meta *map_data)
 {
-	int	i;
-
+	// int	i;
+ft_printf("Cleaning up...\n");
 	if (game->map)
 	{
-		i = 0;
-		while (game->map[i])
-		{
-			free(game->map[i]);
-			game->map[i] = NULL;
-			i++;
-		}
-		free(game->map);
-		game->map = NULL;
+		free_game_arr((void **)game->map);
 	}
 	if (game->visited)
 	{
-		i = 0;
-		while (i < map_data->line_count)
-		{
-			if (game->visited[i])
-				free(game->visited[i]);
-			i++;
-		}
-		free(game->visited);
-		game->visited = NULL;
+		// i = 0;
+		// while (i < map_data->line_count)
+		ft_printf("line_count: %d\n", map_data->line_count);
+		free_game_arr((void **)game->visited);
 	}
 }
 
@@ -135,14 +122,11 @@ int	main(int argc, char **argv)
 	t_game		game;
 	t_meta		map_data;
 	t_context	context;
-	// int			ret;
 
 	init_data(&game, &map_data);
 	if (validate_args(argc, argv))
 		return (1);
 	game.file = argv[1];
-	// ret = parse_and_validate(&game, &map_data);
-	// print value of ret and status of memory allocated (what needs freeing)
 	if (parse_and_validate(&game, &map_data))
 	{
 		cleanup(&game, &map_data);
@@ -151,9 +135,6 @@ int	main(int argc, char **argv)
 	context.game = &game;
 	context.meta = &map_data;
 	run_game(&context);
-
-	// mlx_loop(game.mlx);
 	cleanup(&game, &map_data);
-
 	return (0);
 }
