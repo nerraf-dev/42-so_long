@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:52:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/28 20:18:06 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/04 15:08:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ int	check_walls(const char *line, int length)
 	return (0);
 }
 
+
+
+
 /**
  * check_valid_chars - Validates the characters in a map line and updates flags.
  *
@@ -77,18 +80,10 @@ int	check_valid_chars(const char *line, t_meta *meta, int line_num)
 	{
 		if (!ft_strchr(VALID_CHARS, line[i]))
 			return (set_error("Invalid character in map.\n"));
-		if (line[i] == K_START)
-		{
-			if (meta->start_count)
-				return (set_error("Map must contain only one player.\n"));
+		else if (line[i] == K_START)
 			set_start(meta, i, line_num);
-		}
 		else if (line[i] == K_EXIT)
-		{
-			if (meta->exit_count)
-				return (set_error("Map must contain only one exit.\n"));
 			set_exit(meta, i, line_num);
-		}
 		else if (line[i] == K_COLLECTIBLE)
 			meta->collectible_count++;
 		i++;

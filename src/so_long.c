@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/02 13:42:25 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/04 14:26:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,9 @@ void	init_data(t_game *game, t_meta *map_data)
 static int	validate_args(int argc, char **argv)
 {
 	if (argc != 2)
-	{
-		ft_putstr_fd("Usage: ./so_long <map_file>\n", 2);
-		return (1);
-	}
+		return (set_error("Usage: ./so_long <map_file>"));
 	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4) != 0)
-	{
-		ft_putstr_fd("Error: Invalid map file extension. Use .ber\n", 2);
-		return (1);
-	}
+		return (set_error("Invalid file extension"));
 	return (0);
 }
 

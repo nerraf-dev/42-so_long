@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/28 20:20:02 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/04 15:09:20 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,11 @@ int	validate_map(t_game *game, t_meta *meta)
 	}
 	game->player_pos[0] = meta->start_pos[0];
 	game->player_pos[1] = meta->start_pos[1];
-	if (meta->collectible_count == 0)
-		return (set_error("Map must contain at least one collectible.\n"));
+	if (meta->start_count != 1)
+		return (set_error("Map must contain a single player."));
+	else if (meta->exit_count != 1)
+		return (set_error("Map must contain a single exit."));
+	else if (meta->collectible_count < 1)
+		return (set_error("Map must contain at least one collectible."));
 	return (0);
 }
