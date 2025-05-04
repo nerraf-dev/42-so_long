@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/04 15:09:20 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/04 15:46:25 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,14 @@
  * @param line The line to check.
  * @param expected_length The expected length of the line.
  */
-void	check_line_length(const char *line, int expected_length)
+int	check_line_length(const char *line, int expected_length)
 {
 	size_t	len;
 
 	len = ft_strlen(line) - 1;
 	if (len != (size_t)expected_length)
-	{
-		set_error("Map is not rectangular.");
-	}
+		return (set_error("Map is not rectangular."));
+	return (0);
 }
 
 /**

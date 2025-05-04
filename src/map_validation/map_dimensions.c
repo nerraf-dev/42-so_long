@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:15:18 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/28 20:15:59 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/04 16:23:00 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,27 @@ int	map_dimensions(const char *file, t_meta *meta)
 {
 	int		fd;
 	char	*line;
+	int		ret;
 
 	fd = open_file(file, O_RDONLY);
 	line = get_next_line(fd);
 	if (line)
 		meta->line_length = ft_strlen(line) - 1;
-	while (line != NULL)
+	ret = 0;
+	while (line)
 	{
-		if (meta->line_count == 0)
-			check_walls(line, meta->line_length);
-		else
-			check_line_length(line, meta->line_length);
+		if ((meta->line_count == 0 && check_walls(line, meta->line_length))
+			|| (meta->line_count != 0
+				&& check_line_length(line, meta->line_length)))
+			ret = 1;
 		meta->line_count++;
 		free(line);
+		// if (ret)
+		// 	break ;
 		line = get_next_line(fd);
 	}
-	if (line)
-		free(line);
 	close(fd);
-	if (meta->line_count < 3)
-		return (1);
-	return (0);
+	if (meta->line_count < 3 && )
+		return (set_error("Map is too small."));
+	return (ret);
 }

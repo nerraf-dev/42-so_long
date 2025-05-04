@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/04 14:51:24 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/04 15:47:14 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,7 @@ void	free_game_arr(void **arr)
 int	parse_and_validate(t_game *game, t_meta *meta)
 {
 	if (map_dimensions(game->file, meta))
-	{
-		ft_printf_fd(2, "Error: Map is too small or invalid.\n");
 		return (1);
-	}
 	game->map = ft_calloc(meta->line_count + 1, sizeof(char *));
 	if (!game->map)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/02 13:30:51 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/04 15:40:02 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		validate_map(t_game *game, t_meta *data);
 int		validate_path(t_game *game, t_meta *meta);
 int		map_dimensions(const char *file, t_meta *meta);
 int		check_walls(const char *line, int length);
-void	check_line_length(const char *line, int expected_length);
+int		check_line_length(const char *line, int expected_length);
 int		check_valid_chars(const char *line, t_meta *flags, int line_num);
 void	free_game_arr(void **arr);
 int		run_game(t_context *context);
