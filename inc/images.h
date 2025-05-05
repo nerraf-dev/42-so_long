@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:05:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 11:56:21 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 21:05:31 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,13 @@
 # define ASSETS_DIR "./assets/"
 // WALLS
 //  Top. Brick wall, can be 3 tiles high
-# define WALL_IMAGES 9
-# define WALL_TL "./assets/walls/left_top.xpm"
-# define WALL_TOP "./assets/walls/top.xpm"
-# define WALL_TR "./assets/walls/right_top.xpm"
-
-# define WALL_SIDE_L "./assets/walls/side_left.xpm"
-# define WALL_MID "./assets/walls/mid.xpm"
-# define WALL_SIDE_R "./assets/walls/side_right.xpm"
-
-# define WALL_BASE_L "./assets/walls/base_left.xpm"
-# define WALL_BASE "./assets/walls/base_mid.xpm"
-# define WALL_BASE_R "./assets/walls/base_right.xpm"
-
+# define WALL_IMAGES 1
+# define WALL_MID "./assets/walls/mid-.xpm"
 
 // FLOORS
-# define FLOOR_IMAGES 6
-# define FLOOR_TL "./assets/floors/gb_tl.xpm"
-# define FLOOR_TOP "./assets/floors/gb_top.xpm"
-# define FLOOR_TR "./assets/floors/gb_tr.xpm"
-
-# define FLOOR_LEFT "./assets/floors/gb_left.xpm"
+# define FLOOR_IMAGES 1
 # define FLOOR_MID "./assets/floors/gb_mid.xpm"
-# define FLOOR_RIGHT "./assets/floors/gb_right.xpm"
+
 // PLAYER
 // # define PLAYER "./assets/player/player.xpm"
 # define PLAYER_IMAGES 4
@@ -50,11 +34,17 @@
 # define PLAYER_RIGHT "./assets/player/walk_right_000.xpm"
 
 // EXIT
-# define EXIT_IMAGES 1
-# define MAP_EXIT "./assets/exit.xpm"
+# define EXIT_IMAGES 2
+# define MAP_EXIT "./assets/ui/exit.xpm"
+# define MAP_EXIT_CLOSED "./assets/ui/exit_red.xpm"
+
 // COLLECTIBLES
 # define COLLECTIBLE_IMAGES 1
 # define MAP_COLLECTIBLE "./assets/collectible.xpm"
+
+// UI
+# define UI_IMAGES 1
+# define LEVEL_END "./assets/ui/level_complete.xpm"
 
 // TEXTURE index vals - Foors and walls
 # define I_TL 0

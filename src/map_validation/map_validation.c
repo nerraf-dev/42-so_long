@@ -6,29 +6,21 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:56:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:11:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:51:29 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-/**
- * @brief Checks if the length of the given line matches expected length.
- *
- * Exits with an error if the map is not rectangular.
- *
- * @param line The line to check.
- * @param expected_length The expected length of the line.
- */
-void	check_line_length(const char *line, int expected_length)
+static int	check_val_errors(t_meta *meta)
 {
-	size_t	len;
-
-	len = ft_strlen(line) - 1;
-	if (len != (size_t)expected_length)
-	{
-		set_error("Map is not rectangular.\n");
-	}
+	if (meta->start_count != 1)
+		return (set_error("Map must contain a single player."));
+	else if (meta->exit_count != 1)
+		return (set_error("Map must contain a single exit."));
+	else if (meta->collectible_count < 1)
+		return (set_error("Map must contain at least one collectible."));
+	return (0);
 }
 
 /**
@@ -42,29 +34,31 @@ void	check_line_length(const char *line, int expected_length)
  * @param flags Pointer to the map flags structure.
  */
 // void	validate_map(char **map, t_map_flags *flags)
-int	validate_map(t_game *game, t_meta *data)
+int	validate_map(t_game *game, t_meta *meta)
 {
 	int	i;
 
 	i = 0;
 	while (game->map[i])
 	{
-		if (i == 0 || i == data->line_count - 1)
+		if (i == 0 || i == meta->line_count - 1)
 		{
-			if (check_walls(game->map[i], data->line_length))
+			if (check_walls(game->map[i], meta->line_length))
 				return (1);
 		}
 		else
 		{
 			if (game->map[i][0] != K_WALL
-				|| game->map[i][data->line_length - 1] != K_WALL)
-				return (1);
-			if (check_valid_chars(game->map[i], data, i))
+				|| game->map[i][meta->line_length - 1] != K_WALL)
+				return (set_error("Map is not surrounded by walls."));
+			if (check_valid_chars(game->map[i], meta, i))
 				return (1);
 		}
 		i++;
 	}
-	if (data->collectible_count == 0)
-		return (set_error("Map must contain at least one collectible.\n"));
+	game->player_pos[0] = meta->start_pos[0];
+	game->player_pos[1] = meta->start_pos[1];
+	if (check_val_errors(meta))
+		return (1);
 	return (0);
 }

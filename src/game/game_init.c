@@ -6,12 +6,13 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 15:33:41 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 20:05:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 #include <X11/keysym.h> // For keysyms
+#include <X11/Xlib.h> // For X11 functions
 
 void	destroy_images(t_game *game, int image_type)
 {
@@ -56,9 +57,8 @@ int	close_window(t_context *context)
 		mlx_destroy_display(context->game->mlx);
 	if (context->game->mlx)
 		free(context->game->mlx);
-	cleanup(context->game, context->meta);
+	cleanup(context->game);
 	exit(0);
-	return (0);
 }
 
 /**
@@ -71,12 +71,24 @@ int	close_window(t_context *context)
  *
  * @return 0
  */
-int	keypress(int keysym, t_context *context)
+int	keypress(int keycode, t_context *context)
 {
-	// Check if the pressed key is the ESC key
-	// if (keycode == 65307) // 65307 is the keycode for ESC
-	if (keysym == XK_Escape)
+	if (keycode == XK_Escape)
 		close_window(context);
+	if (context->game->exit)
+		return (0);
+	if (keycode == XK_Up || keycode == XK_w)
+		move_player(context, context->game->player_pos[0],
+			context->game->player_pos[1] - 1);
+	else if (keycode == XK_Down || keycode == XK_s)
+		move_player(context, context->game->player_pos[0],
+			context->game->player_pos[1] + 1);
+	else if (keycode == XK_Left || keycode == XK_a)
+		move_player(context, context->game->player_pos[0] - 1,
+			context->game->player_pos[1]);
+	else if (keycode == XK_Right || keycode == XK_d)
+		move_player(context, context->game->player_pos[0] + 1,
+			context->game->player_pos[1]);
 	return (0);
 }
 
@@ -113,9 +125,7 @@ int	run_game(t_context *context)
 		return (1);
 	display_images(context);
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, context);
-	mlx_hook(game->mlx_win, 2, 1L << 0,
-		(int (*)(int, void *))keypress, context);
-	// mlx_loop_hook();
+	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, keypress, context);
 	mlx_loop(game->mlx);
 	return (0);
 }

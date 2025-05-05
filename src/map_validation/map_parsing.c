@@ -6,25 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:14:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:20:11 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-// TODO: Remove before 42 push!
-void	print_map(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	ft_printf("Map:\n");
-	while (game->map[i])
-	{
-		ft_printf("%s\n", game->map[i]);
-		i++;
-	}
-}
 
 static int	copy_map_data(t_game *game)
 {
@@ -66,30 +52,32 @@ void	free_map(t_game *game)
 	game->map = NULL;
 }
 
+void	free_game_arr(void **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	arr = NULL;
+}
+
 int	parse_and_validate(t_game *game, t_meta *meta)
 {
 	if (map_dimensions(game->file, meta))
-	{
-		ft_printf_fd(2, "Error: Map is too small or invalid.\n");
 		return (1);
-	}
 	game->map = ft_calloc(meta->line_count + 1, sizeof(char *));
 	if (!game->map)
-	{
-		ft_printf_fd(2, "Error: Memory allocation failed.\n");
 		return (1);
-	}
-	if (copy_map_data(game))
+	else if (copy_map_data(game))
 		return (1);
-	if (validate_map(game, meta))
-	{
-		ft_printf("VALIDATE MAP ERROR\n");
-		ft_printf("returning 1 to main\n");
+	else if (validate_map(game, meta))
 		return (1);
-	}
-	if (validate_path(game, meta))
+	else if (validate_path(game, meta))
 		return (1);
-	print_map(game);
-	ft_printf("Map is valid.\n");
 	return (0);
 }

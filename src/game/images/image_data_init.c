@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 17:22:52 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 19:12:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 21:08:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,49 +26,31 @@
  */
 t_img	*set_wall_texture_values(t_game *game)
 {
-	static t_img	textures[9];
+	static t_img	textures[1];
 	int				i;
 
 	i = 0;
-	textures[0].filename = WALL_TL;
-	textures[1].filename = WALL_TOP;
-	textures[2].filename = WALL_TR;
-	textures[3].filename = WALL_SIDE_L;
-	textures[4].filename = WALL_MID;
-	textures[5].filename = WALL_SIDE_R;
-	textures[6].filename = WALL_BASE_L;
-	textures[7].filename = WALL_BASE;
-	textures[8].filename = WALL_BASE_R;
-	while (i < 9)
+	textures[0].filename = WALL_MID;
+	while (i < WALL_IMAGES)
 	{
 		if (set_img_data(&textures[i], game))
-		{
-			ft_printf("Error: Failed to load wall image %s.\n",
-				textures[i].filename);
 			return (NULL);
-		}
 		i++;
 	}
-
 	return (textures);
-
 }
 
 t_img	*set_floor_texture_values(t_game *game)
 {
-	static t_img	textures[6];
+	static t_img	textures[1];
 	int				i;
 
 	i = 0;
-	textures[0].filename = FLOOR_TL;
-	textures[1].filename = FLOOR_TOP;
-	textures[2].filename = FLOOR_TR;
-	textures[3].filename = FLOOR_LEFT;
-	textures[4].filename = FLOOR_MID;
-	textures[5].filename = FLOOR_RIGHT;
-	while (i < 6)
+	textures[0].filename = FLOOR_MID;
+	while (i < FLOOR_IMAGES)
 	{
-		set_img_data(&textures[i], game);
+		if (set_img_data(&textures[i], game))
+			return (NULL);
 		i++;
 	}
 	return (textures);
@@ -86,8 +68,10 @@ t_img	*set_static_player_texture_values(t_game *game)
 	textures[3].filename = PLAYER_RIGHT;
 	while (i < 4)
 	{
-		set_img_data(&textures[i], game);
+		if (set_img_data(&textures[i], game))
+			return (NULL);
 		i++;
+		textures[i].transparency = 1;
 	}
 	return (textures);
 }
@@ -99,17 +83,24 @@ t_img	*set_coll_texture_values(t_game *game)
 
 	i = 0;
 	textures[i].filename = MAP_COLLECTIBLE;
-	set_img_data(&textures[i], game);
+	if (set_img_data(&textures[i], game))
+		return (NULL);
 	return (textures);
 }
 
 t_img	*set_exit_texture_values(t_game *game)
 {
-	static t_img	textures[1];
+	static t_img	textures[2];
 	int				i;
 
 	i = 0;
-	textures[i].filename = MAP_EXIT;
-	set_img_data(&textures[i], game);
+	textures[0].filename = MAP_EXIT;
+	textures[1].filename = MAP_EXIT_CLOSED;
+	while (i < EXIT_IMAGES)
+	{
+		if (set_img_data(&textures[i], game))
+			return (NULL);
+		i++;
+	}
 	return (textures);
 }

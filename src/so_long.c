@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 13:28:48 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 21:12:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ void	init_data(t_game *game, t_meta *map_data)
 	game->images.walls = NULL;
 	game->images.floors = NULL;
 	game->images.player = NULL;
+	game->player_pos[0] = 0;
+	game->player_pos[1] = 0;
 	game->collectibles = 0;
 	game->exit = 0;
 	game->error = 0;
+	game->steps = 0;
 	map_data->line_count = 0;
 	map_data->line_length = 0;
 	map_data->start_count = 0;
@@ -57,15 +60,9 @@ void	init_data(t_game *game, t_meta *map_data)
 static int	validate_args(int argc, char **argv)
 {
 	if (argc != 2)
-	{
-		ft_putstr_fd("Usage: ./so_long <map_file>\n", 2);
-		return (1);
-	}
+		return (set_error("Usage: ./so_long <map_file>"));
 	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4) != 0)
-	{
-		ft_putstr_fd("Error: Invalid map file extension. Use .ber\n", 2);
-		return (1);
-	}
+		return (set_error("Invalid file extension"));
 	return (0);
 }
 
@@ -87,34 +84,12 @@ static int	validate_args(int argc, char **argv)
  * assumes that `map_data->line_count` accurately reflects the number of lines
  * in the map.
  */
-void	cleanup(t_game *game, t_meta *map_data)
+void	cleanup(t_game *game)
 {
-	int	i;
-
 	if (game->map)
-	{
-		i = 0;
-		while (game->map[i])
-		{
-			free(game->map[i]);
-			game->map[i] = NULL;
-			i++;
-		}
-		free(game->map);
-		game->map = NULL;
-	}
+		free_game_arr((void **)game->map);
 	if (game->visited)
-	{
-		i = 0;
-		while (i < map_data->line_count)
-		{
-			if (game->visited[i])
-				free(game->visited[i]);
-			i++;
-		}
-		free(game->visited);
-		game->visited = NULL;
-	}
+		free_game_arr((void **)game->visited);
 }
 
 /**
@@ -132,32 +107,19 @@ int	main(int argc, char **argv)
 	t_game		game;
 	t_meta		map_data;
 	t_context	context;
-	// int			ret;
 
 	init_data(&game, &map_data);
 	if (validate_args(argc, argv))
 		return (1);
 	game.file = argv[1];
-	// ret = parse_and_validate(&game, &map_data);
-	// print value of ret and status of memory allocated (what needs freeing)
 	if (parse_and_validate(&game, &map_data))
 	{
-		cleanup(&game, &map_data);
+		cleanup(&game);
 		return (1);
 	}
 	context.game = &game;
 	context.meta = &map_data;
 	run_game(&context);
-
-	// mlx_loop(game.mlx);
-	cleanup(&game, &map_data);
-	// Final Cleanup after a VALID map
-	// if (game.map)
-	// {
-	// 	int i = 0;
-	// 	while (game.map[i])
-	// 		free(game.map[i++]);
-	// 	free(game.map);
-	// }
+	cleanup(&game);
 	return (0);
 }

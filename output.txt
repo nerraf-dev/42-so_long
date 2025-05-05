@@ -2,7 +2,7 @@
 Visited array:
 **********
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+1 0 1 0 1 0 0 0 0 0 0 0 1 0 0 1 
 1 0 1 0 0 1 0 0 1 1 0 0 0 0 1 1 
 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
 1 1 0 0 0 0 1 1 1 0 0 0 0 0 1 1 
@@ -42,9 +42,10 @@ Collectibles found: 1
 Collectible count: 1
 Exit found: 1
 --Exit count: 1
+ check_exit -Exit count: 1
 Map:
 1111111111111111
-100P000000001001
+101P100000001001
 1010010011000011
 1000000000100001
 1100001110000011
@@ -60,55 +61,7 @@ Map:
 1100001100100101
 1111111111111111
 Map is valid.
-Image loaded: ./assets/walls/left_top.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/top.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/right_top.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/side_left.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
 Image loaded: ./assets/walls/mid.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/side_right.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/base_left.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/base_mid.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/walls/base_right.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/floors/gb_tl.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/floors/gb_top.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/floors/gb_tr.xpm
-Image dimensions: 48 x 48
-Image bpp: 32
-Image line bytes: 192
-Image loaded: ./assets/floors/gb_left.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
@@ -116,32 +69,215 @@ Image loaded: ./assets/floors/gb_mid.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
-Image loaded: ./assets/floors/gb_right.xpm
+Image loaded: ./assets/player/walk_up_000.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
-Image loaded: ./assets/player/walk_up_000.xpm
-Image dimensions: 32 x 48
-Image bpp: 32
-Image line bytes: 128
 Image loaded: ./assets/player/walk_down_000.xpm
-Image dimensions: 32 x 48
+Image dimensions: 48 x 48
 Image bpp: 32
-Image line bytes: 128
+Image line bytes: 192
 Image loaded: ./assets/player/walk_left_000.xpm
-Image dimensions: 32 x 48
+Image dimensions: 48 x 48
 Image bpp: 32
-Image line bytes: 128
+Image line bytes: 192
 Image loaded: ./assets/player/walk_right_000.xpm
-Image dimensions: 32 x 48
+Image dimensions: 48 x 48
 Image bpp: 32
-Image line bytes: 128
+Image line bytes: 192
 Image loaded: ./assets/collectible.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
-Image loaded: ./assets/exit.xpm
+Image loaded: ./assets/ui/exit.xpm
 Image dimensions: 48 x 48
 Image bpp: 32
 Image line bytes: 192
-Images loaded successfully.
+Image loaded: ./assets/ui/exit_red.xpm
+Image dimensions: 48 x 48
+Image bpp: 32
+Image line bytes: 192
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Down key pressed
+Steps: 1
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 1
+Down key pressed
+Steps: 2
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 2
+Down key pressed
+Steps: 3
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 3
+Down key pressed
+Steps: 4
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 4
+Down key pressed
+Steps: 5
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 5
+Down key pressed
+Steps: 6
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 6
+Down key pressed
+Steps: 7
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 7
+Down key pressed
+Steps: 7
+Down key pressed
+Steps: 7
+Down key pressed
+Steps: 7
+Down key pressed
+Steps: 7
+Down key pressed
+Steps: 7
+Down key pressed
+Steps: 7
+Down key pressed
+Steps: 7
+Down key pressed
+Steps: 7
+Down key pressed
+Steps: 7
+Down key pressed
+Steps: 7
+Down key pressed
+Steps: 7
+Down key pressed
+Steps: 7
+Right key pressed
+Steps: 8
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 8
+Right key pressed
+Steps: 9
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 9
+Right key pressed
+Steps: 10
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 10
+Up key pressed
+Steps: 10
+Right key pressed
+Steps: 11
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 11
+Up key pressed
+Steps: 12
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 12
+Up key pressed
+Steps: 13
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 13
+Right key pressed
+Steps: 14
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 14
+Right key pressed
+Steps: 15
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 15
+Right key pressed
+Steps: 16
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 16
+Left key pressed
+Steps: 17
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 17
+Left key pressed
+Steps: 18
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 18
+Down key pressed
+Steps: 19
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000
+Steps: 19
+Right key pressed
+Steps: 20
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Exit OPEN!
+Transparent pixel value: 0ff000000
+Steps: 20
+Up key pressed
+Steps: 21
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Exit OPEN!
+Transparent pixel value: 0ff000000
+Steps: 21
+Right key pressed
+Steps: 22
+Exit image: ./assets/ui/exit.xpm
+Exit image: ./assets/ui/exit_red.xpm
+Exit OPEN!
+Transparent pixel value: 0ff000000
+Steps: 22

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:12:30 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/25 17:14:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:30:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@
  *
  * Return: 0 if the exit is reachable, otherwise an error code.
  */
-int	check_exit(t_game *game, t_meta *meta)
+int	check_exit(t_game *game)
 {
 	if (game->exit == 0)
 	{
-		free_visited(game->visited, meta->line_count);
 		game->visited = NULL;
-		ft_printf("Exit not found.\n");
-		return (set_error("Error: Exit not reachable from start position.\n"));
+		return (set_error("Exit not reachable from start position."));
 	}
+	game->exit = 0;
 	return (0);
 }
 
@@ -47,11 +46,10 @@ int	check_collectibles(t_game *game, t_meta *meta)
 {
 	if (game->collectibles != meta->collectible_count)
 	{
-		free_visited(game->visited, meta->line_count);
 		game->visited = NULL;
-		ft_printf("Not all collectibles found.\n");
-		return (set_error("Error: Not all collectibles reachable.\n"));
+		return (set_error("Not all collectibles reachable."));
 	}
+	game->collectibles = 0;
 	return (0);
 }
 

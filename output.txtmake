@@ -1,0 +1,93 @@
+
+Visited array:
+**********
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 0 1 0 1 0 0 0 0 0 0 0 1 0 0 1 
+1 0 1 0 0 1 0 0 1 1 0 0 0 0 1 1 
+1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+1 1 0 0 0 0 1 1 1 0 0 0 0 0 1 1 
+1 0 0 0 0 0 1 0 0 1 1 0 0 0 0 1 
+1 0 0 0 0 0 1 0 0 0 0 1 0 0 0 1 
+1 0 0 0 0 1 1 0 0 0 0 0 0 1 0 1 
+1 1 0 0 0 0 0 0 1 1 0 0 0 0 0 1 
+1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 1 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+1 0 0 0 0 1 1 0 0 1 0 0 1 0 0 1 
+1 0 0 0 1 0 0 0 0 0 0 1 1 0 0 1 
+1 0 0 1 1 0 0 0 0 0 1 0 0 0 1 1 
+1 1 0 0 0 0 1 1 0 0 1 0 0 1 0 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+Visited array:
+**********
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Start position: [3, 1]
+Exit position: [10, 6]
+Collectibles found: 1
+Collectible count: 1
+Exit found: 1
+--Exit count: 1
+ check_exit -Exit count: 1
+Map:
+1111111111111111
+101P100000001001
+1010010011000011
+1000000000100001
+1100001110000011
+1000001001100001
+1000001000E10001
+100001100C000101
+1100000011000001
+1001000000001001
+1000000000000001
+1000011001001001
+1000100000011001
+1001100000100011
+1100001100100101
+1111111111111111
+Map is valid.
+Image loaded: ./assets/walls/mid.xpm
+Image dimensions: 48 x 48
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/floors/gb_mid.xpm
+Image dimensions: 48 x 48
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/player/walk_up_000.xpm
+Image dimensions: 48 x 48
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/player/walk_down_000.xpm
+Image dimensions: 48 x 48
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/player/walk_left_000.xpm
+Image dimensions: 48 x 48
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/player/walk_right_000.xpm
+Image dimensions: 48 x 48
+Image bpp: 32
+Image line bytes: 192
+Image loaded: ./assets/collectible.xpm
+Image dimensions: 48 x 48
+Image bpp: 32
+Image line bytes: 192
+Transparent pixel value: 0ff000000
+Transparent pixel value: 0ff000000

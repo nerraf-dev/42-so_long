@@ -6,14 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/26 15:40:46 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 20:03:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
-
-// set the filename values
-
 
 int	load_images(t_context *context)
 {
@@ -22,35 +19,24 @@ int	load_images(t_context *context)
 	game = context->game;
 	game->images.walls = set_wall_texture_values(game);
 	if (game->images.walls == NULL)
-	{
-		ft_printf("Error: Failed to load wall images.\n");
-		return (1);
-	}
+		return (set_error("Failed to load wall images."));
 	game->images.floors = set_floor_texture_values(game);
 	if (game->images.floors == NULL)
-	{
-		ft_printf("Error: Failed to load floor images.\n");
-		return (1);
-	}
+		return (set_error("Failed to load floor images."));
 	game->images.player = set_static_player_texture_values(game);
 	if (game->images.player == NULL)
-	{
-		ft_printf("Error: Failed to load player images.\n");
-		return (1);
-	}
+		return (set_error("Failed to load player images."));
 	game->images.collectibles = set_coll_texture_values(game);
 	if (game->images.collectibles == NULL)
-	{
-		ft_printf("Error: Failed to load collectible images.\n");
-		return (1);
-	}
+		return (set_error("Failed to load collectible images."));
 	game->images.exit = set_exit_texture_values(game);
 	if (game->images.exit == NULL)
-	{
-		ft_printf("Error: Failed to load exit images.\n");
-		return (1);
-	}
-	ft_printf("Images loaded successfully.\n");
+		return (set_error("Failed to load exit images."));
+	game->images.ui = set_ui_texture_values(game);
+	if (game->images.ui == NULL)
+		return (set_error("Failed to load UI images."));
+	if (set_frame_buffer(context))
+		return (set_error("Failed to set frame buffer."));
 	return (0);
 }
 
@@ -72,19 +58,33 @@ int	display_image(t_game *game, t_img *img, int x, int y)
 		ft_putstr_fd("Error: Image is not loaded.\n", 2);
 		return (1);
 	}
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img->img, x, y);
+	if (img->transparency)
+		blit_image_transparent(game->frame_buffer, img, x, y);
+	else
+		blit_image_opaque(game->frame_buffer, img, x, y);
 	return (0);
 }
 
-
-
 int	display_images(t_context *context)
 {
+	int		buffer_size;
+	t_game	*game;
+	t_meta	*meta;
+
+	game = context->game;
+	meta = context->meta;
+	buffer_size = game->frame_buffer->height * game->frame_buffer->line_bytes;
+	ft_memset(game->frame_buffer->buffer, 0, buffer_size);
 	display_floor(context);
 	display_walls(context);
 	display_exit(context);
 	display_collectibles(context);
 	display_player(context);
+	if (game->player_pos[0] == meta->exit_pos[0]
+		&& game->player_pos[1] == meta->exit_pos[1]
+		&& game->collectibles == meta->collectible_count)
+		display_level_end(context);
+	mlx_put_image_to_window(game->mlx,
+		game->mlx_win, game->frame_buffer->img, 0, 0);
 	return (0);
 }
-
