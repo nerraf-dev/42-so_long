@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/05/05 19:47:22 by sfarren          ###   ########.fr        #
+#    Updated: 2025/05/05 19:49:27 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,6 @@ UTILS_DIR = $(SRC_DIR)/utils
 GAME_DIR = $(SRC_DIR)/game
 GUI_DIR = $(SRC_DIR)/gui
 
-
-
 # Source files in each category
 GAME_FILES = game_init.c \
 			move_player.c \
@@ -44,8 +42,6 @@ GAME_FILES = game_init.c \
 			images/image_data_init.c \
 			images/image_load.c \
 			images/image_management.c \
-
-
 
 PARSING_FILES = cell_check.c \
 				check_adjacent.c \
@@ -63,14 +59,11 @@ UTILS_FILES = so_long_utils.c \
 MAIN_FILES = so_long.c \
 				debugging.c \
 
-
 # Combine all source files
 SRC_FILES = $(addprefix $(GAME_DIR)/, $(GAME_FILES)) \
 			$(addprefix $(PARSING_DIR)/, $(PARSING_FILES)) \
 			$(addprefix $(UTILS_DIR)/, $(UTILS_FILES)) \
 			$(addprefix $(SRC_DIR)/, $(MAIN_FILES))
-
-# $(addprefix $(GUI_DIR)/, $(GUI_FILES)) \
 
 SRCS = $(SRC_FILES)
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

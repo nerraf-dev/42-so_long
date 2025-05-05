@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 13:19:43 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 20:05:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int	keypress(int keycode, t_context *context)
 {
 	if (keycode == XK_Escape)
 		close_window(context);
+	if (context->game->exit)
+		return (0);
 	if (keycode == XK_Up || keycode == XK_w)
 		move_player(context, context->game->player_pos[0],
 			context->game->player_pos[1] - 1);
