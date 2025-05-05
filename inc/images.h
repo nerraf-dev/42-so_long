@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:05:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 21:05:31 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 22:12:07 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // WALLS
 //  Top. Brick wall, can be 3 tiles high
 # define WALL_IMAGES 1
-# define WALL_MID "./assets/walls/mid-.xpm"
+# define WALL_MID "./assets/walls/mid.xpm"
 
 // FLOORS
 # define FLOOR_IMAGES 1
