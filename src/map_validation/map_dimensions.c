@@ -6,11 +6,26 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:15:18 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/04 16:23:00 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:23:20 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+static int	check_line(char *line, int fd, t_meta *meta)
+{
+	int		line_length;
+
+	line_length = ft_strlen(line) - 1;
+	if (line_length != meta->line_length)
+	{
+		free(line);
+		close(fd);
+		return (set_error("Map must be rectangular."));
+	}
+	meta->line_count++;
+	return (0);
+}
 
 /**
  * @brief Reads the map file to determine its dimensions.
@@ -25,27 +40,20 @@ int	map_dimensions(const char *file, t_meta *meta)
 {
 	int		fd;
 	char	*line;
-	int		ret;
 
 	fd = open_file(file, O_RDONLY);
 	line = get_next_line(fd);
 	if (line)
 		meta->line_length = ft_strlen(line) - 1;
-	ret = 0;
 	while (line)
 	{
-		if ((meta->line_count == 0 && check_walls(line, meta->line_length))
-			|| (meta->line_count != 0
-				&& check_line_length(line, meta->line_length)))
-			ret = 1;
-		meta->line_count++;
+		if (check_line(line, fd, meta))
+			return (1);
 		free(line);
-		// if (ret)
-		// 	break ;
 		line = get_next_line(fd);
 	}
 	close(fd);
-	if (meta->line_count < 3 && )
+	if (meta->line_count < 3)
 		return (set_error("Map is too small."));
-	return (ret);
+	return (0);
 }

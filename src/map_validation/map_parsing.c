@@ -6,25 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:46:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/04 15:47:14 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:20:11 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-// TODO: Remove before 42 push!
-// void	print_map(t_game *game)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	ft_printf("Map:\n");
-// 	while (game->map[i])
-// 	{
-// 		ft_printf("%s\n", game->map[i]);
-// 		i++;
-// 	}
-// }
 
 static int	copy_map_data(t_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:52:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/04 15:08:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 12:51:30 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,9 @@ int	check_walls(const char *line, int length)
 			return (set_error("Map is not surrounded by walls."));
 		i++;
 	}
+
 	return (0);
 }
-
-
-
 
 /**
  * check_valid_chars - Validates the characters in a map line and updates flags.
@@ -79,7 +77,7 @@ int	check_valid_chars(const char *line, t_meta *meta, int line_num)
 	while (line[i])
 	{
 		if (!ft_strchr(VALID_CHARS, line[i]))
-			return (set_error("Invalid character in map.\n"));
+			return (set_error("Map contains invalid characters."));
 		else if (line[i] == K_START)
 			set_start(meta, i, line_num);
 		else if (line[i] == K_EXIT)

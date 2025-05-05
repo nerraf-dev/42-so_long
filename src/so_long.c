@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/04 14:26:15 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:31:10 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,12 @@ static int	validate_args(int argc, char **argv)
  * assumes that `map_data->line_count` accurately reflects the number of lines
  * in the map.
  */
-void	cleanup(t_game *game, t_meta *map_data)
+void	cleanup(t_game *game)
 {
-	// int	i;
-ft_printf("Cleaning up...\n");
 	if (game->map)
-	{
 		free_game_arr((void **)game->map);
-	}
 	if (game->visited)
-	{
-		// i = 0;
-		// while (i < map_data->line_count)
-		ft_printf("line_count: %d\n", map_data->line_count);
 		free_game_arr((void **)game->visited);
-	}
 }
 
 /**
@@ -123,12 +114,12 @@ int	main(int argc, char **argv)
 	game.file = argv[1];
 	if (parse_and_validate(&game, &map_data))
 	{
-		cleanup(&game, &map_data);
+		cleanup(&game);
 		return (1);
 	}
 	context.game = &game;
 	context.meta = &map_data;
 	run_game(&context);
-	cleanup(&game, &map_data);
+	cleanup(&game);
 	return (0);
 }

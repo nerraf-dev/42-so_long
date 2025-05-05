@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/02 13:38:47 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:19:43 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	close_window(t_context *context)
 		mlx_destroy_display(context->game->mlx);
 	if (context->game->mlx)
 		free(context->game->mlx);
-	cleanup(context->game, context->meta);
+	cleanup(context->game);
 	exit(0);
 }
 
@@ -76,13 +76,17 @@ int	keypress(int keycode, t_context *context)
 	if (keycode == XK_Escape)
 		close_window(context);
 	if (keycode == XK_Up || keycode == XK_w)
-		move_player(context, context->game->player_pos[0], context->game->player_pos[1] - 1);
+		move_player(context, context->game->player_pos[0],
+			context->game->player_pos[1] - 1);
 	else if (keycode == XK_Down || keycode == XK_s)
-		move_player(context, context->game->player_pos[0], context->game->player_pos[1] + 1);
+		move_player(context, context->game->player_pos[0],
+			context->game->player_pos[1] + 1);
 	else if (keycode == XK_Left || keycode == XK_a)
-		move_player(context, context->game->player_pos[0] - 1, context->game->player_pos[1]);
+		move_player(context, context->game->player_pos[0] - 1,
+			context->game->player_pos[1]);
 	else if (keycode == XK_Right || keycode == XK_d)
-		move_player(context, context->game->player_pos[0] + 1, context->game->player_pos[1]);
+		move_player(context, context->game->player_pos[0] + 1,
+			context->game->player_pos[1]);
 	return (0);
 }
 
@@ -116,12 +120,10 @@ int	run_game(t_context *context)
 		exit(1);
 	}
 	if (load_images(context))
-	return (1);
+		return (1);
 	display_images(context);
 	mlx_hook(game->mlx_win, 17, 0, (int (*)(void *))close_window, context);
 	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, keypress, context);
-	// mlx_key_hook(game->mlx_win, keypress, context);
-	// mlx_loop_hook();
 	mlx_loop(game->mlx);
 	return (0);
 }
