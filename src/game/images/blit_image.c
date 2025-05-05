@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:33:39 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/28 19:38:59 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:35:16 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	blit_image_opaque(t_img *dst, t_img *src, int x_off, int y_off)
 		x = 0;
 		while (x < src->width)
 		{
-			src_pixel = *(int *)(src->buffer + (y * src->line_bytes + x * (src->bpp / 8)));
-			*(int *)(dst->buffer + ((y + y_off) * dst->line_bytes + (x + x_off) * (dst->bpp / 8))) = src_pixel;
+			src_pixel = *(int *)(src->buffer
+					+ (y * src->line_bytes + x * (src->bpp / 8)));
+			*(int *)(dst->buffer + ((y + y_off) * dst->line_bytes
+						+ (x + x_off) * (dst->bpp / 8))) = src_pixel;
 			x++;
 		}
 		y++;
@@ -46,10 +48,12 @@ void	blit_image_transparent(t_img *dst, t_img *src, int x_off, int y_off)
 		x = 0;
 		while (x < src->width)
 		{
-			src_pixel = *(int *)(src->buffer + (y * src->line_bytes + x * (src->bpp / 8)));
+			src_pixel = *(int *)(src->buffer
+					+ (y * src->line_bytes + x * (src->bpp / 8)));
 			if (src_pixel != 0xFF000000)
 			{
-				*(int *)(dst->buffer + ((y + y_off) * dst->line_bytes + (x + x_off) * (dst->bpp / 8))) = src_pixel;
+				*(int *)(dst->buffer + ((y + y_off) * dst->line_bytes
+							+ (x + x_off) * (dst->bpp / 8))) = src_pixel;
 			}
 			x++;
 		}

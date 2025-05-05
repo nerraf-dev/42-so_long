@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:52:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 12:51:30 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:36:14 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	check_walls(const char *line, int length)
 			return (set_error("Map is not surrounded by walls."));
 		i++;
 	}
-
 	return (0);
 }
 

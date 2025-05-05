@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 16:46:23 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/28 20:13:29 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:52:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_queue
 	t_queue_node	*front;
 	t_queue_node	*rear;
 }	t_queue;
-
 
 int				create_visited(t_game *game, t_meta *meta);
 void			init_visited(t_game *data, t_meta *meta);

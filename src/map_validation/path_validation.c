@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:44:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/28 20:13:35 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:35:29 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,7 @@ int	validate_path(t_game *game, t_meta *meta)
 		return (
 			set_error("Failed to allocate memory for visited array."));
 	init_visited(game, meta);
-	// print_visited(game->visited, meta->line_count, meta->line_length);
 	flood_fill(game, meta);
-	// debug_print(game, meta);
 	free_visited(game->visited, meta->line_count);
 	game->visited = NULL;
 	if (check_exit(game))

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:10:40 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/27 18:40:09 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:52:33 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,13 @@ typedef struct s_context
 	t_meta		*meta;
 }				t_context;
 
+typedef struct s_fb_vars
+{
+	int	win_w;
+	int	win_h;
+	int	bpp;
+	int	line_bytes;
+	int	endian;
+}	t_fb_vars;
 
 #endif
