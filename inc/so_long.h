@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 13:23:01 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 20:53:35 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@
 # define K_EXIT 'E'
 # define K_COLLECTIBLE 'C'
 # define VALID_CHARS "01PEC"
-// # define ERR_MAP_DIMS "Map is not rectangular."
-
-// REMOVE DEBUGGINg RELATED STUFF
-void	debug_print(t_game *game, t_meta *meta);
-void	print_visited(int **visited, int height, int width);
-
-// **************************************** //
 
 int		set_error(const char *message);
 void	cleanup(t_game *game);

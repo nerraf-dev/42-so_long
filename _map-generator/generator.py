@@ -139,8 +139,8 @@ def generate_valid_map(rows, cols, max_attempts=1000):
     raise Exception("Failed to generate a valid map within the maximum number of attempts.")
 
 # Generate a map with at least 20 lines
-rows = 16
-cols = 16  # Adjust the number of columns as needed
+rows = 12
+cols = 18  # Adjust the number of columns as needed
 try:
     valid_map = generate_valid_map(rows, cols)
     print(valid_map)

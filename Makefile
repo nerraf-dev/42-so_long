@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/05/05 19:49:27 by sfarren          ###   ########.fr        #
+#    Updated: 2025/05/05 20:53:21 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,6 @@ UTILS_FILES = so_long_utils.c \
 				files.c \
 
 MAIN_FILES = so_long.c \
-				debugging.c \
 
 # Combine all source files
 SRC_FILES = $(addprefix $(GAME_DIR)/, $(GAME_FILES)) \

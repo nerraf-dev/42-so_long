@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:05:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 19:20:30 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/05 21:05:31 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // WALLS
 //  Top. Brick wall, can be 3 tiles high
 # define WALL_IMAGES 1
-# define WALL_MID "./assets/walls/mid.xpm"
+# define WALL_MID "./assets/walls/mid-.xpm"
 
 // FLOORS
 # define FLOOR_IMAGES 1
@@ -42,6 +42,10 @@
 # define COLLECTIBLE_IMAGES 1
 # define MAP_COLLECTIBLE "./assets/collectible.xpm"
 
+// UI
+# define UI_IMAGES 1
+# define LEVEL_END "./assets/ui/level_complete.xpm"
+
 // TEXTURE index vals - Foors and walls
 # define I_TL 0
 # define I_TOP 1
@@ -62,9 +66,5 @@
 // Object index values
 # define I_EXIT 0
 # define I_COLLECTIBLE 1
-
-// UI
-# define UI_IMAGES 1
-# define LEVEL_END "./assets/ui/level_complete.xpm"
 
 #endif
