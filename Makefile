@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/05/05 14:04:23 by sfarren          ###   ########.fr        #
+#    Updated: 2025/05/05 19:47:22 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ GAME_FILES = game_init.c \
 			move_player.c \
 			images/blit_image.c \
 			images/display_textures.c \
+			images/display_ui_textures.c \
 			images/display_wall_textures.c \
 			images/frame_buffer.c \
 			images/image_data_init.c \

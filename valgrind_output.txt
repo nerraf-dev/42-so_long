@@ -1,66 +1,66 @@
-==288593== Memcheck, a memory error detector
-==288593== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==288593== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==288593== Command: ./so_long maps/16x16.ber
-==288593== Parent PID: 1256
-==288593== 
-==288593== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==288593==    at 0x4ADB864: writev (writev.c:26)
-==288593==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==288593==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==288593==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==288593==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==288593==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==288593==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==288593==    by 0x1130D5: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
-==288593==    by 0x112E15: mlx_new_window (in /home/simon/so_long/so_long)
-==288593==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
-==288593==    by 0x110C84: main (in /home/simon/so_long/so_long)
-==288593==  Address 0x4c40efc is 28 bytes inside a block of size 16,384 alloc'd
-==288593==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==288593==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==288593==    by 0x112BC6: mlx_init (in /home/simon/so_long/so_long)
-==288593==    by 0x10E829: run_game (in /home/simon/so_long/so_long)
-==288593==    by 0x110C84: main (in /home/simon/so_long/so_long)
-==288593==  Uninitialised value was created by a stack allocation
-==288593==    at 0x112FE0: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
-==288593== 
-==288593== 
-==288593== HEAP SUMMARY:
-==288593==     in use at exit: 2,288 bytes in 21 blocks
-==288593==   total heap usage: 1,298 allocs, 1,277 frees, 131,665 bytes allocated
-==288593== 
-==288593== LEAK SUMMARY:
-==288593==    definitely lost: 0 bytes in 0 blocks
-==288593==    indirectly lost: 0 bytes in 0 blocks
-==288593==      possibly lost: 0 bytes in 0 blocks
-==288593==    still reachable: 2,288 bytes in 21 blocks
-==288593==         suppressed: 0 bytes in 0 blocks
-==288593== Reachable blocks (those to which a pointer was found) are not shown.
-==288593== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==288593== 
-==288593== ERROR SUMMARY: 2 errors from 1 contexts (suppressed: 0 from 0)
-==288593== 
-==288593== 2 errors in context 1 of 1:
-==288593== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==288593==    at 0x4ADB864: writev (writev.c:26)
-==288593==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==288593==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==288593==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==288593==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==288593==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==288593==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==288593==    by 0x1130D5: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
-==288593==    by 0x112E15: mlx_new_window (in /home/simon/so_long/so_long)
-==288593==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
-==288593==    by 0x110C84: main (in /home/simon/so_long/so_long)
-==288593==  Address 0x4c40efc is 28 bytes inside a block of size 16,384 alloc'd
-==288593==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==288593==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==288593==    by 0x112BC6: mlx_init (in /home/simon/so_long/so_long)
-==288593==    by 0x10E829: run_game (in /home/simon/so_long/so_long)
-==288593==    by 0x110C84: main (in /home/simon/so_long/so_long)
-==288593==  Uninitialised value was created by a stack allocation
-==288593==    at 0x112FE0: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
-==288593== 
-==288593== ERROR SUMMARY: 2 errors from 1 contexts (suppressed: 0 from 0)
+==315750== Memcheck, a memory error detector
+==315750== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==315750== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==315750== Command: ./so_long maps/16x16.ber
+==315750== Parent PID: 1256
+==315750== 
+==315750== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==315750==    at 0x4ADB864: writev (writev.c:26)
+==315750==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==315750==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==315750==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==315750==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==315750==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==315750==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==315750==    by 0x113265: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
+==315750==    by 0x112FA5: mlx_new_window (in /home/simon/so_long/so_long)
+==315750==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==315750==    by 0x110E14: main (in /home/simon/so_long/so_long)
+==315750==  Address 0x4c40efc is 28 bytes inside a block of size 16,384 alloc'd
+==315750==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==315750==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==315750==    by 0x112D56: mlx_init (in /home/simon/so_long/so_long)
+==315750==    by 0x10E829: run_game (in /home/simon/so_long/so_long)
+==315750==    by 0x110E14: main (in /home/simon/so_long/so_long)
+==315750==  Uninitialised value was created by a stack allocation
+==315750==    at 0x113170: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
+==315750== 
+==315750== 
+==315750== HEAP SUMMARY:
+==315750==     in use at exit: 2,512 bytes in 23 blocks
+==315750==   total heap usage: 1,351 allocs, 1,328 frees, 134,581 bytes allocated
+==315750== 
+==315750== LEAK SUMMARY:
+==315750==    definitely lost: 0 bytes in 0 blocks
+==315750==    indirectly lost: 0 bytes in 0 blocks
+==315750==      possibly lost: 0 bytes in 0 blocks
+==315750==    still reachable: 2,512 bytes in 23 blocks
+==315750==         suppressed: 0 bytes in 0 blocks
+==315750== Reachable blocks (those to which a pointer was found) are not shown.
+==315750== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==315750== 
+==315750== ERROR SUMMARY: 2 errors from 1 contexts (suppressed: 0 from 0)
+==315750== 
+==315750== 2 errors in context 1 of 1:
+==315750== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==315750==    at 0x4ADB864: writev (writev.c:26)
+==315750==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==315750==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==315750==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==315750==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==315750==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==315750==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==315750==    by 0x113265: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
+==315750==    by 0x112FA5: mlx_new_window (in /home/simon/so_long/so_long)
+==315750==    by 0x10E88F: run_game (in /home/simon/so_long/so_long)
+==315750==    by 0x110E14: main (in /home/simon/so_long/so_long)
+==315750==  Address 0x4c40efc is 28 bytes inside a block of size 16,384 alloc'd
+==315750==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==315750==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==315750==    by 0x112D56: mlx_init (in /home/simon/so_long/so_long)
+==315750==    by 0x10E829: run_game (in /home/simon/so_long/so_long)
+==315750==    by 0x110E14: main (in /home/simon/so_long/so_long)
+==315750==  Uninitialised value was created by a stack allocation
+==315750==    at 0x113170: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
+==315750== 
+==315750== ERROR SUMMARY: 2 errors from 1 contexts (suppressed: 0 from 0)
