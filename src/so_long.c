@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 21:12:24 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/06 14:13:11 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,34 @@ static int	validate_args(int argc, char **argv)
 void	cleanup(t_game *game)
 {
 	if (game->map)
+	{
 		free_game_arr((void **)game->map);
+		game->map = NULL;
+	}
 	if (game->visited)
+	{
 		free_game_arr((void **)game->visited);
+		game->visited = NULL;
+	}
+	if (game->frame_buffer)
+	{
+		ft_printf("Freeing frame buffer\n");
+		if (game->frame_buffer->img)
+		{
+			ft_printf("Freeing frame buffer image\n");
+			mlx_destroy_image(game->mlx, game->frame_buffer->img);
+			game->frame_buffer->img = NULL;
+		}
+		if (game->frame_buffer->buffer)
+		{
+			ft_printf("Freeing frame buffer data\n");
+			// free(game->frame_buffer->buffer);
+			game->frame_buffer->buffer = NULL;
+		}
+		ft_printf("Freeing frame buffer\n");
+		free(game->frame_buffer);
+		game->frame_buffer = NULL;
+	}
 }
 
 /**
@@ -121,5 +146,16 @@ int	main(int argc, char **argv)
 	context.meta = &map_data;
 	run_game(&context);
 	cleanup(&game);
+	if (game.mlx)
+	{
+		if (game.mlx_win)
+		{
+			mlx_destroy_window(game.mlx, game.mlx_win);
+			game.mlx_win = NULL;
+		}
+		mlx_destroy_display(game.mlx);
+		free(game.mlx);
+		game.mlx = NULL;
+	}
 	return (0);
 }

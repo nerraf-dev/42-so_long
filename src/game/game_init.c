@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 20:05:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/06 14:10:46 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,15 @@ void	destroy_images(t_game *game, int image_type)
  */
 int	close_window(t_context *context)
 {
+	cleanup(context->game);
 	if (context->game->mlx_win)
 		mlx_destroy_window(context->game->mlx, context->game->mlx_win);
 	if (context->game->mlx)
 		mlx_destroy_display(context->game->mlx);
 	if (context->game->mlx)
 		free(context->game->mlx);
-	cleanup(context->game);
 	exit(0);
+	return (0);
 }
 
 /**

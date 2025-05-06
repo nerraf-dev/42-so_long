@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 19:18:46 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 19:48:50 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/06 13:17:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ t_img	*set_ui_texture_values(t_game *game)
 	{
 		if (set_img_data(&textures[i], game))
 		{
-			ft_printf_fd(2, "Error: Failed to load image %s",
-				textures[i].filename);
+			set_error("Failed to load UI images.");
 			return (NULL);
 		}
 		i++;
