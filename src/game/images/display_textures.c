@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 15:24:52 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 19:53:15 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/06 12:57:32 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,5 @@ int	display_level_end(t_context *context)
 
 	game = context->game;
 	display_image(game, &game->images.ui[0], 100, 100);
-
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 20:03:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/06 13:12:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	load_images(t_context *context)
 }
 
 /**
- * display_image - Displays an image at the specified window position.
- * @game: Pointer to the game structure.
- * @img: Pointer to the image structure.
- * @x: X-coordinate for image placement.
- * @y: Y-coordinate for image placement.
+ * @brief display_image - Displays an image at the specified window position.
+ * @param game: Pointer to the game structure.
+ * @param img: Pointer to the image structure.
+ * @param x: X-coordinate for image placement.
+ * @param y: Y-coordinate for image placement.
  *
  * Uses MLX to put the loaded image onto the game window.
  *
@@ -54,14 +54,43 @@ int	load_images(t_context *context)
 int	display_image(t_game *game, t_img *img, int x, int y)
 {
 	if (img->img == NULL)
-	{
-		ft_putstr_fd("Error: Image is not loaded.\n", 2);
-		return (1);
-	}
+		return (set_error("Image not loaded"));
 	if (img->transparency)
 		blit_image_transparent(game->frame_buffer, img, x, y);
 	else
 		blit_image_opaque(game->frame_buffer, img, x, y);
+	return (0);
+}
+
+int	display_image_move(t_context *context)
+{
+	int		buffer_size;
+	t_game	*game;
+	t_meta	*meta;
+
+	game = context->game;
+	meta = context->meta;
+	buffer_size = game->frame_buffer->height * game->frame_buffer->line_bytes;
+	ft_memset(game->frame_buffer->buffer, 0, buffer_size);
+
+	// Walls do nto need redrawing
+	// Floors only need redrawing IF
+	//	player moves
+	//	collectible is taken
+
+	// display_image(game, &game->images.floors[0],
+	// 	(meta->tile * col), (meta->tile * row));
+	
+	display_exit(context);
+	display_collectibles(context);
+	display_player(context);
+
+	if (game->player_pos[0] == meta->exit_pos[0]
+		&& game->player_pos[1] == meta->exit_pos[1]
+		&& game->collectibles == meta->collectible_count)
+		display_level_end(context);
+	mlx_put_image_to_window(game->mlx,
+		game->mlx_win, game->frame_buffer->img, 0, 0);
 	return (0);
 }
 
