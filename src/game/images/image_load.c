@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/07 16:47:24 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/07 16:58:54 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,6 @@ int	display_image_move(t_context *context)
 	meta = context->meta;
 	buffer_size = game->frame_buffer->height * game->frame_buffer->line_bytes;
 	ft_memset(game->frame_buffer->buffer, 0, buffer_size);
-
-	// Walls do nto need redrawing
-	// Floors only need redrawing IF
-	//	player moves
-	//	collectible is taken
-
-	// display_image(game, &game->images.floors[0],
-	// 	(meta->tile * col), (meta->tile * row));
 
 	display_exit(context);
 	display_collectibles(context);
