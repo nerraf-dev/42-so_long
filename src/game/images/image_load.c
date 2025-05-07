@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 20:03:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/07 16:02:12 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ int	load_images(t_context *context)
 int	display_image(t_game *game, t_img *img, int x, int y)
 {
 	if (img->img == NULL)
-	{
-		ft_putstr_fd("Error: Image is not loaded.\n", 2);
-		return (1);
-	}
+		return (set_error("Image not loaded."));
 	if (img->transparency)
 		blit_image_transparent(game->frame_buffer, img, x, y);
 	else
