@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 13:41:10 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 13:49:29 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/06 14:19:04 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ static int	init_fb_image(t_game *game, t_fb_vars *vars, t_meta *meta)
 static int	free_frame_buffer(t_game *game, char *msg)
 {
 	mlx_destroy_image(game->mlx, game->frame_buffer->img);
+	game->frame_buffer->img = NULL;
 	free(game->frame_buffer);
+	game->frame_buffer = NULL;
 	return (set_error(msg));
 }
 
