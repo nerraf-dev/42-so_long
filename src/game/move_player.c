@@ -6,11 +6,32 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:56:26 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 11:15:38 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 12:59:06 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
+
+void	show_steps(t_game *game)
+{
+	char	*steps_str;
+	char	*display_str;
+
+	ft_printf("Steps: %d\n", game->steps);
+	steps_str = ft_itoa(game->steps);
+	if (steps_str)
+	{
+		display_str = ft_strjoin("Steps: ", steps_str);
+		if (display_str)
+		{
+			mlx_string_put(game->mlx, game->mlx_win,
+				10, 10, 0xFFFFFF, display_str);
+			free(display_str);
+		}
+		free(steps_str);
+	}
+
+}
 
 int	move_player(t_context *context, int new_x, int new_y)
 {
@@ -36,6 +57,6 @@ int	move_player(t_context *context, int new_x, int new_y)
 		game->steps++;
 		display_image_move(context, old_x, old_y);
 	}
-	ft_printf("Steps: %d\n", game->steps);
+	show_steps(game);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 11:15:56 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 13:02:23 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ int	display_images(t_context *context)
 		display_level_end(context);
 	mlx_put_image_to_window(game->mlx,
 		game->mlx_win, game->frame_buffer->img, 0, 0);
+	show_steps(game);
 	return (0);
 }
