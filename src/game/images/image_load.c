@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 11:11:43 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 11:15:56 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int	display_image_move(t_context *context, int x, int y)
 	display_exit(context);
 	display_collectibles(context);
 	display_player(context);
-
 	if (game->player_pos[0] == meta->exit_pos[0]
 		&& game->player_pos[1] == meta->exit_pos[1]
 		&& game->collectibles == meta->collectible_count)

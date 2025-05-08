@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 10:45:53 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 11:14:58 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,16 +120,5 @@ int	main(int argc, char **argv)
 	run_game(&context);
 	cleanup(&game);
 	cleanup_mlx(&game);
-	// if (game.mlx)
-	// {
-	// 	if (game.mlx_win)
-	// 	{
-	// 		mlx_destroy_window(game.mlx, game.mlx_win);
-	// 		game.mlx_win = NULL;
-	// 	}
-	// 	mlx_destroy_display(game.mlx);
-	// 	free(game.mlx);
-	// 	game.mlx = NULL;
-	// }
 	return (0);
 }
