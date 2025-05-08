@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:10:40 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 13:52:33 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 10:48:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ typedef struct s_images
 {
 	t_img	*walls;
 	t_img	*floors;
-	t_img	*player;
 	t_img	*collectibles;
 	t_img	*exit;
+	t_img	*player;
 	t_img	*ui;
 }			t_images;
 
 typedef struct s_game
 {
-	char		**map;
 	void		*mlx;
 	void		*mlx_win;
+	char		**map;
 	char		*file;
 	int			**visited;
 	t_img		*frame_buffer;

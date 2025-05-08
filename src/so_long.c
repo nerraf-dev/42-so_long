@@ -6,46 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/06 14:13:11 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 10:45:53 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-/**
- * init_data - Initializes game and map_data structures.
- * @game: Pointer to the game structure.
- * @map_data: Pointer to the map metadata structure.
- *
- * Sets default values for all pointers and counters.
- */
-void	init_data(t_game *game, t_meta *map_data)
-{
-	game->mlx = NULL;
-	game->mlx_win = NULL;
-	game->file = NULL;
-	game->map = NULL;
-	game->visited = NULL;
-	game->images.walls = NULL;
-	game->images.floors = NULL;
-	game->images.player = NULL;
-	game->player_pos[0] = 0;
-	game->player_pos[1] = 0;
-	game->collectibles = 0;
-	game->exit = 0;
-	game->error = 0;
-	game->steps = 0;
-	map_data->line_count = 0;
-	map_data->line_length = 0;
-	map_data->start_count = 0;
-	map_data->exit_count = 0;
-	map_data->collectible_count = 0;
-	map_data->start_pos[0] = 0;
-	map_data->start_pos[1] = 0;
-	map_data->exit_pos[0] = 0;
-	map_data->exit_pos[1] = 0;
-	map_data->tile = TILE_SIZE ;
-}
 
 /**
  * validate_args - Validates the command line arguments.
@@ -98,22 +63,30 @@ void	cleanup(t_game *game)
 	}
 	if (game->frame_buffer)
 	{
-		ft_printf("Freeing frame buffer\n");
 		if (game->frame_buffer->img)
 		{
-			ft_printf("Freeing frame buffer image\n");
 			mlx_destroy_image(game->mlx, game->frame_buffer->img);
 			game->frame_buffer->img = NULL;
 		}
 		if (game->frame_buffer->buffer)
-		{
-			ft_printf("Freeing frame buffer data\n");
-			// free(game->frame_buffer->buffer);
 			game->frame_buffer->buffer = NULL;
-		}
-		ft_printf("Freeing frame buffer\n");
 		free(game->frame_buffer);
 		game->frame_buffer = NULL;
+	}
+}
+
+static void	cleanup_mlx(t_game *game)
+{
+	if (game->mlx)
+	{
+		if (game->mlx_win)
+		{
+			mlx_destroy_window(game->mlx, game->mlx_win);
+			game->mlx_win = NULL;
+		}
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+		game->mlx = NULL;
 	}
 }
 
@@ -146,16 +119,17 @@ int	main(int argc, char **argv)
 	context.meta = &map_data;
 	run_game(&context);
 	cleanup(&game);
-	if (game.mlx)
-	{
-		if (game.mlx_win)
-		{
-			mlx_destroy_window(game.mlx, game.mlx_win);
-			game.mlx_win = NULL;
-		}
-		mlx_destroy_display(game.mlx);
-		free(game.mlx);
-		game.mlx = NULL;
-	}
+	cleanup_mlx(&game);
+	// if (game.mlx)
+	// {
+	// 	if (game.mlx_win)
+	// 	{
+	// 		mlx_destroy_window(game.mlx, game.mlx_win);
+	// 		game.mlx_win = NULL;
+	// 	}
+	// 	mlx_destroy_display(game.mlx);
+	// 	free(game.mlx);
+	// 	game.mlx = NULL;
+	// }
 	return (0);
 }

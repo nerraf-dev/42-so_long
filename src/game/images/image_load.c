@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/07 16:58:54 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 11:11:43 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	display_image(t_game *game, t_img *img, int x, int y)
 	return (0);
 }
 
-int	display_image_move(t_context *context)
+int	display_image_move(t_context *context, int x, int y)
 {
 	int		buffer_size;
 	t_game	*game;
@@ -72,7 +72,8 @@ int	display_image_move(t_context *context)
 	meta = context->meta;
 	buffer_size = game->frame_buffer->height * game->frame_buffer->line_bytes;
 	ft_memset(game->frame_buffer->buffer, 0, buffer_size);
-
+	display_image(game, &game->images.floors[0],
+		(meta->tile * x), (meta->tile * y));
 	display_exit(context);
 	display_collectibles(context);
 	display_player(context);

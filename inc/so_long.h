@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/05 20:53:35 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 10:44:55 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define K_COLLECTIBLE 'C'
 # define VALID_CHARS "01PEC"
 
+void	init_data(t_game *game, t_meta *map_data);
 int		set_error(const char *message);
 void	cleanup(t_game *game);
 int		open_file(const char *file, int flags);

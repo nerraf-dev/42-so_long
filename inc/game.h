@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/06 13:08:01 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 11:09:47 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_img	*set_coll_texture_values(t_game *game);
 t_img	*set_exit_texture_values(t_game *game);
 t_img	*set_ui_texture_values(t_game *game);
 int		display_images(t_context *context);
-int		display_image_move(t_context *context);
+int		display_image_move(t_context *context, int x, int y);
 int		display_image(t_game *game, t_img *img, int x, int y);
 int		display_walls(t_context	*context);
 int		display_floor(t_context *context);

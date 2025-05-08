@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:56:26 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/06 12:51:35 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 11:09:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	move_player(t_context *context, int new_x, int new_y)
 		game->player_pos[0] = new_x;
 		game->player_pos[1] = new_y;
 		game->steps++;
-		display_images(context);
+		// display_images(context);
+		display_image_move(context, old_x, old_y);
 	}
 
 	ft_printf("Steps: %d\n", game->steps);
