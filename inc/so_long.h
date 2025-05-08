@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 10:44:55 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 11:38:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include "images.h"
 # include "validate_path.h"
 # include "game.h"
-# include <X11/keysym.h>
 # include <fcntl.h>
+# include <X11/keysym.h>
+# include <X11/Xlib.h> // For X11 functions
 
 // Key for map validation
 # define K_EMPTY '0'

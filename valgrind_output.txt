@@ -1,191 +1,192 @@
-==76113== Memcheck, a memory error detector
-==76113== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==76113== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==76113== Command: ./so_long maps/map1.ber
-==76113== Parent PID: 656
-==76113== 
-==76113== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==76113==    at 0x4ADB864: writev (writev.c:26)
-==76113==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==76113==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==76113==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==76113==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==76113==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==76113==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==76113==    by 0x1134F5: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
-==76113==    by 0x113235: mlx_new_window (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8AC: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113==  Address 0x4c3f57c is 28 bytes inside a block of size 16,384 alloc'd
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==76113==    by 0x112FE6: mlx_init (in /home/simon/so_long/so_long)
-==76113==    by 0x10E849: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113==  Uninitialised value was created by a stack allocation
-==76113==    at 0x113400: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 
-==76113== HEAP SUMMARY:
-==76113==     in use at exit: 2,240 bytes in 20 blocks
-==76113==   total heap usage: 1,343 allocs, 1,323 frees, 134,157 bytes allocated
-==76113== 
-==76113== 88 bytes in 1 blocks are still reachable in loss record 1 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x11364B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F6A5: set_wall_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10F95F: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 88 bytes in 1 blocks are still reachable in loss record 2 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x11364B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F725: set_floor_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10F996: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 88 bytes in 1 blocks are still reachable in loss record 3 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x11364B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F87A: set_coll_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10FA04: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 88 bytes in 1 blocks are still reachable in loss record 4 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x11364B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F285: set_ui_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10FA72: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 136 bytes in 1 blocks are still reachable in loss record 5 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==76113==    by 0x11367B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F6A5: set_wall_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10F95F: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 136 bytes in 1 blocks are still reachable in loss record 6 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==76113==    by 0x11367B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F725: set_floor_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10F996: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 136 bytes in 1 blocks are still reachable in loss record 7 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==76113==    by 0x11367B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F87A: set_coll_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10FA04: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 136 bytes in 1 blocks are still reachable in loss record 8 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==76113==    by 0x11367B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F285: set_ui_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10FA72: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 176 bytes in 2 blocks are still reachable in loss record 9 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x11364B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F903: set_exit_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10FA3B: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 272 bytes in 2 blocks are still reachable in loss record 10 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==76113==    by 0x11367B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F903: set_exit_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10FA3B: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 352 bytes in 4 blocks are still reachable in loss record 11 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x11364B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F7CF: set_static_player_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10F9CD: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== 544 bytes in 4 blocks are still reachable in loss record 12 of 12
-==76113==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==76113==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==76113==    by 0x11367B: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
-==76113==    by 0x113990: mlx_new_image (in /home/simon/so_long/so_long)
-==76113==    by 0x114269: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
-==76113==    by 0x114683: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
-==76113==    by 0x10FDD6: set_img_data (in /home/simon/so_long/so_long)
-==76113==    by 0x10F7CF: set_static_player_texture_values (in /home/simon/so_long/so_long)
-==76113==    by 0x10F9CD: load_images (in /home/simon/so_long/so_long)
-==76113==    by 0x10E8E5: run_game (in /home/simon/so_long/so_long)
-==76113==    by 0x1111E4: main (in /home/simon/so_long/so_long)
-==76113== 
-==76113== LEAK SUMMARY:
-==76113==    definitely lost: 0 bytes in 0 blocks
-==76113==    indirectly lost: 0 bytes in 0 blocks
-==76113==      possibly lost: 0 bytes in 0 blocks
-==76113==    still reachable: 2,240 bytes in 20 blocks
-==76113==         suppressed: 0 bytes in 0 blocks
-==76113== 
-==76113== For lists of detected and suppressed errors, rerun with: -s
-==76113== ERROR SUMMARY: 2 errors from 1 contexts (suppressed: 0 from 0)
+==84536== Memcheck, a memory error detector
+==84536== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==84536== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==84536== Command: ./so_long maps/map1.ber
+==84536== Parent PID: 656
+==84536== 
+==84536== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==84536==    at 0x4ADB864: writev (writev.c:26)
+==84536==    by 0x4BD2ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==84536==    by 0x4BD2C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==84536==    by 0x4BD3D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==84536==    by 0x48B60B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==84536==    by 0x48BB148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==84536==    by 0x48BB52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==84536==    by 0x113555: mlx_int_wait_first_expose (in /home/simon/so_long/so_long)
+==84536==    by 0x113295: mlx_new_window (in /home/simon/so_long/so_long)
+==84536==    by 0x10E758: init_window (in /home/simon/so_long/so_long)
+==84536==    by 0x10E680: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536==  Address 0x4c3f57c is 28 bytes inside a block of size 16,384 alloc'd
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x48A542D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==84536==    by 0x113046: mlx_init (in /home/simon/so_long/so_long)
+==84536==    by 0x10E669: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536==  Uninitialised value was created by a stack allocation
+==84536==    at 0x113460: mlx_int_anti_resize_win (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 
+==84536== HEAP SUMMARY:
+==84536==     in use at exit: 2,240 bytes in 20 blocks
+==84536==   total heap usage: 1,697 allocs, 1,677 frees, 143,361 bytes allocated
+==84536== 
+==84536== 88 bytes in 1 blocks are still reachable in loss record 1 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x1136AB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F705: set_wall_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10F9BF: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 88 bytes in 1 blocks are still reachable in loss record 2 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x1136AB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F785: set_floor_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10F9F6: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 88 bytes in 1 blocks are still reachable in loss record 3 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x1136AB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F8DA: set_coll_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10FA64: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 88 bytes in 1 blocks are still reachable in loss record 4 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x1136AB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F2E5: set_ui_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10FAD2: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 136 bytes in 1 blocks are still reachable in loss record 5 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==84536==    by 0x1136DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F705: set_wall_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10F9BF: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 136 bytes in 1 blocks are still reachable in loss record 6 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==84536==    by 0x1136DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F785: set_floor_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10F9F6: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 136 bytes in 1 blocks are still reachable in loss record 7 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==84536==    by 0x1136DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F8DA: set_coll_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10FA64: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 136 bytes in 1 blocks are still reachable in loss record 8 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==84536==    by 0x1136DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F2E5: set_ui_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10FAD2: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 176 bytes in 2 blocks are still reachable in loss record 9 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x1136AB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F963: set_exit_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10FA9B: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 272 bytes in 2 blocks are still reachable in loss record 10 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==84536==    by 0x1136DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F963: set_exit_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10FA9B: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 352 bytes in 4 blocks are still reachable in loss record 11 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x1136AB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F82F: set_static_player_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10FA2D: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== 544 bytes in 4 blocks are still reachable in loss record 12 of 12
+==84536==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==84536==    by 0x48660A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==84536==    by 0x1136DB: mlx_int_new_xshm_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1139F0: mlx_new_image (in /home/simon/so_long/so_long)
+==84536==    by 0x1142C9: mlx_int_parse_xpm (in /home/simon/so_long/so_long)
+==84536==    by 0x1146E3: mlx_xpm_file_to_image (in /home/simon/so_long/so_long)
+==84536==    by 0x10FE36: set_img_data (in /home/simon/so_long/so_long)
+==84536==    by 0x10F82F: set_static_player_texture_values (in /home/simon/so_long/so_long)
+==84536==    by 0x10FA2D: load_images (in /home/simon/so_long/so_long)
+==84536==    by 0x10E69E: run_game (in /home/simon/so_long/so_long)
+==84536==    by 0x111244: main (in /home/simon/so_long/so_long)
+==84536== 
+==84536== LEAK SUMMARY:
+==84536==    definitely lost: 0 bytes in 0 blocks
+==84536==    indirectly lost: 0 bytes in 0 blocks
+==84536==      possibly lost: 0 bytes in 0 blocks
+==84536==    still reachable: 2,240 bytes in 20 blocks
+==84536==         suppressed: 0 bytes in 0 blocks
+==84536== 
+==84536== For lists of detected and suppressed errors, rerun with: -s
+==84536== ERROR SUMMARY: 2 errors from 1 contexts (suppressed: 0 from 0)

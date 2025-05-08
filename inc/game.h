@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 11:09:47 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 11:30:48 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ int		display_level_end(t_context *context);
 int		move_player(t_context *context, int new_x, int new_y);
 void	blit_image_opaque(t_img *dst, t_img *src, int x_off, int y_off);
 void	blit_image_transparent(t_img *dst, t_img *src, int x_off, int y_off);
-
+void	setup_hooks(t_context *context);
 #endif
