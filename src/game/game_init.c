@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:00:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 11:39:44 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 12:03:58 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	init_window(t_game *game, t_meta *meta)
 	int	width;
 	int	height;
 
-	width = meta->tile * meta->line_length + 20;
+	width = meta->tile * meta->line_length;
 	height = meta->tile * meta->line_count;
 	if (game->mlx == NULL)
 		return (1);
