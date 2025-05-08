@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:56:26 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 12:59:06 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 13:06:57 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	move_player(t_context *context, int new_x, int new_y)
 		else if (game->map[new_y][new_x] == K_EXIT
 			&& game->collectibles == context->meta->collectible_count)
 			game->exit++;
-		ft_printf("Exit: %d\n", game->exit);
 		game->map[old_y][old_x] = K_EMPTY;
 		game->map[new_y][new_x] = K_START;
 		game->player_pos[0] = new_x;
