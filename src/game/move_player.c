@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:56:26 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 13:06:57 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/08 13:12:11 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	show_steps(t_game *game)
 		}
 		free(steps_str);
 	}
-
 }
 
 int	move_player(t_context *context, int new_x, int new_y)
