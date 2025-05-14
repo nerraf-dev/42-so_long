@@ -6,12 +6,22 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:29:44 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 13:02:23 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:25:30 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
 
+/**
+ * @brief load_images - Loads all images for the game.
+ * @param context: Pointer to the context structure.
+ *
+ * This function initializes the game images by loading textures
+ * for walls, floors, collectibles, exit, player, and UI.
+ * It also sets up the frame buffer for rendering.
+ * If any image fails to load, an error message is set.
+ * The function returns 0 on success or an error code on failure.
+ */
 int	load_images(t_context *context)
 {
 	t_game	*game;
@@ -49,7 +59,7 @@ int	load_images(t_context *context)
  *
  * Uses MLX to put the loaded image onto the game window.
  *
- * Return: 0 on success, 1 if the image is not loaded.
+ * @return success, 1 if the image is not loaded.
  */
 int	display_image(t_game *game, t_img *img, int x, int y)
 {
@@ -62,6 +72,16 @@ int	display_image(t_game *game, t_img *img, int x, int y)
 	return (0);
 }
 
+/**
+ * @brief Displays the relevant images on the game window.
+ * @param context: Pointer to the context structure.
+ * @param x: X-coordinate for image placement.
+ * @param y: Y-coordinate for image placement.
+ *
+ * Uses MLX to put the loaded image onto the game window.
+ *
+ * @return success, 1 if the image is not loaded.
+ */
 int	display_image_move(t_context *context, int x, int y)
 {
 	int		buffer_size;
@@ -86,6 +106,12 @@ int	display_image_move(t_context *context, int x, int y)
 	return (0);
 }
 
+/**
+ * @brief display_images - Displays the images on the game window.
+ *   Used to display all relevant assets when setting up the game window.
+ * @param context: Pointer to the context structure.
+ *
+**/
 int	display_images(t_context *context)
 {
 	int		buffer_size;

@@ -6,11 +6,23 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 15:24:52 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/14 11:58:21 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:30:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
+
+/**
+ * @brief display_walls - Displays the walls of the game map.
+ *
+ * @param context: The context containing the game and meta information.
+ *
+ * This function iterates through the game map and displays the wall images
+ * at the appropriate positions. It uses the `display_image` function to
+ * render the wall images.
+ *
+ * @return 0 on success, or an error code if the image display fails.
+ */
 
 int	display_floor(t_context *context)
 {
@@ -37,6 +49,12 @@ int	display_floor(t_context *context)
 	return (0);
 }
 
+/**
+ * * @brief Displays the exit image.
+ * 
+ * * @param context: The context containing the game and meta information.
+ *
+ */
 int	display_exit(t_context *context)
 {
 	t_game	*game;
