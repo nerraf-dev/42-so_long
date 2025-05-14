@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:51:07 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 11:14:58 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/14 13:21:42 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,37 @@ static int	validate_args(int argc, char **argv)
 	return (0);
 }
 
+static void	cleanup_textures(t_game *game)
+{
+	int	i;
+
+	if (game->images.walls && game->images.walls->img)
+		mlx_destroy_image(game->mlx, game->images.walls->img);
+	if (game->images.floors && game->images.floors->img)
+		mlx_destroy_image(game->mlx, game->images.floors->img);
+	if (game->images.collectibles && game->images.collectibles->img)
+		mlx_destroy_image(game->mlx, game->images.collectibles->img);
+	if (game->images.exit)
+	{
+		if (game->images.exit[0].img)
+			mlx_destroy_image(game->mlx, game->images.exit[0].img);
+		if (game->images.exit[1].img)
+			mlx_destroy_image(game->mlx, game->images.exit[1].img);
+	}
+	if (game->images.player)
+	{
+		i = 0;
+		while (i < PLAYER_IMAGES)
+		{
+			if (game->images.player[i].img)
+				mlx_destroy_image(game->mlx, game->images.player[i].img);
+			i++;
+		}
+	}
+	if (game->images.ui && game->images.ui->img)
+		mlx_destroy_image(game->mlx, game->images.ui->img);
+}
+
 /**
  * @brief Frees allocated memory for the game map and visited array, and sets
  * their pointers to NULL.
@@ -51,6 +82,7 @@ static int	validate_args(int argc, char **argv)
  */
 void	cleanup(t_game *game)
 {
+	cleanup_textures(game);
 	if (game->map)
 	{
 		free_game_arr((void **)game->map);

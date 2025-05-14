@@ -6,15 +6,13 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 12:13:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 11:38:15 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/14 12:40:27 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../lib/mlx/mlx.h"
-# include "../lib/libft/src/libft.h"
 # include "errors.h"
 # include "structures.h"
 # include "images.h"
@@ -22,7 +20,9 @@
 # include "game.h"
 # include <fcntl.h>
 # include <X11/keysym.h>
-# include <X11/Xlib.h> // For X11 functions
+# include <X11/Xlib.h>
+# include "../lib/mlx/mlx.h"
+# include "../lib/libft/src/libft.h"
 
 // Key for map validation
 # define K_EMPTY '0'

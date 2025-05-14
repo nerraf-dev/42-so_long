@@ -6,13 +6,15 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:05:58 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/08 10:51:44 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/14 12:38:57 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMAGES_H
 # define IMAGES_H
 
+// Wall, Floor, player assets from: https://limezu.itch.io/
+// Other images create by me
 // TILE_SIZE: size of each tile in pixels
 # define TILE_SIZE 48
 # define ASSETS_DIR "./assets/"
@@ -46,25 +48,25 @@
 # define UI_IMAGES 1
 # define LEVEL_END "./assets/ui/level_complete.xpm"
 
-// TEXTURE index vals - Foors and walls
-# define I_TL 0
-# define I_TOP 1
-# define I_TR 2
-# define I_SIDE_L 3
-# define I_MID 4
-# define I_SIDE_R 5
-# define I_BASE_L 6
-# define I_BASE 7
-# define I_BASE_R 8
+// // TEXTURE index vals - Foors and walls
+// # define I_TL 0
+// # define I_TOP 1
+// # define I_TR 2
+// # define I_SIDE_L 3
+// # define I_MID 4
+// # define I_SIDE_R 5
+// # define I_BASE_L 6
+// # define I_BASE 7
+// # define I_BASE_R 8
 
-// Player index values
-# define I_PLR_UP 0
-# define I_PLR_DOWN 1
-# define I_PLR_LEFT 2
-# define I_PLR_RIGHT 3
+// // Player index values
+// # define I_PLR_UP 0
+// # define I_PLR_DOWN 1
+// # define I_PLR_LEFT 2
+// # define I_PLR_RIGHT 3
 
-// Object index values
-# define I_EXIT 0
-# define I_COLLECTIBLE 1
+// // Object index values
+// # define I_EXIT 0
+// # define I_COLLECTIBLE 1
 
 #endif

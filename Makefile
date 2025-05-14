@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 12:30:50 by sfarren           #+#    #+#              #
-#    Updated: 2025/05/08 11:31:21 by sfarren          ###   ########.fr        #
+#    Updated: 2025/05/14 12:25:08 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,11 @@ SRC_DIR = src
 INC_DIR = inc
 OBJ_DIR = obj
 
-# Subdirectories for organized source files
 PARSING_DIR = $(SRC_DIR)/map_validation
 UTILS_DIR = $(SRC_DIR)/utils
 GAME_DIR = $(SRC_DIR)/game
 GUI_DIR = $(SRC_DIR)/gui
 
-# Source files in each category
 GAME_FILES = game_init.c \
 			init_data.c \
 			hooks.c \
@@ -60,7 +58,6 @@ UTILS_FILES = so_long_utils.c \
 
 MAIN_FILES = so_long.c \
 
-# Combine all source files
 SRC_FILES = $(addprefix $(GAME_DIR)/, $(GAME_FILES)) \
 			$(addprefix $(PARSING_DIR)/, $(PARSING_FILES)) \
 			$(addprefix $(UTILS_DIR)/, $(UTILS_FILES)) \
@@ -70,9 +67,9 @@ SRCS = $(SRC_FILES)
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 NAME = so_long
 
-all: $(NAME)
+all: $(LIBFT) $(MLX_DIR)/libmlx.a $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_FLAGS) $(MLX_FLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -80,11 +77,23 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -I$(INC_DIR) -o $@ -c $< $(MLX_INC)
 
 $(LIBFT):
+	@if [ ! -d "$(LIBFT_DIR)" ]; then \
+		echo "Cloning libft..."; \
+		git clone https://github.com/nerraf-dev/42-libft.git $(LIBFT_DIR); \
+	fi
 	$(MAKE) -C $(LIBFT_DIR)
+
+$(MLX_DIR)/libmlx.a:
+	@if [ ! -d "$(MLX_DIR)" ]; then \
+		echo "Cloning MiniLibX..."; \
+		git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR); \
+	fi
+	$(MAKE) -C $(MLX_DIR)
 
 clean:
 	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -rf $(NAME)

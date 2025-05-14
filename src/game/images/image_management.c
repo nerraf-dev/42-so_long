@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:58:35 by sfarren           #+#    #+#             */
-/*   Updated: 2025/04/28 19:34:48 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/14 13:11:33 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@
  *
  * Return: 0 on success, 1 on failure.
  */
-int	set_img_data(t_img *img, t_game *game)
+int	set_img_data(t_img *texture, t_game *game)
 {
-	if (img->filename == NULL)
+	if (texture->filename == NULL)
 		return (set_error("Image filename is NULL."));
-	img->img = mlx_xpm_file_to_image(game->mlx, img->filename,
-			&img->width, &img->height);
-	if (img->img == NULL)
+	texture->img = mlx_xpm_file_to_image(game->mlx, texture->filename,
+			&texture->width, &texture->height);
+	if (texture->img == NULL)
 		return (set_error("Failed to load image."));
-	img->buffer = mlx_get_data_addr(img->img, &img->bpp,
-			&img->line_bytes, &img->endian);
-	if (img->buffer == NULL)
+	texture->buffer = mlx_get_data_addr(texture->img, &texture->bpp,
+			&texture->line_bytes, &texture->endian);
+	if (texture->buffer == NULL)
 	{
-		mlx_destroy_image(game->mlx, img->img);
+		mlx_destroy_image(game->mlx, texture->img);
 		return (set_error("Failed to get image data address."));
 	}
 	return (0);

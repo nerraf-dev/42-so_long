@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 15:24:52 by sfarren           #+#    #+#             */
-/*   Updated: 2025/05/07 16:59:29 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/05/14 11:58:21 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ int	display_level_end(t_context *context)
 	t_game	*game;
 
 	game = context->game;
+	game->exit = 1;
 	if (display_image(game, &game->images.ui[0], 100, 100))
 		return (set_error("Failed to display level end image."));
 	return (0);
